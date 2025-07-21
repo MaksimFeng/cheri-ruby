@@ -676,7 +676,7 @@ VALUE rb_fs;
 static inline const char *
 search_nonascii(const char *p, const char *e)
 {
-    const uintptr_t *s, *t;
+    const ULVALUE *s, *t;
 
 #if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
 # if SIZEOF_UINTPTR_T == 8
@@ -696,10 +696,10 @@ search_nonascii(const char *p, const char *e)
 # endif
 #endif
 
-    if (UNALIGNED_WORD_ACCESS || e - p >= SIZEOF_VOIDP) {
+    if (UNALIGNED_WORD_ACCESS || e - p >= 8) {
 #if !UNALIGNED_WORD_ACCESS
-        if ((uintptr_t)p % SIZEOF_VOIDP) {
-            int l = SIZEOF_VOIDP - (uintptr_t)p % SIZEOF_VOIDP;
+        if ((ULVALUE)p % 8) {
+            int l = 8 - (ULVALUE)p % 8;
             p += l;
             switch (l) {
               default: UNREACHABLE;
@@ -718,12 +718,12 @@ search_nonascii(const char *p, const char *e)
 #endif
 #if defined(HAVE_BUILTIN___BUILTIN_ASSUME_ALIGNED) &&! UNALIGNED_WORD_ACCESS
 #define aligned_ptr(value) \
-        __builtin_assume_aligned((value), sizeof(uintptr_t))
+        __builtin_assume_aligned((value), sizeof(ULVALUE))
 #else
-#define aligned_ptr(value) (uintptr_t *)(value)
+#define aligned_ptr(value) (ULVALUE *)(value)
 #endif
         s = aligned_ptr(p);
-        t = (uintptr_t *)(e - (SIZEOF_VOIDP-1));
+        t = (ULVALUE *)(e - (8-1));
 #undef aligned_ptr
         for (;s < t; s++) {
             if (*s & NONASCII_MASK) {

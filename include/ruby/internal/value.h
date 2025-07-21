@@ -123,6 +123,7 @@ typedef unsigned LONG_LONG ID;
 #else
 typedef uintptr_t VALUE;
 typedef uintptr_t ID;
+typedef unsigned long ULVALUE;
 # define SIGNED_VALUE long
 # define SIZEOF_VALUE SIZEOF_UINTPTR_T
 # undef PRI_VALUE_PREFIX

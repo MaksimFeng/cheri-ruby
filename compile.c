@@ -1033,7 +1033,7 @@ rb_iseq_original_iseq(const rb_iseq_t *iseq) /* cold path */
  * generate SPARCV8PLUS code with unaligned memory access instructions.
  * That is why the STRICT_ALIGNMENT is defined only with GCC.
  */
-#if defined(__sparc) && SIZEOF_VOIDP == 4 && defined(__GNUC__)
+#if defined(__CHERI_PURE_CAPABILITY__) || defined(__sparc) && SIZEOF_VOIDP == 4 && defined(__GNUC__)
   #define STRICT_ALIGNMENT
 #endif
 
