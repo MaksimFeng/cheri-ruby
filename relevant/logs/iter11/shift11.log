@@ -1,0 +1,6 @@
+../st.c:1774:10: warning: shift count >= width of type [-Wshift-count-overflow]
+../st.c:1776:9: warning: shift count >= width of type [-Wshift-count-overflow]
+../st.c:1800:12: warning: shift count >= width of type [-Wshift-count-overflow]
+../st.c:1802:12: warning: shift count >= width of type [-Wshift-count-overflow]
+../st.c:1951:22: warning: shift count >= width of type [-Wshift-count-overflow]
+../st.c:1974:26: warning: shift count >= width of type [-Wshift-count-overflow]

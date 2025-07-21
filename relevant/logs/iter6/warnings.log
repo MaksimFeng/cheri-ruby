@@ -1,0 +1,2 @@
+../st.c:1831:9: warning: 'UNALIGNED_ADD_ALL' macro redefined [-Wmacro-redefined]
+../st.c:1831:9: warning: 'UNALIGNED_ADD_ALL' macro redefined [-Wmacro-redefined]

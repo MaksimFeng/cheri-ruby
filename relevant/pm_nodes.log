@@ -1,0 +1,78 @@
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./norevoke.sh
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./miniruby bteval40-348-mod.rb
+new_nodes: 0x415c6640 [rwRW,0x415c6640-0x415c6680], capa: 4, tag: 1
+hash->nodes: 0x0
+new_nodes: 0x76b55380 [rwRW,0x76b55380-0x76b553c0], capa: 4, tag: 1
+hash->nodes: 0x0
+new_nodes: 0x415b6a00 [rwRW,0x415b6a00-0x415b6a80], capa: 8, tag: 1
+hash->nodes: 0x76b55380 [rwRW,0x76b55380-0x76b553c0]
+new_nodes: 0x41e6f900 [rwRW,0x41e6f900-0x41e6fa00], capa: 16, tag: 1
+hash->nodes: 0x415b6a00 [rwRW,0x415b6a00-0x415b6a80]
+new_nodes: 0x414b3c00 [rwRW,0x414b3c00-0x414b3e00], capa: 32, tag: 1
+hash->nodes: 0x41e6f900 [rwRW,0x41e6f900-0x41e6fa00]
+new_nodes: 0x76d05800 [rwRW,0x76d05800-0x76d05c00], capa: 64, tag: 1
+hash->nodes: 0x414b3c00 [rwRW,0x414b3c00-0x414b3e00]
+new_nodes: 0x4159d000 [rwRW,0x4159d000-0x4159d800], capa: 128, tag: 1
+hash->nodes: 0x76d05800 [rwRW,0x76d05800-0x76d05c00]
+new_nodes: 0x41e30000 [rwRW,0x41e30000-0x41e31000], capa: 256, tag: 1
+hash->nodes: 0x4159d000 [rwRW,0x4159d000-0x4159d800]
+new_nodes: 0x77b95000 [rwRW,0x77b95000-0x77b97000], capa: 512, tag: 1
+hash->nodes: 0x41e30000 [rwRW,0x41e30000-0x41e31000]
+new_nodes: 0x76b98000 [rwRW,0x76b98000-0x76b9c000], capa: 1024, tag: 1
+hash->nodes: 0x77b95000 [rwRW,0x77b95000-0x77b97000]
+new_nodes: 0x76b9c000 [rwRW,0x76b9c000-0x76ba4000], capa: 2048, tag: 1
+hash->nodes: 0x76b98000 [rwRW,0x76b98000-0x76b9c000]
+new_nodes: 0x76c0f000 [rwRW,0x76c0f000-0x76c1f000], capa: 4096, tag: 1
+hash->nodes: 0x76b9c000 [rwRW,0x76b9c000-0x76ba4000]
+new_nodes: 0x76c84000 [rwRW,0x76c84000-0x76ca4000], capa: 8192, tag: 1
+hash->nodes: 0x76c0f000 [rwRW,0x76c0f000-0x76c1f000]
+new_nodes: 0x77ed5000 [rwRW,0x77ed5000-0x77f15000], capa: 16384, tag: 1
+hash->nodes: 0x76c84000 [rwRW,0x76c84000-0x76ca4000]
+new_nodes: 0x791c0000 [rwRW,0x791c0000-0x79240000], capa: 32768, tag: 1
+hash->nodes: 0x77ed5000 [rwRW,0x77ed5000-0x77f15000]
+new_nodes: 0x79380000 [rwRW,0x79380000-0x79480000], capa: 65536, tag: 1
+hash->nodes: 0x791c0000 [rwRW,0x791c0000-0x79240000]
+new_nodes: 0x7e343000 [rwRW,0x7e343000-0x7e543000], capa: 131072, tag: 1
+hash->nodes: 0x79380000 [rwRW,0x79380000-0x79480000]
+new_nodes: 0x7f245000 [rwRW,0x7f244000-0x7f646000] (invalid), capa: 262144, tag: 0
+In-address space security exception (core dumped)
+
+revoke on: 
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./miniruby bteval40-348-mod.rb
+new_nodes: 0x73f57d80 [rwRW,0x73f57d80-0x73f57dc0], capa: 4, tag: 1
+hash->nodes: 0x0
+new_nodes: 0x740c0b80 [rwRW,0x740c0b80-0x740c0bc0], capa: 4, tag: 1
+hash->nodes: 0x0
+new_nodes: 0x740bf880 [rwRW,0x740bf880-0x740bf900], capa: 8, tag: 1
+hash->nodes: 0x740c0b80 [rwRW,0x740c0b80-0x740c0bc0]
+new_nodes: 0x740d5800 [rwRW,0x740d5800-0x740d5900], capa: 16, tag: 1
+hash->nodes: 0x740bf880 [rwRW,0x740bf880-0x740bf900]
+new_nodes: 0x74092e00 [rwRW,0x74092e00-0x74093000], capa: 32, tag: 1
+hash->nodes: 0x740d5800 [rwRW,0x740d5800-0x740d5900]
+new_nodes: 0x4157c000 [rwRW,0x4157c000-0x4157c400], capa: 64, tag: 1
+hash->nodes: 0x74092e00 [rwRW,0x74092e00-0x74093000]
+new_nodes: 0x73f52800 [rwRW,0x73f52800-0x73f53000], capa: 128, tag: 1
+hash->nodes: 0x4157c000 [rwRW,0x4157c000-0x4157c400]
+new_nodes: 0x73f2b000 [rwRW,0x73f2b000-0x73f2c000], capa: 256, tag: 1
+hash->nodes: 0x73f52800 [rwRW,0x73f52800-0x73f53000]
+new_nodes: 0x787f6000 [rwRW,0x787f6000-0x787f8000], capa: 512, tag: 1
+hash->nodes: 0x73f2b000 [rwRW,0x73f2b000-0x73f2c000]
+new_nodes: 0x77247000 [rwRW,0x77247000-0x7724b000], capa: 1024, tag: 1
+hash->nodes: 0x787f6000 [rwRW,0x787f6000-0x787f8000]
+new_nodes: 0x77256000 [rwRW,0x77256000-0x7725e000], capa: 2048, tag: 1
+hash->nodes: 0x77247000 [rwRW,0x77247000-0x7724b000]
+new_nodes: 0x7728c000 [rwRW,0x7728c000-0x7729c000], capa: 4096, tag: 1
+hash->nodes: 0x77256000 [rwRW,0x77256000-0x7725e000]
+new_nodes: 0x77307000 [rwRW,0x77307000-0x77327000], capa: 8192, tag: 1
+hash->nodes: 0x7728c000 [rwRW,0x7728c000-0x7729c000]
+new_nodes: 0x77edd000 [rwRW,0x77edd000-0x77f1d000], capa: 16384, tag: 1
+hash->nodes: 0x77307000 [rwRW,0x77307000-0x77327000]
+new_nodes: 0x79b9e000 [rwRW,0x79b9e000-0x79c1e000], capa: 32768, tag: 1
+hash->nodes: 0x77edd000 [rwRW,0x77edd000-0x77f1d000]
+new_nodes: 0x7f349000 [rwRW,0x7f349000-0x7f449000], capa: 65536, tag: 1
+hash->nodes: 0x79b9e000 [rwRW,0x79b9e000-0x79c1e000]
+new_nodes: 0x7fc20000 [rwRW,0x7fc20000-0x7fe20000], capa: 131072, tag: 1
+hash->nodes: 0x7f349000 [rwRW,0x7f349000-0x7f449000]
+new_nodes: 0x81600000 [rwRW,0x81600000-0x81a00000], capa: 262144, tag: 1
+hash->nodes: 0x7fc20000 [rwRW,0x7fc20000-0x7fe20000]
+In-address space security exception (core dumped)

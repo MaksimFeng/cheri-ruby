@@ -12,7 +12,7 @@
 *.i
 *.ii
 *.inc
-*.log
+# *.log
 *.o
 *.o.tmp
 *.obj

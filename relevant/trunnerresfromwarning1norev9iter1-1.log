@@ -1,0 +1,1306 @@
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # echo "exclude(:test_splice_over_ary_max, 'Sometim
+es AppVeyor has insufficient memory to run this test')" >> ../test/.excludes/TestArray.rb
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_array.r
+b
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[  1/455] TestArray#test_cycle = 0.03 s
+[  2/455] TestArray#test_aset_error = 0.05 s
+[  3/455] TestArray#test_shared_array_reject! = 0.02 s
+[  4/455] TestArray#test_replace_wb_variable_width_alloc = 4.21 s
+[  5/455] TestArray#test_collect = 0.03 s
+[  6/455] TestArray#test_VERY_EQUAL = 0.01 s
+[  7/455] TestArray#test_at = 0.02 s
+[  8/455] TestArray#test_reverse = 0.01 s
+[  9/455] TestArray#test_sort_bang_with_freeze = 0.01 s
+[ 10/455] TestArray#test_times = 0.01 s
+[ 11/455] TestArray#test_first2 = 0.01 s
+[ 12/455] TestArray#test_prepend = 0.01 s
+[ 13/455] TestArray#test_zip = 0.02 s
+[ 14/455] TestArray#test_unshift_error = 0.01 s
+[ 15/455] TestArray#test_join_recheck_array_length = 0.13 s
+[ 16/455] TestArray#test_eql? = 0.11 s
+[ 17/455] TestArray#test_pop = 0.01 s
+[ 18/455] TestArray#test_values_at2 = 0.01 s
+[ 19/455] TestArray#test_slice_out_of_range = 0.03 s
+[ 20/455] TestArray#test_fill2 = 0.01 s
+[ 21/455] TestArray#test_flatten! = 0.01 s
+[ 22/455] TestArray#test_zip_bug = 0.01 s
+[ 23/455] TestArray#test_bsearch_index_typechecks_return_values = 0.01 s
+[ 24/455] TestArray#test_unshift_frozen = 0.02 s
+[ 25/455] TestArray#test_drop_while = 0.01 s
+[ 26/455] TestArray#test_ary_new = 0.01 s
+[ 27/455] TestArray#test_PLUS = 0.01 s
+[ 28/455] TestArray#test_flatten_respond_to_missing = 0.01 s
+[ 29/455] TestArray#test_slice! = 0.04 s
+[ 30/455] TestArray#test_sample_statistics = 35.79 s
+[ 31/455] TestArray#test_sort_by! = 0.01 s
+[ 32/455] TestArray#test_monkey_patch_include? = 8.45 s
+[ 33/455] TestArray#test_bsearch_index_in_find_any_mode = 0.02 s
+[ 34/455] TestArray#test_intersect_big_array = 0.02 s
+[ 35/455] TestArray#test_MUL = 0.02 s
+[ 36/455] TestArray#test_take_while = 0.01 s
+[ 37/455] TestArray#test_flatten_error = 0.02 s
+[ 38/455] TestArray#test_slice_gc_compact_stress = 43.21 s
+[ 39/455] TestArray#test_uniq_bang_with_block = 0.02 s
+[ 40/455] TestArray#test_find_all_0 = 0.02 s
+[ 41/455] TestArray#test_repeated_permutation = 5.23 s
+[ 42/455] TestArray#test_uniq = 0.04 s
+[ 43/455] TestArray#test_sample_random_generator_half = 0.21 s
+[ 44/455] TestArray#test_empty? = 0.01 s
+[ 45/455] TestArray#test_flatten_with_callcc = 0.05 s
+[ 46/455] TestArray#test_dig = 0.01 s
+[ 47/455] TestArray#test_each_index = 0.01 s
+[ 48/455] TestArray#test_repeated_combination_stack_error = 10.59 s
+[ 49/455] TestArray#test_iseq_shared_array_reject! = 0.02 s
+[ 50/455] TestArray#test_append = 0.01 s
+[ 51/455] TestArray#test_flattern_singleton_class! = 0.01 s
+[ 52/455] TestArray#test_select! = 0.02 s
+[ 53/455] TestArray#test_hash = 0.01 s
+[ 54/455] TestArray#test_shift_shared_ary = 0.02 s
+[ 55/455] TestArray#test_array_safely_modified_by_sort_block = 0.04 s
+[ 56/455] TestArray#test_OR_in_order = 0.01 s
+[ 57/455] TestArray#test_shift2 = 0.01 s
+[ 58/455] TestArray#test_rotate = 0.03 s
+[ 59/455] TestArray#test_uniq_0 = 0.01 s
+[ 60/455] TestArray#test_delete_if = 0.02 s
+[ 61/455] TestArray#test_intersection_big_array = 0.03 s
+[ 62/455] TestArray#test_to_h_block = 0.04 s
+[ 63/455] TestArray#test_assoc = 0.02 s
+[ 64/455] TestArray#test_00_new = 0.01 s
+[ 65/455] TestArray#test_ASET = 0.15 s
+[ 66/455] TestArray#test_01_square_brackets = 0.01 s
+[ 67/455] TestArray#test_shuffle_random = 0.01 s
+[ 68/455] TestArray#test_clear = 0.01 s
+[ 69/455] TestArray#test_drop = 0.01 s
+[ 70/455] TestArray#test_sort_0 = 0.01 s
+[ 71/455] TestArray#test_sort_with_callcc = 2.42 s
+[ 72/455] TestArray#test_replace_shared_ary = 0.01 s
+[ 73/455] TestArray#test_uniq! = 0.04 s
+[ 74/455] TestArray#test_join2 = 0.02 s
+[ 75/455] TestArray#test_first = 0.01 s
+[ 76/455] TestArray#test_minmax = 0.02 s
+[ 77/455] TestArray#test_permutation_stack_error = 13.05 s
+[ 78/455] TestArray#test_product = 17.01 s
+[ 79/455] TestArray#test_values_at = 0.01 s
+[ 80/455] TestArray#test_dup = 0.02 s
+[ 81/455] TestArray#test_min = 0.03 s
+[ 82/455] TestArray#test_product2 = 0.01 s
+[ 83/455] TestArray#test_shrink_shared_array = 7.35 s
+[ 84/455] TestArray#test_intersect? = 0.01 s
+[ 85/455] TestArray#test_big_array_literal_with_kwsplat = 2.51 s
+[ 86/455] TestArray#test_intersection = 0.01 s
+[ 87/455] TestArray#test_bsearch_typechecks_return_values = 0.03 s
+[ 88/455] TestArray#test_flatten_splat = 0.02 s
+[ 89/455] TestArray#test_reverse_each2 = 0.01 s
+[ 90/455] TestArray#test_flatten_splat! = 0.01 s
+[ 91/455] TestArray#test_delete = 0.05 s
+[ 92/455] TestArray#test_insert = 0.03 s
+[ 93/455] TestArray#test_repeated_combination = 0.41 s
+[ 94/455] TestArray#test_array_andor_0 = 0.01 s
+[ 95/455] TestArray#test_count = 4.38 s
+[ 96/455] TestArray#test_clear2 = 0.01 s
+[ 97/455] TestArray#test_sort! = 0.02 s
+[ 98/455] TestArray#test_compact_0 = 0.01 s
+[ 99/455] TestArray#test_product_with_callcc = 1.20 s
+[100/455] TestArray#test_combination2 = 0.01 s
+[101/455] TestArray#test_rindex = 0.03 s
+[102/455] TestArray#test_reject! = 0.02 s
+[103/455] TestArray#test_to_h = 0.03 s
+[104/455] TestArray#test_rotate! = 0.04 s
+[105/455] TestArray#test_union_big_array = 0.03 s
+[106/455] TestArray#test_flatten = 0.02 s
+[107/455] TestArray#test_equal = 0.01 s
+[108/455] TestArray#test_bsearch_index_with_no_block = 0.01 s
+[109/455] TestArray#test_repeated_permutation_stack_error = 10.62 s
+[110/455] TestArray#test_sort = 0.02 s
+[111/455] TestArray#test_bsearch_with_no_block = 0.01 s
+[112/455] TestArray#test_shuffle_random_invalid_generator = 0.02 s
+[113/455] TestArray#test_unshift = 0.01 s
+[114/455] TestArray#test_fill_0 = 0.03 s
+[115/455] TestArray#test_pack_format_mutation = 0.02 s
+[116/455] TestArray#test_zip_with_enumerator = 0.03 s
+[117/455] TestArray#test_fill_negative_length = 0.01 s
+[118/455] TestArray#test_initialize2 = 0.01 s
+[119/455] TestArray#test_flatten_recursive = 0.02 s
+[120/455] TestArray#test_to_a = 0.01 s
+[121/455] TestArray#test_transpose = 0.01 s
+[122/455] TestArray#test_filter! = 0.01 s
+[123/455] TestArray#test_pack = 0.05 s
+[124/455] TestArray#test_compact! = 0.02 s
+[125/455] TestArray#test_unshift_over_ary_max PID COMMAND          %CPU %MEM NLWP   RSS    VSZ WCHAN
+    STAT STARTED      TIME  ELAPSED  BLOCKED   CAUGHT  IGNORED PENDING        F
+   0 [kernel]          0.0  0.0   14   280      0 parked   DLs  13:16     0:49.17 16:45:00        0
+       0 18488000       0 10000284
+   1 /sbin/init        0.0  0.0    1  1028  17016 wait     ILs  13:16     0:00.30 16:45:00 967c9014
+69826eeb 10788000       0 10004200
+   2 [clock]           0.0  0.0    1    20      0 -        WL   13:16     4:03.36 16:45:00        0
+       0 18488000       0 10000204
+   3 [crypto]          0.0  0.0    2    40      0 crypto_w DL   13:16     0:00.00 16:45:00        0
+       0 18488000       0 10000284
+   4 [cam]             0.0  0.0    3    60      0 -        DL   13:16     0:00.00 16:45:00        0
+       0 18488000       0 10000284
+   5 [rand_harvestq]   0.0  0.0    1    20      0 -        DL   13:16     4:14.99 16:45:00        0
+       0 18488000       0 10000204
+   6 [cheri_revoke]    0.0  0.0    1    20      0 rvkslp   DL   13:16     1:53.89 16:45:00        0
+       0 18488000       0 10000204
+   7 [pagedaemon]      0.0  0.0    3    60      0 psleep   DL   13:16     4:16.20 16:45:00        0
+       0 18488000       0 10000284
+   8 [vmdaemon]        0.0  0.0    1    20      0 psleep   DL   13:16     0:00.00 16:45:00        0
+       0 18488000       0 10000204
+   9 [bufdaemon]       0.0  0.0    3    60      0 psleep   DL   13:16     1:23.95 16:45:00        0
+       0 18488000       0 10000284
+  10 [audit]           0.0  0.0    1    20      0 audit_wo DL   13:16     0:00.00 16:45:00        0
+       0 18488000       0 10000204
+  11 [idle]            0.0  0.0    1    20      0 -        RNL  13:16   515:39.37 16:45:00        0
+       0 18488000       0 10000204
+  12 [intr]            0.0  0.0    7   140      0 -        WL   13:16     0:41.98 16:45:00        0
+       0 18488000       0 10000284
+  13 [geom]            0.0  0.0    3    60      0 -        DL   13:16     0:00.13 16:45:00        0
+       0 18488000       0 10000284
+  14 [vnlru]           0.0  0.0    1    20      0 vlruwt   DL   13:16     0:18.05 16:45:00        0
+       0 18488000       0 10000204
+  15 [syncer]          0.0  0.0    1    20      0 syncer   DL   13:16     0:23.37 16:45:00        0
+       0 18488000       0 10000204
+ 770 dhclient: system  0.0  0.1    1  1480  18636 select   Is   13:18     0:00.06 16:43:35        0
+       0 187a9000       0 10000000
+ 773 dhclient: vtnet0  0.0  0.1    1  1144  18636 select   Is   13:18     0:00.13 16:43:34        0
+       0 187a9000       0 10000000
+ 834 /sbin/devd        0.0  0.1    1  2252  22764 select   Ss   13:18     0:01.09 16:43:30        0
+10004003  87a9000       0 10000000
+1048 /usr/sbin/syslog  0.0  0.1    1  1716  18256 kqread   Ss   13:18     0:01.92 16:43:10        0
+       0 187af007       0 10100000
+1136 sshd: /usr/sbin/  0.0  0.3    1  6060  29148 select   Is   13:18     0:00.91 16:42:57        0
+90084005  8729000       0 10000100
+1175 [smbiod0]         0.0  0.0    1    20      0 90idle   DL   13:19     0:13.83 16:42:41        0
+       0 18488000       0 10000204
+1179 [smbiod1]         0.0  0.0    1    20      0 90idle   DL   13:19     0:13.73 16:42:41        0
+       0 18488000       0 10000204
+1168 login [pam] (log  0.0  0.2    1  4112  18856 wait     Is   13:18     0:00.46 16:42:54        0
+    6001 18788006       0 10004102
+1169 -sh (sh)          0.0  0.2    1  4496  18984 wait     I    13:19     0:03.32 16:42:42        0
+       6 186ac000       0 10004002
+7050 /bin/sh ./trunne  0.0  0.2    1  3412  18856 wait     I+   05:58     0:00.11    03:22        0
+       6 18488000       0 10004002
+7053 ruby: ../test/ru  1.0  1.7    2 35268 906640 wait     S+   05:58     2:18.15    03:22        0
+e2087e0f 18408000       0 10004082
+7064 ps x -opid,args,  0.0  0.2    1  3516  18996 -        R+   06:01     0:00.16    00:00        0
+       0 18488000       0 10004002
+/root/ruby-3.4.1/test/ruby/test_array.rb:3476:in 'TestArray#test_unshift_over_ary_max': failed to al
+locate memory (NoMemoryError)
+        from /root/ruby-3.4.1/tool/lib/test/unit/testcase.rb:202:in 'Test::Unit::TestCase#run_test'
+        from /root/ruby-3.4.1/tool/lib/test/unit/testcase.rb:170:in 'Test::Unit::TestCase#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1671:in 'block in Test::Unit::Runner#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1658:in 'Array#map'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1658:in 'Test::Unit::Runner#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1362:in 'Test::Unit::ExcludesOption#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:823:in 'block in Test::Unit::Parallel#_run_suite
+s'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:821:in 'Array#each'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:821:in 'Test::Unit::Parallel#_run_suites'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:858:in 'Test::Unit::Skipping#_run_suites'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1604:in 'Test::Unit::Runner#_run_anything'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1299:in 'Test::Unit::RepeatOption#_run_anything'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1769:in 'Test::Unit::Runner#run_tests'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1756:in 'block in Test::Unit::Runner#_run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1755:in 'Array#each'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1755:in 'Test::Unit::Runner#_run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1799:in 'Test::Unit::Runner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1046:in 'Test::Unit::StatusLine#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:891:in 'Test::Unit::Statistics#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:145:in 'Test::Unit::RunCount#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1283:in 'Test::Unit::RequireFiles#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1882:in 'Test::Unit::AutoRunner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1886:in 'Test::Unit::AutoRunner.run'
+        from /root/ruby-3.4.1/tool/test/runner.rb:14:in '<top (required)>'
+        from ../test/runner.rb:5:in 'Kernel#require_relative'
+        from ../test/runner.rb:5:in '<main>'
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1755:in 'Test::Unit::Runner#_run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1799:in 'Test::Unit::Runner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1046:in 'Test::Unit::StatusLine#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:891:in 'Test::Unit::Statistics#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:145:in 'Test::Unit::RunCount#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1283:in 'Test::Unit::RequireFiles#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1882:in 'Test::Unit::AutoRunner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1886:in 'Test::Unit::AutoRunner.run'
+        from /root/ruby-3.4.1/tool/test/runner.rb:14:in '<top (required)>'
+        from ../test/runner.rb:5:in 'Kernel#require_relative'
+        from ../test/runner.rb:5:in '<main>'
+
+
+
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # echo "exclude(:test_unshift_over_ary_max, 'Someti
+mes AppVeyor has insufficient memory to run this test')" >> ../test/.excludes/TestArray.rb
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # cat ../test/.excludes/TestArray.rb
+exclude(:test_shared_marking, "The target code has already been changed")
+exclude(:test_splice_over_ary_max, 'Sometimes AppVeyor has insufficient memory to run this test')
+exclude(:test_unshift_over_ary_max, 'Sometimes AppVeyor has insufficient memory to run this test')
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_array.r
+b
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[  1/455] TestArray#test_cycle = 0.03 s
+[  2/455] TestArray#test_aset_error = 0.05 s
+[  3/455] TestArray#test_shared_array_reject! = 0.02 s
+[  4/455] TestArray#test_replace_wb_variable_width_alloc = 4.21 s
+[  5/455] TestArray#test_collect = 0.03 s
+[  6/455] TestArray#test_VERY_EQUAL = 0.01 s
+[  7/455] TestArray#test_at = 0.02 s
+[  8/455] TestArray#test_reverse = 0.01 s
+[  9/455] TestArray#test_sort_bang_with_freeze = 0.01 s
+[ 10/455] TestArray#test_times = 0.01 s
+[ 11/455] TestArray#test_first2 = 0.01 s
+[ 12/455] TestArray#test_prepend = 0.01 s
+[ 13/455] TestArray#test_zip = 0.02 s
+[ 14/455] TestArray#test_unshift_error = 0.01 s
+[ 15/455] TestArray#test_join_recheck_array_length = 0.13 s
+[ 16/455] TestArray#test_eql? = 0.11 s
+[ 17/455] TestArray#test_pop = 0.01 s
+[ 18/455] TestArray#test_values_at2 = 0.01 s
+[ 19/455] TestArray#test_slice_out_of_range = 0.03 s
+[ 20/455] TestArray#test_fill2 = 0.01 s
+[ 21/455] TestArray#test_flatten! = 0.01 s
+[ 22/455] TestArray#test_zip_bug = 0.01 s
+[ 23/455] TestArray#test_bsearch_index_typechecks_return_values = 0.01 s
+[ 24/455] TestArray#test_unshift_frozen = 0.02 s
+[ 25/455] TestArray#test_drop_while = 0.01 s
+[ 26/455] TestArray#test_ary_new = 0.01 s
+[ 27/455] TestArray#test_PLUS = 0.01 s
+[ 28/455] TestArray#test_flatten_respond_to_missing = 0.01 s
+[ 29/455] TestArray#test_slice! = 0.04 s
+[ 30/455] TestArray#test_sample_statistics = 35.49 s
+[ 31/455] TestArray#test_sort_by! = 0.01 s
+[ 32/455] TestArray#test_monkey_patch_include? = 8.46 s
+[ 33/455] TestArray#test_bsearch_index_in_find_any_mode = 0.02 s
+[ 34/455] TestArray#test_intersect_big_array = 0.02 s
+[ 35/455] TestArray#test_MUL = 0.02 s
+[ 36/455] TestArray#test_take_while = 0.01 s
+[ 37/455] TestArray#test_flatten_error = 0.02 s
+[ 38/455] TestArray#test_slice_gc_compact_stress = 43.14 s
+[ 39/455] TestArray#test_uniq_bang_with_block = 0.02 s
+[ 40/455] TestArray#test_find_all_0 = 0.02 s
+[ 41/455] TestArray#test_repeated_permutation = 5.22 s
+[ 42/455] TestArray#test_uniq = 0.04 s
+[ 43/455] TestArray#test_sample_random_generator_half = 0.22 s
+[ 44/455] TestArray#test_empty? = 0.01 s
+[ 45/455] TestArray#test_flatten_with_callcc = 0.05 s
+[ 46/455] TestArray#test_dig = 0.01 s
+[ 47/455] TestArray#test_each_index = 0.01 s
+[ 48/455] TestArray#test_repeated_combination_stack_error = 10.59 s
+[ 49/455] TestArray#test_iseq_shared_array_reject! = 0.02 s
+[ 50/455] TestArray#test_append = 0.01 s
+[ 51/455] TestArray#test_flattern_singleton_class! = 0.01 s
+[ 52/455] TestArray#test_select! = 0.02 s
+[ 53/455] TestArray#test_hash = 0.01 s
+[ 54/455] TestArray#test_shift_shared_ary = 0.02 s
+[ 55/455] TestArray#test_array_safely_modified_by_sort_block = 0.04 s
+[ 56/455] TestArray#test_OR_in_order = 0.01 s
+[ 57/455] TestArray#test_shift2 = 0.01 s
+[ 58/455] TestArray#test_rotate = 0.03 s
+[ 59/455] TestArray#test_uniq_0 = 0.01 s
+[ 60/455] TestArray#test_delete_if = 0.02 s
+[ 61/455] TestArray#test_intersection_big_array = 0.03 s
+[ 62/455] TestArray#test_to_h_block = 0.04 s
+[ 63/455] TestArray#test_assoc = 0.02 s
+[ 64/455] TestArray#test_00_new = 0.01 s
+[ 65/455] TestArray#test_ASET = 0.15 s
+[ 66/455] TestArray#test_01_square_brackets = 0.01 s
+[ 67/455] TestArray#test_shuffle_random = 0.01 s
+[ 68/455] TestArray#test_clear = 0.01 s
+[ 69/455] TestArray#test_drop = 0.01 s
+[ 70/455] TestArray#test_sort_0 = 0.01 s
+[ 71/455] TestArray#test_sort_with_callcc = 2.43 s
+[ 72/455] TestArray#test_replace_shared_ary = 0.01 s
+[ 73/455] TestArray#test_uniq! = 0.04 s
+[ 74/455] TestArray#test_join2 = 0.02 s
+[ 75/455] TestArray#test_first = 0.01 s
+[ 76/455] TestArray#test_minmax = 0.02 s
+[ 77/455] TestArray#test_permutation_stack_error = 13.02 s
+[ 78/455] TestArray#test_product = 16.97 s
+[ 79/455] TestArray#test_values_at = 0.01 s
+[ 80/455] TestArray#test_dup = 0.02 s
+[ 81/455] TestArray#test_min = 0.02 s
+[ 82/455] TestArray#test_product2 = 0.01 s
+[ 83/455] TestArray#test_shrink_shared_array = 7.33 s
+[ 84/455] TestArray#test_intersect? = 0.01 s
+[ 85/455] TestArray#test_big_array_literal_with_kwsplat = 2.51 s
+[ 86/455] TestArray#test_intersection = 0.01 s
+[ 87/455] TestArray#test_bsearch_typechecks_return_values = 0.03 s
+[ 88/455] TestArray#test_flatten_splat = 0.02 s
+[ 89/455] TestArray#test_reverse_each2 = 0.01 s
+[ 90/455] TestArray#test_flatten_splat! = 0.01 s
+[ 91/455] TestArray#test_delete = 0.05 s
+[ 92/455] TestArray#test_insert = 0.04 s
+[ 93/455] TestArray#test_repeated_combination = 0.40 s
+[ 94/455] TestArray#test_array_andor_0 = 0.01 s
+[ 95/455] TestArray#test_count = 4.35 s
+[ 96/455] TestArray#test_clear2 = 0.01 s
+[ 97/455] TestArray#test_sort! = 0.02 s
+[ 98/455] TestArray#test_compact_0 = 0.01 s
+[ 99/455] TestArray#test_product_with_callcc = 1.20 s
+[100/455] TestArray#test_combination2 = 0.01 s
+[101/455] TestArray#test_rindex = 0.03 s
+[102/455] TestArray#test_reject! = 0.02 s
+[103/455] TestArray#test_to_h = 0.03 s
+[104/455] TestArray#test_rotate! = 0.03 s
+[105/455] TestArray#test_union_big_array = 0.03 s
+[106/455] TestArray#test_flatten = 0.02 s
+[107/455] TestArray#test_equal = 0.01 s
+[108/455] TestArray#test_bsearch_index_with_no_block = 0.01 s
+[109/455] TestArray#test_repeated_permutation_stack_error = 10.59 s
+[110/455] TestArray#test_sort = 0.02 s
+[111/455] TestArray#test_bsearch_with_no_block = 0.01 s
+[112/455] TestArray#test_shuffle_random_invalid_generator = 0.02 s
+[113/455] TestArray#test_unshift = 0.01 s
+[114/455] TestArray#test_fill_0 = 0.03 s
+[115/455] TestArray#test_pack_format_mutation = 0.02 s
+[116/455] TestArray#test_zip_with_enumerator = 0.03 s
+[117/455] TestArray#test_fill_negative_length = 0.01 s
+[118/455] TestArray#test_initialize2 = 0.01 s
+[119/455] TestArray#test_flatten_recursive = 0.02 s
+[120/455] TestArray#test_to_a = 0.01 s
+[121/455] TestArray#test_transpose = 0.01 s
+[122/455] TestArray#test_filter! = 0.01 s
+[123/455] TestArray#test_pack = 0.05 s
+[124/455] TestArray#test_compact! = 0.01 s
+[125/455] TestArray#test_difference = 0.02 s
+[126/455] TestArray#test_try_convert = 0.01 s
+[127/455] TestArray#test_combination = 0.03 s
+[128/455] TestArray#test_to_a2 = 0.01 s
+[129/455] TestArray#test_flattern_singleton_class = 0.01 s
+[130/455] TestArray#test_bsearch_in_find_any_mode = 0.02 s
+[131/455] TestArray#test_OR = 0.02 s
+[132/455] TestArray#test_permutation_with_callcc = 1.18 s
+[133/455] TestArray#test_initialize = 0.04 s
+[134/455] TestArray#test_to_ary = 0.03 s
+[135/455] TestArray#test_aref = 0.02 s
+[136/455] TestArray#test_replace = 0.02 s
+[137/455] TestArray#test_bsearch_in_find_minimum_mode = 0.02 s
+[138/455] TestArray#test_flatten_empty! = 0.01 s
+[139/455] TestArray#test_flatten_level0! = 0.01 s
+[140/455] TestArray#test_keep_if = 0.02 s
+[141/455] TestArray#test_sort_with_replace = 47.07 s
+[142/455] TestArray#test_collect! = 0.02 s
+[143/455] TestArray#test_delete_at = 0.02 s
+[144/455] TestArray#test_shuffle = 0.55 s
+[145/455] TestArray#test_sample_random_generator = 1.41 s
+[146/455] TestArray#test_to_s = 0.03 s
+[147/455] TestArray#test_MINUS = 0.01 s
+[148/455] TestArray#test_repeated_permutation_with_callcc = 1.15 s
+[149/455] TestArray#test_shuffle_random_zero = 1.42 s
+[150/455] TestArray#test_push_over_ary_max PID COMMAND          %CPU %MEM NLWP   RSS    VSZ WCHAN
+ STAT STARTED      TIME  ELAPSED  BLOCKED   CAUGHT  IGNORED PENDING        F
+   0 [kernel]          0.0  0.0   14   280      0 parked   DLs  13:16     0:50.52 17:05:24        0
+       0 18488000       0 10000284
+   1 /sbin/init        0.0  0.0    1  1028  17016 wait     ILs  13:16     0:00.30 17:05:24 967c9014
+69826eeb 10788000       0 10004200
+   2 [clock]           0.0  0.0    1    20      0 -        WL   13:16     4:10.35 17:05:24        0
+       0 18488000       0 10000204
+   3 [crypto]          0.0  0.0    2    40      0 crypto_w DL   13:16     0:00.00 17:05:24        0
+       0 18488000       0 10000284
+   4 [cam]             0.0  0.0    3    60      0 -        DL   13:16     0:00.00 17:05:24        0
+       0 18488000       0 10000284
+   5 [rand_harvestq]   0.0  0.0    1    20      0 -        DL   13:16     4:22.47 17:05:24        0
+       0 18488000       0 10000204
+   6 [cheri_revoke]    0.0  0.0    1    20      0 rvkslp   DL   13:16     1:53.89 17:05:24        0
+       0 18488000       0 10000204
+   7 [pagedaemon]      0.0  0.0    3    60      0 psleep   DL   13:16     4:23.52 17:05:24        0
+       0 18488000       0 10000284
+   8 [vmdaemon]        0.0  0.0    1    20      0 psleep   DL   13:16     0:00.00 17:05:24        0
+       0 18488000       0 10000204
+   9 [bufdaemon]       0.0  0.0    3    60      0 psleep   DL   13:16     1:26.38 17:05:24        0
+       0 18488000       0 10000284
+  10 [audit]           0.0  0.0    1    20      0 audit_wo DL   13:16     0:00.00 17:05:24        0
+       0 18488000       0 10000204
+  11 [idle]            0.0  0.0    1    20      0 -        RNL  13:16   531:18.50 17:05:24        0
+       0 18488000       0 10000204
+  12 [intr]            0.0  0.0    7   140      0 -        WL   13:16     0:42.64 17:05:24        0
+       0 18488000       0 10000284
+  13 [geom]            0.0  0.0    3    60      0 -        DL   13:16     0:00.13 17:05:24        0
+       0 18488000       0 10000284
+  14 [vnlru]           0.0  0.0    1    20      0 vlruwt   DL   13:16     0:18.58 17:05:24        0
+       0 18488000       0 10000204
+  15 [syncer]          0.0  0.0    1    20      0 syncer   DL   13:16     0:24.03 17:05:24        0
+       0 18488000       0 10000204
+ 770 dhclient: system  0.0  0.1    1  1480  18636 select   Is   13:18     0:00.06 17:03:59        0
+       0 187a9000       0 10000000
+ 773 dhclient: vtnet0  0.0  0.1    1  1144  18636 select   Is   13:18     0:00.13 17:03:58        0
+       0 187a9000       0 10000000
+ 834 /sbin/devd        0.0  0.1    1  2252  22764 select   Is   13:18     0:01.13 17:03:54        0
+10004003  87a9000       0 10000000
+1048 /usr/sbin/syslog  0.0  0.1    1  1716  18256 kqread   Ss   13:18     0:01.97 17:03:34        0
+       0 187af007       0 10100000
+1136 sshd: /usr/sbin/  0.0  0.3    1  6060  29148 select   Is   13:18     0:00.91 17:03:21        0
+90084005  8729000       0 10000100
+1175 [smbiod0]         0.0  0.0    1    20      0 90idle   DL   13:19     0:14.24 17:03:05        0
+       0 18488000       0 10000204
+1179 [smbiod1]         0.0  0.0    1    20      0 90idle   DL   13:19     0:14.12 17:03:05        0
+       0 18488000       0 10000204
+1168 login [pam] (log  0.0  0.2    1  4112  18856 wait     Is   13:18     0:00.46 17:03:18        0
+    6001 18788006       0 10004102
+1169 -sh (sh)          0.0  0.3    1  5900  21544 wait     I    13:19     0:05.10 17:03:06        0
+       6 186ac000       0 10004002
+7066 /bin/sh ./trunne  0.0  0.2    1  3412  18856 wait     I+   06:17     0:00.11    04:16        0
+       6 18488000       0 10004002
+7069 ruby: ../test/ru  6.0  1.8    2 37216 907408 wait     S+   06:17     2:24.96    04:15        0
+e2087e0f 18408000       0 10004082
+7081 ps x -opid,args,  0.0  0.2    1  3516  18996 -        R+   06:22     0:00.16    00:00        0
+       0 18488000       0 10004002
+/root/ruby-3.4.1/test/ruby/test_array.rb:3468:in 'TestArray#test_push_over_ary_max': failed to alloc
+ate memory (NoMemoryError)
+        from /root/ruby-3.4.1/tool/lib/test/unit/testcase.rb:202:in 'Test::Unit::TestCase#run_test'
+        from /root/ruby-3.4.1/tool/lib/test/unit/testcase.rb:170:in 'Test::Unit::TestCase#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1671:in 'block in Test::Unit::Runner#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1658:in 'Array#map'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1658:in 'Test::Unit::Runner#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1362:in 'Test::Unit::ExcludesOption#_run_suite'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:823:in 'block in Test::Unit::Parallel#_run_suite
+s'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:821:in 'Array#each'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:821:in 'Test::Unit::Parallel#_run_suites'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:858:in 'Test::Unit::Skipping#_run_suites'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1604:in 'Test::Unit::Runner#_run_anything'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1299:in 'Test::Unit::RepeatOption#_run_anything'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1769:in 'Test::Unit::Runner#run_tests'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1756:in 'block in Test::Unit::Runner#_run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1755:in 'Array#each'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1755:in 'Test::Unit::Runner#_run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1799:in 'Test::Unit::Runner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1046:in 'Test::Unit::StatusLine#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:891:in 'Test::Unit::Statistics#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:145:in 'Test::Unit::RunCount#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1283:in 'Test::Unit::RequireFiles#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1882:in 'Test::Unit::AutoRunner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1886:in 'Test::Unit::AutoRunner.run'
+        from /root/ruby-3.4.1/tool/test/runner.rb:14:in '<top (required)>'
+        from ../test/runner.rb:5:in 'Kernel#require_relative'
+        from ../test/runner.rb:5:in '<main>'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1283:in 'Test::Unit::RequireFiles#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1882:in 'Test::Unit::AutoRunner#run'
+        from /root/ruby-3.4.1/tool/lib/test/unit.rb:1886:in 'Test::Unit::AutoRunner.run'
+        from /root/ruby-3.4.1/tool/test/runner.rb:14:in '<top (required)>'
+        from ../test/runner.rb:5:in 'Kernel#require_relative'
+        from ../test/runner.rb:5:in '<main>'
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # echo "exclude(:test_push_over_ary_max, 'Sometimes
+ AppVeyor has insufficient memory to run this test')" >> ../test/.excludes/TestArray.rb
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_array.r
+b
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[  1/455] TestArray#test_cycle = 0.03 s
+[  2/455] TestArray#test_aset_error = 0.05 s
+[  3/455] TestArray#test_shared_array_reject! = 0.02 s
+[  4/455] TestArray#test_replace_wb_variable_width_alloc = 4.22 s
+[  5/455] TestArray#test_collect = 0.03 s
+[  6/455] TestArray#test_VERY_EQUAL = 0.01 s
+[  7/455] TestArray#test_at = 0.02 s
+[  8/455] TestArray#test_reverse = 0.01 s
+[  9/455] TestArray#test_sort_bang_with_freeze = 0.01 s
+[ 10/455] TestArray#test_times = 0.01 s
+[ 11/455] TestArray#test_first2 = 0.01 s
+[ 12/455] TestArray#test_prepend = 0.01 s
+[ 13/455] TestArray#test_zip = 0.02 s
+[ 14/455] TestArray#test_unshift_error = 0.01 s
+[ 15/455] TestArray#test_join_recheck_array_length = 0.13 s
+[ 16/455] TestArray#test_eql? = 0.11 s
+[ 17/455] TestArray#test_pop = 0.01 s
+[ 18/455] TestArray#test_values_at2 = 0.01 s
+[ 19/455] TestArray#test_slice_out_of_range = 0.03 s
+[ 20/455] TestArray#test_fill2 = 0.01 s
+[ 21/455] TestArray#test_flatten! = 0.01 s
+[ 22/455] TestArray#test_zip_bug = 0.01 s
+[ 23/455] TestArray#test_bsearch_index_typechecks_return_values = 0.01 s
+[ 24/455] TestArray#test_unshift_frozen = 0.02 s
+[ 25/455] TestArray#test_drop_while = 0.01 s
+[ 26/455] TestArray#test_ary_new = 0.01 s
+[ 27/455] TestArray#test_PLUS = 0.01 s
+[ 28/455] TestArray#test_flatten_respond_to_missing = 0.01 s
+[ 29/455] TestArray#test_slice! = 0.04 s
+[ 30/455] TestArray#test_sample_statistics = 35.50 s
+[ 31/455] TestArray#test_sort_by! = 0.01 s
+[ 32/455] TestArray#test_monkey_patch_include? = 8.47 s
+[ 33/455] TestArray#test_bsearch_index_in_find_any_mode = 0.02 s
+[ 34/455] TestArray#test_intersect_big_array = 0.02 s
+[ 35/455] TestArray#test_MUL = 0.02 s
+[ 36/455] TestArray#test_take_while = 0.01 s
+[ 37/455] TestArray#test_flatten_error = 0.02 s
+[ 38/455] TestArray#test_slice_gc_compact_stress = 43.27 s
+[ 39/455] TestArray#test_uniq_bang_with_block = 0.02 s
+[ 40/455] TestArray#test_find_all_0 = 0.02 s
+[ 41/455] TestArray#test_repeated_permutation = 5.23 s
+[ 42/455] TestArray#test_uniq = 0.04 s
+[ 43/455] TestArray#test_sample_random_generator_half = 0.21 s
+[ 44/455] TestArray#test_empty? = 0.01 s
+[ 45/455] TestArray#test_flatten_with_callcc = 0.05 s
+[ 46/455] TestArray#test_dig = 0.01 s
+[ 47/455] TestArray#test_each_index = 0.01 s
+[ 48/455] TestArray#test_repeated_combination_stack_error = 10.63 s
+[ 49/455] TestArray#test_iseq_shared_array_reject! = 0.02 s
+[ 50/455] TestArray#test_append = 0.01 s
+[ 51/455] TestArray#test_flattern_singleton_class! = 0.01 s
+[ 52/455] TestArray#test_select! = 0.02 s
+[ 53/455] TestArray#test_hash = 0.01 s
+[ 54/455] TestArray#test_shift_shared_ary = 0.02 s
+[ 55/455] TestArray#test_array_safely_modified_by_sort_block = 0.04 s
+[ 56/455] TestArray#test_OR_in_order = 0.01 s
+[ 57/455] TestArray#test_shift2 = 0.01 s
+[ 58/455] TestArray#test_rotate = 0.03 s
+[ 59/455] TestArray#test_uniq_0 = 0.01 s
+[ 60/455] TestArray#test_delete_if = 0.02 s
+[ 61/455] TestArray#test_intersection_big_array = 0.03 s
+[ 62/455] TestArray#test_to_h_block = 0.05 s
+[ 63/455] TestArray#test_assoc = 0.02 s
+[ 64/455] TestArray#test_00_new = 0.01 s
+[ 65/455] TestArray#test_ASET = 0.15 s
+[ 66/455] TestArray#test_01_square_brackets = 0.01 s
+[ 67/455] TestArray#test_shuffle_random = 0.01 s
+[ 68/455] TestArray#test_clear = 0.01 s
+[ 69/455] TestArray#test_drop = 0.01 s
+[ 70/455] TestArray#test_sort_0 = 0.01 s
+[ 71/455] TestArray#test_sort_with_callcc = 2.41 s
+[ 72/455] TestArray#test_replace_shared_ary = 0.01 s
+[ 73/455] TestArray#test_uniq! = 0.04 s
+[ 74/455] TestArray#test_join2 = 0.02 s
+[ 75/455] TestArray#test_first = 0.01 s
+[ 76/455] TestArray#test_minmax = 0.13 s
+[ 77/455] TestArray#test_permutation_stack_error = 13.06 s
+[ 78/455] TestArray#test_product = 16.90 s
+[ 79/455] TestArray#test_values_at = 0.01 s
+[ 80/455] TestArray#test_dup = 0.02 s
+[ 81/455] TestArray#test_min = 0.03 s
+[ 82/455] TestArray#test_product2 = 0.01 s
+[ 83/455] TestArray#test_shrink_shared_array = 7.34 s
+[ 84/455] TestArray#test_intersect? = 0.01 s
+[ 85/455] TestArray#test_big_array_literal_with_kwsplat = 2.51 s
+[ 86/455] TestArray#test_intersection = 0.02 s
+[ 87/455] TestArray#test_bsearch_typechecks_return_values = 0.03 s
+[ 88/455] TestArray#test_flatten_splat = 0.02 s
+[ 89/455] TestArray#test_reverse_each2 = 0.01 s
+[ 90/455] TestArray#test_flatten_splat! = 0.01 s
+[ 91/455] TestArray#test_delete = 0.05 s
+[ 92/455] TestArray#test_insert = 0.03 s
+[ 93/455] TestArray#test_repeated_combination = 0.40 s
+[ 94/455] TestArray#test_array_andor_0 = 0.01 s
+[ 95/455] TestArray#test_count = 4.36 s
+[ 96/455] TestArray#test_clear2 = 0.01 s
+[ 97/455] TestArray#test_sort! = 0.02 s
+[ 98/455] TestArray#test_compact_0 = 0.01 s
+[ 99/455] TestArray#test_product_with_callcc = 1.20 s
+[100/455] TestArray#test_combination2 = 0.01 s
+[101/455] TestArray#test_rindex = 0.03 s
+[102/455] TestArray#test_reject! = 0.02 s
+[103/455] TestArray#test_to_h = 0.03 s
+[104/455] TestArray#test_rotate! = 0.03 s
+[105/455] TestArray#test_union_big_array = 0.03 s
+[106/455] TestArray#test_flatten = 0.02 s
+[107/455] TestArray#test_equal = 0.01 s
+[108/455] TestArray#test_bsearch_index_with_no_block = 0.01 s
+[109/455] TestArray#test_repeated_permutation_stack_error = 10.61 s
+[110/455] TestArray#test_sort = 0.02 s
+[111/455] TestArray#test_bsearch_with_no_block = 0.01 s
+[112/455] TestArray#test_shuffle_random_invalid_generator = 0.02 s
+[113/455] TestArray#test_unshift = 0.01 s
+[114/455] TestArray#test_fill_0 = 0.03 s
+[115/455] TestArray#test_pack_format_mutation = 0.02 s
+[116/455] TestArray#test_zip_with_enumerator = 0.03 s
+[117/455] TestArray#test_fill_negative_length = 0.01 s
+[118/455] TestArray#test_initialize2 = 0.01 s
+[119/455] TestArray#test_flatten_recursive = 0.02 s
+[120/455] TestArray#test_to_a = 0.01 s
+[121/455] TestArray#test_transpose = 0.01 s
+[122/455] TestArray#test_filter! = 0.01 s
+[123/455] TestArray#test_pack = 0.05 s
+[124/455] TestArray#test_compact! = 0.02 s
+[125/455] TestArray#test_difference = 0.02 s
+[126/455] TestArray#test_try_convert = 0.01 s
+[127/455] TestArray#test_combination = 0.03 s
+[128/455] TestArray#test_to_a2 = 0.01 s
+[129/455] TestArray#test_flattern_singleton_class = 0.01 s
+[130/455] TestArray#test_bsearch_in_find_any_mode = 0.02 s
+[131/455] TestArray#test_OR = 0.02 s
+[132/455] TestArray#test_permutation_with_callcc = 1.18 s
+[133/455] TestArray#test_initialize = 0.04 s
+[134/455] TestArray#test_to_ary = 0.03 s
+[135/455] TestArray#test_aref = 0.02 s
+[136/455] TestArray#test_replace = 0.02 s
+[137/455] TestArray#test_bsearch_in_find_minimum_mode = 0.02 s
+[138/455] TestArray#test_flatten_empty! = 0.01 s
+[139/455] TestArray#test_flatten_level0! = 0.01 s
+[140/455] TestArray#test_keep_if = 0.02 s
+[141/455] TestArray#test_sort_with_replace = 47.31 s
+[142/455] TestArray#test_collect! = 0.02 s
+[143/455] TestArray#test_delete_at = 0.02 s
+[144/455] TestArray#test_shuffle = 0.55 s
+[145/455] TestArray#test_sample_random_generator = 1.42 s
+[146/455] TestArray#test_to_s = 0.03 s
+[147/455] TestArray#test_MINUS = 0.01 s
+[148/455] TestArray#test_repeated_permutation_with_callcc = 1.17 s
+[149/455] TestArray#test_shuffle_random_zero = 1.43 s
+[150/455] TestArray#test_equal_resize = 0.01 s
+[151/455] TestArray#test_difference_big_array = 0.06 s
+[152/455] TestArray#test_ary_to_ary = 0.01 s
+[153/455] TestArray#test_fetch = 0.02 s
+[154/455] TestArray#test_concat = 5.01 s
+[155/455] TestArray#test_sample_invalid_argument = 0.01 s
+[156/455] TestArray#test_slice = 0.17 s
+[157/455] TestArray#test_slice_out_of_range! = 0.02 s
+[158/455] TestArray#test_compact = 0.01 s
+[159/455] TestArray#test_percent_i = 0.01 s
+[160/455] TestArray#test_sort_uncomparable = 0.02 s
+[161/455] TestArray#test_sample_random_invalid_generator = 0.01 s
+[162/455] TestArray#test_misc_0 = 0.03 s
+[163/455] TestArray#test_AND = 0.01 s
+[164/455] TestArray#test_reject_with_callcc = 0.20 s
+[165/455] TestArray#test_split_0 = 0.02 s
+[166/455] TestArray#test_pack_with_buffer = 0.01 s
+[167/455] TestArray#test_sample_random_srand0 = 2.79 s
+[168/455] TestArray#test_max = 0.02 s
+[169/455] TestArray#test_0_literal = 0.02 s
+[170/455] TestArray#test_last = 0.01 s
+[171/455] TestArray#test_rindex2 = 0.02 s
+[172/455] TestArray#test_flatten_level0 = 0.01 s
+[173/455] TestArray#test_index = 0.02 s
+[174/455] TestArray#test_freeze_inside_sort! = 0.09 s
+[175/455] TestArray#test_beg_end_0 = 0.11 s
+[176/455] TestArray#test_slice_frozen_array = 0.01 s
+[177/455] TestArray#test_shift = 0.01 s
+[178/455] TestArray#test_length = 0.02 s
+[179/455] TestArray#test_each = 0.01 s
+[180/455] TestArray#test_flatten_wrong_argument = 0.01 s
+[181/455] TestArray#test_combination_with_callcc = 1.14 s
+[182/455] TestArray#test_EQUAL = 0.01 s
+[183/455] TestArray#test_permutation = 0.24 s
+[184/455] TestArray#test_push = 0.01 s
+[185/455] TestArray#test_filter = 0.01 s
+[186/455] TestArray#test_max_uncomparable = 0.02 s
+[187/455] TestArray#test_splice = 0.01 s
+[188/455] TestArray#test_index2 = 0.01 s
+[189/455] TestArray#test_union = 0.02 s
+[190/455] TestArray#test_AND_big_array = 0.02 s
+[191/455] TestArray#test_map! = 0.01 s
+[192/455] TestArray#test_size = 0.01 s
+[193/455] TestArray#test_join_recheck_elements_type = 0.01 s
+[194/455] TestArray#test_reverse_each = 0.01 s
+[195/455] TestArray#test_CMP = 0.02 s
+[196/455] TestArray#test_min_uncomparable = 0.02 s
+[197/455] TestArray#test_reverse! = 0.01 s
+[198/455] TestArray#test_OR_big_in_order = 0.04 s
+[199/455] TestArray#test_sample_unknown_keyword = 0.03 s
+[200/455] TestArray#test_LSHIFT = 0.01 s
+[201/455] TestArray#test_OR_big_array = 0.03 s
+[202/455] TestArray#test_rassoc = 0.01 s
+[203/455] TestArray#test_reject = 0.01 s
+[204/455] TestArray#test_empty_0 = 0.01 s
+[205/455] TestArray#test_MINUS_big_array = 0.11 s
+[206/455] TestArray#test_uniq_with_block = 0.02 s
+[207/455] TestArray#test_bsearch_index_in_find_minimum_mode = 0.01 s
+[208/455] TestArray#test_shuffle_random_clobbering = 0.21 s
+[209/455] TestArray#test_fill = 0.02 s
+[210/455] TestArray#test_join = 0.12 s
+[211/455] TestArray#test_select = 0.01 s
+[212/455] TestArray#test_take = 0.01 s
+[213/455] TestArray#test_percent_I = 0.01 s
+[214/455] TestArray#test_clone = 0.02 s
+[215/455] TestArray#test_combination_clear = 26.86 s
+[216/455] TestArray#test_include? = 0.02 s
+[217/455] TestArray#test_delete2 = 0.01 s
+[218/455] TestArray#test_last2 = 0.01 s
+[219/455] TestArray#test_uniq_bang_with_freeze = 0.01 s
+[220/455] TestArray#test_AREF = 0.09 s
+[221/455] TestArray#test_sum = 0.10 s
+[222/455] TestArray#test_repeated_combination_with_callcc = 1.10 s
+[223/455] TestArray#test_sample = 0.36 s
+[224/455] TestArraySubclass#test_cycle = 0.02 s
+[225/455] TestArraySubclass#test_aset_error = 0.03 s
+[226/455] TestArraySubclass#test_shared_array_reject! = 0.02 s
+[227/455] TestArraySubclass#test_replace_wb_variable_width_alloc = 5.05 s
+[228/455] TestArraySubclass#test_collect = 0.03 s
+[229/455] TestArraySubclass#test_VERY_EQUAL = 0.01 s
+[230/455] TestArraySubclass#test_at = 0.02 s
+[231/455] TestArraySubclass#test_reverse = 0.01 s
+[232/455] TestArraySubclass#test_sort_bang_with_freeze = 0.01 s
+[233/455] TestArraySubclass#test_times = 0.01 s
+[234/455] TestArraySubclass#test_first2 = 0.01 s
+[235/455] TestArraySubclass#test_prepend = 0.01 s
+[236/455] TestArraySubclass#test_zip = 0.02 s
+[237/455] TestArraySubclass#test_unshift_error = 0.01 s
+[238/455] TestArraySubclass#test_join_recheck_array_length = 0.13 s
+[239/455] TestArraySubclass#test_eql? = 0.01 s
+[240/455] TestArraySubclass#test_pop = 0.01 s
+[241/455] TestArraySubclass#test_values_at2 = 0.01 s
+[242/455] TestArraySubclass#test_slice_out_of_range = 0.02 s
+[243/455] TestArraySubclass#test_fill2 = 0.01 s
+[244/455] TestArraySubclass#test_flatten! = 0.01 s
+[245/455] TestArraySubclass#test_zip_bug = 0.01 s
+[246/455] TestArraySubclass#test_bsearch_index_typechecks_return_values = 0.01 s
+[247/455] TestArraySubclass#test_unshift_frozen = 0.02 s
+[248/455] TestArraySubclass#test_drop_while = 0.01 s
+[249/455] TestArraySubclass#test_ary_new = 0.01 s
+[250/455] TestArraySubclass#test_PLUS = 0.01 s
+[251/455] TestArraySubclass#test_flatten_respond_to_missing = 0.01 s
+[252/455] TestArraySubclass#test_slice! = 0.03 s
+[253/455] TestArraySubclass#test_sample_statistics = 35.26 s
+[254/455] TestArraySubclass#test_sort_by! = 0.01 s
+[255/455] TestArraySubclass#test_monkey_patch_include? = 8.50 s
+[256/455] TestArraySubclass#test_bsearch_index_in_find_any_mode = 0.02 s
+[257/455] TestArraySubclass#test_intersect_big_array = 0.02 s
+[258/455] TestArraySubclass#test_MUL = 0.02 s
+[259/455] TestArraySubclass#test_take_while = 0.01 s
+[260/455] TestArraySubclass#test_flatten_error = 0.02 s
+[261/455] TestArraySubclass#test_slice_gc_compact_stress = 38.55 s
+[262/455] TestArraySubclass#test_uniq_bang_with_block = 0.02 s
+[263/455] TestArraySubclass#test_find_all_0 = 0.02 s
+[264/455] TestArraySubclass#test_repeated_permutation = 5.43 s
+[265/455] TestArraySubclass#test_uniq = 0.04 s
+[266/455] TestArraySubclass#test_sample_random_generator_half = 0.21 s
+[267/455] TestArraySubclass#test_empty? = 0.01 s
+[268/455] TestArraySubclass#test_flatten_with_callcc = 0.03 s
+[269/455] TestArraySubclass#test_dig = 0.01 s
+[270/455] TestArraySubclass#test_each_index = 0.01 s
+[271/455] TestArraySubclass#test_repeated_combination_stack_error = 10.62 s
+[272/455] TestArraySubclass#test_iseq_shared_array_reject! = 0.02 s
+[273/455] TestArraySubclass#test_append = 0.01 s
+[274/455] TestArraySubclass#test_flattern_singleton_class! = 0.01 s
+[275/455] TestArraySubclass#test_select! = 0.02 s
+[276/455] TestArraySubclass#test_hash = 0.01 s
+[277/455] TestArraySubclass#test_shift_shared_ary = 0.02 s
+[278/455] TestArraySubclass#test_array_safely_modified_by_sort_block = 0.04 s
+[279/455] TestArraySubclass#test_OR_in_order = 0.01 s
+[280/455] TestArraySubclass#test_shift2 = 0.01 s
+[281/455] TestArraySubclass#test_rotate = 0.03 s
+[282/455] TestArraySubclass#test_uniq_0 = 0.01 s
+[283/455] TestArraySubclass#test_delete_if = 0.02 s
+[284/455] TestArraySubclass#test_intersection_big_array = 0.03 s
+[285/455] TestArraySubclass#test_to_h_block = 0.04 s
+[286/455] TestArraySubclass#test_assoc = 0.01 s
+[287/455] TestArraySubclass#test_00_new = 0.01 s
+[288/455] TestArraySubclass#test_ASET = 0.16 s
+[289/455] TestArraySubclass#test_01_square_brackets = 0.01 s
+[290/455] TestArraySubclass#test_shuffle_random = 0.01 s
+[291/455] TestArraySubclass#test_array_subclass = 0.02 s
+[292/455] TestArraySubclass#test_clear = 0.01 s
+[293/455] TestArraySubclass#test_drop = 0.01 s
+[294/455] TestArraySubclass#test_sort_0 = 0.01 s
+[295/455] TestArraySubclass#test_sort_with_callcc = 2.32 s
+[296/455] TestArraySubclass#test_replace_shared_ary = 0.01 s
+[297/455] TestArraySubclass#test_uniq! = 0.04 s
+[298/455] TestArraySubclass#test_join2 = 0.02 s
+[299/455] TestArraySubclass#test_first = 0.01 s
+[300/455] TestArraySubclass#test_minmax = 0.16 s
+[301/455] TestArraySubclass#test_permutation_stack_error = 13.09 s
+[302/455] TestArraySubclass#test_product = 17.12 s
+[303/455] TestArraySubclass#test_values_at = 0.01 s
+[304/455] TestArraySubclass#test_dup = 0.02 s
+[305/455] TestArraySubclass#test_min = 0.02 s
+[306/455] TestArraySubclass#test_product2 = 0.01 s
+[307/455] TestArraySubclass#test_shrink_shared_array = 7.34 s
+[308/455] TestArraySubclass#test_intersect? = 0.01 s
+[309/455] TestArraySubclass#test_big_array_literal_with_kwsplat = 2.26 s
+[310/455] TestArraySubclass#test_intersection = 0.02 s
+[311/455] TestArraySubclass#test_bsearch_typechecks_return_values = 0.03 s
+[312/455] TestArraySubclass#test_flatten_splat = 0.02 s
+[313/455] TestArraySubclass#test_reverse_each2 = 0.01 s
+[314/455] TestArraySubclass#test_flatten_splat! = 0.02 s
+[315/455] TestArraySubclass#test_delete = 0.06 s
+[316/455] TestArraySubclass#test_insert = 0.03 s
+[317/455] TestArraySubclass#test_repeated_combination = 0.41 s
+[318/455] TestArraySubclass#test_array_andor_0 = 0.01 s
+[319/455] TestArraySubclass#test_count = 4.46 s
+[320/455] TestArraySubclass#test_clear2 = 0.01 s
+[321/455] TestArraySubclass#test_sort! = 0.02 s
+[322/455] TestArraySubclass#test_compact_0 = 0.01 s
+[323/455] TestArraySubclass#test_product_with_callcc = 1.30 s
+[324/455] TestArraySubclass#test_combination2 = 0.01 s
+[325/455] TestArraySubclass#test_rindex = 0.02 s
+[326/455] TestArraySubclass#test_reject! = 0.02 s
+[327/455] TestArraySubclass#test_to_h = 0.03 s
+[328/455] TestArraySubclass#test_rotate! = 0.03 s
+[329/455] TestArraySubclass#test_union_big_array = 0.03 s
+[330/455] TestArraySubclass#test_flatten = 0.02 s
+[331/455] TestArraySubclass#test_equal = 0.01 s
+[332/455] TestArraySubclass#test_bsearch_index_with_no_block = 0.01 s
+[333/455] TestArraySubclass#test_repeated_permutation_stack_error = 10.62 s
+[334/455] TestArraySubclass#test_sort = 0.02 s
+[335/455] TestArraySubclass#test_bsearch_with_no_block = 0.01 s
+[336/455] TestArraySubclass#test_shuffle_random_invalid_generator = 0.02 s
+[337/455] TestArraySubclass#test_unshift = 0.01 s
+[338/455] TestArraySubclass#test_fill_0 = 0.03 s
+[339/455] TestArraySubclass#test_pack_format_mutation = 0.02 s
+[340/455] TestArraySubclass#test_zip_with_enumerator = 0.02 s
+[341/455] TestArraySubclass#test_fill_negative_length = 0.01 s
+[342/455] TestArraySubclass#test_initialize2 = 0.01 s
+[343/455] TestArraySubclass#test_flatten_recursive = 0.02 s
+[344/455] TestArraySubclass#test_to_a = 0.01 s
+[345/455] TestArraySubclass#test_transpose = 0.01 s
+[346/455] TestArraySubclass#test_filter! = 0.01 s
+[347/455] TestArraySubclass#test_pack = 0.05 s
+[348/455] TestArraySubclass#test_compact! = 0.02 s
+[349/455] TestArraySubclass#test_difference = 0.02 s
+[350/455] TestArraySubclass#test_try_convert = 0.01 s
+[351/455] TestArraySubclass#test_combination = 0.03 s
+[352/455] TestArraySubclass#test_to_a2 = 0.01 s
+[353/455] TestArraySubclass#test_flattern_singleton_class = 0.01 s
+[354/455] TestArraySubclass#test_bsearch_in_find_any_mode = 0.02 s
+[355/455] TestArraySubclass#test_OR = 0.02 s
+[356/455] TestArraySubclass#test_permutation_with_callcc = 1.17 s
+[357/455] TestArraySubclass#test_initialize = 0.03 s
+[358/455] TestArraySubclass#test_to_ary = 0.03 s
+[359/455] TestArraySubclass#test_aref = 0.01 s
+[360/455] TestArraySubclass#test_replace = 0.02 s
+[361/455] TestArraySubclass#test_bsearch_in_find_minimum_mode = 0.01 s
+[362/455] TestArraySubclass#test_flatten_empty! = 0.01 s
+[363/455] TestArraySubclass#test_flatten_level0! = 0.01 s
+[364/455] TestArraySubclass#test_keep_if = 0.02 s
+[365/455] TestArraySubclass#test_sort_with_replace = 47.15 s
+[366/455] TestArraySubclass#test_collect! = 0.02 s
+[367/455] TestArraySubclass#test_delete_at = 0.02 s
+[368/455] TestArraySubclass#test_shuffle = 0.48 s
+[369/455] TestArraySubclass#test_sample_random_generator = 1.42 s
+[370/455] TestArraySubclass#test_to_s = 0.03 s
+[371/455] TestArraySubclass#test_MINUS = 0.01 s
+[372/455] TestArraySubclass#test_repeated_permutation_with_callcc = 1.33 s
+[373/455] TestArraySubclass#test_shuffle_random_zero = 1.42 s
+[374/455] TestArraySubclass#test_equal_resize = 0.01 s
+[375/455] TestArraySubclass#test_difference_big_array = 0.06 s
+[376/455] TestArraySubclass#test_ary_to_ary = 0.01 s
+[377/455] TestArraySubclass#test_fetch = 0.02 s
+[378/455] TestArraySubclass#test_concat = 4.56 s
+[379/455] TestArraySubclass#test_sample_invalid_argument = 0.01 s
+[380/455] TestArraySubclass#test_slice = 0.17 s
+[381/455] TestArraySubclass#test_slice_out_of_range! = 0.02 s
+[382/455] TestArraySubclass#test_compact = 0.01 s
+[383/455] TestArraySubclass#test_percent_i = 0.01 s
+[384/455] TestArraySubclass#test_sort_uncomparable = 0.02 s
+[385/455] TestArraySubclass#test_sample_random_invalid_generator = 0.01 s
+[386/455] TestArraySubclass#test_misc_0 = 0.03 s
+[387/455] TestArraySubclass#test_AND = 0.01 s
+[388/455] TestArraySubclass#test_reject_with_callcc = 0.20 s
+[389/455] TestArraySubclass#test_split_0 = 0.02 s
+[390/455] TestArraySubclass#test_pack_with_buffer = 0.01 s
+[391/455] TestArraySubclass#test_sample_random_srand0 = 2.77 s
+[392/455] TestArraySubclass#test_max = 0.02 s
+[393/455] TestArraySubclass#test_0_literal = 0.02 s
+[394/455] TestArraySubclass#test_last = 0.01 s
+[395/455] TestArraySubclass#test_rindex2 = 0.02 s
+[396/455] TestArraySubclass#test_flatten_level0 = 0.01 s
+[397/455] TestArraySubclass#test_index = 0.10 s
+[398/455] TestArraySubclass#test_freeze_inside_sort! = 0.02 s
+[399/455] TestArraySubclass#test_beg_end_0 = 0.10 s
+[400/455] TestArraySubclass#test_slice_frozen_array = 0.01 s
+[401/455] TestArraySubclass#test_shift = 0.01 s
+[402/455] TestArraySubclass#test_length = 0.02 s
+[403/455] TestArraySubclass#test_each = 0.01 s
+[404/455] TestArraySubclass#test_flatten_wrong_argument = 0.01 s
+[405/455] TestArraySubclass#test_combination_with_callcc = 1.15 s
+[406/455] TestArraySubclass#test_EQUAL = 0.01 s
+[407/455] TestArraySubclass#test_permutation = 0.24 s
+[408/455] TestArraySubclass#test_push = 0.01 s
+[409/455] TestArraySubclass#test_filter = 0.01 s
+[410/455] TestArraySubclass#test_max_uncomparable = 0.02 s
+[411/455] TestArraySubclass#test_splice = 0.01 s
+[412/455] TestArraySubclass#test_index2 = 0.01 s
+[413/455] TestArraySubclass#test_union = 0.03 s
+[414/455] TestArraySubclass#test_AND_big_array = 0.02 s
+[415/455] TestArraySubclass#test_map! = 0.01 s
+[416/455] TestArraySubclass#test_size = 0.01 s
+[417/455] TestArraySubclass#test_join_recheck_elements_type = 0.01 s
+[418/455] TestArraySubclass#test_reverse_each = 0.01 s
+[419/455] TestArraySubclass#test_CMP = 0.02 s
+[420/455] TestArraySubclass#test_min_uncomparable = 0.02 s
+[421/455] TestArraySubclass#test_reverse! = 0.01 s
+[422/455] TestArraySubclass#test_OR_big_in_order = 0.04 s
+[423/455] TestArraySubclass#test_sample_unknown_keyword = 0.03 s
+[424/455] TestArraySubclass#test_LSHIFT = 0.01 s
+[425/455] TestArraySubclass#test_OR_big_array = 0.03 s
+[426/455] TestArraySubclass#test_rassoc = 0.01 s
+[427/455] TestArraySubclass#test_reject = 0.01 s
+[428/455] TestArraySubclass#test_empty_0 = 0.01 s
+[429/455] TestArraySubclass#test_MINUS_big_array = 0.13 s
+[430/455] TestArraySubclass#test_uniq_with_block = 0.02 s
+[431/455] TestArraySubclass#test_bsearch_index_in_find_minimum_mode = 0.01 s
+[432/455] TestArraySubclass#test_shuffle_random_clobbering = 0.21 s
+[433/455] TestArraySubclass#test_fill = 0.02 s
+[434/455] TestArraySubclass#test_join = 0.10 s
+[435/455] TestArraySubclass#test_select = 0.01 s
+[436/455] TestArraySubclass#test_take = 0.01 s
+[437/455] TestArraySubclass#test_percent_I = 0.01 s
+[438/455] TestArraySubclass#test_clone = 0.02 s
+[439/455] TestArraySubclass#test_combination_clear = 26.78 s
+[440/455] TestArraySubclass#test_include? = 0.02 s
+[441/455] TestArraySubclass#test_delete2 = 0.01 s
+[442/455] TestArraySubclass#test_last2 = 0.01 s
+[443/455] TestArraySubclass#test_uniq_bang_with_freeze = 0.01 s
+[444/455] TestArraySubclass#test_AREF = 0.04 s
+[445/455] TestArraySubclass#test_sum = 0.08 s
+[446/455] TestArraySubclass#test_repeated_combination_with_callcc = 1.03 s
+[447/455] TestArraySubclass#test_sample = 0.44 s
+Finished tests in 536.823905s, 0.8327 tests/s, 45.8120 assertions/s.
+447 tests, 24593 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #
+[41/95] TestMethod#test_unbound_method_proc_coerce = 0.01 s
+[42/95] TestMethod#test_clone_under_gc_compact_stressSegmentation fault (core dumped)
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # mv TestMethod.rb ../test/.excludes/
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_method.
+rb
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[ 1/95] TestMethod#test_define_method_transplating = 0.03 s
+[ 2/95] TestMethod#test_unbound_parameters = 0.04 s
+[ 3/95] TestMethod#test_super_method_alias_to_prepended_module = 0.02 s
+[ 4/95] TestMethod#test_super_in_proc_from_define_method = 0.01 s
+[ 5/95] TestMethod#test_splat_long_array = 231.83 s
+[ 6/95] TestMethod#test_default_accessibility = 0.02 s
+[ 7/95] TestMethod#test_callee = 0.09 s
+[ 8/95] TestMethod#test_zsuper_private_override_instance_method = 9.88 s
+[ 9/95] TestMethod#test_hash_does_not_change_after_compaction = 11.20 s
+[10/95] TestMethod#test_compose_with_noncallable = 0.03 s
+[11/95] TestMethod#test_alias_owner = 0.02 s
+[12/95] TestMethod#test_define_singleton_method_no_proc = 0.02 s
+[13/95] TestMethod#test_define_method = 0.05 s
+[14/95] TestMethod#test_compose_with_callable = 0.01 s
+[15/95] TestMethod#test_define_singleton_method_with_extended_method = 0.01 s
+[16/95] TestMethod#test_define_method_visibility = 0.02 s
+[17/95] TestMethod#test_instance_methods_owner_consistency = 0.01 s
+[18/95] TestMethod#test_define_method_no_proc = 0.01 s
+[19/95] TestMethod#test_super_method_removed_regular = 0.01 s
+[20/95] TestMethod#test_singleton_method_included_or_prepended_bug_20620 = 0.03 s
+[21/95] TestMethod#test_method_in_method_visibility_should_be_public = 0.02 s
+[22/95] TestMethod#test_method_list = 7.79 s
+[23/95] TestMethod#test_hash = 0.01 s
+[24/95] TestMethod#test_warn_unused_block = 11.16 s
+[25/95] TestMethod#test_singleton_method = 0.02 s
+[26/95] TestMethod#test_instance_method = 0.04 s
+[27/95] TestMethod#test_argument_error_location = 17.00 s
+[28/95] TestMethod#test_to_proc_binding = 0.03 s
+[29/95] TestMethod#test___dir__ = 0.03 s
+[30/95] TestMethod#test_hidden_parameters = 0.11 s
+[31/95] TestMethod#test_orphan_callee = 0.01 s
+[32/95] TestMethod#test_super_method_module = 0.03 s
+[33/95] TestMethod#test_inspect = 0.05 s
+[34/95] TestMethod#test_eq = 0.01 s
+[35/95] TestMethod#test_curry_from_proc_var_args = 0.01 s
+[36/95] TestMethod#test_visibility = 0.04 s
+[37/95] TestMethod#test_compose_with_method = 0.01 s
+[38/95] TestMethod#test_invalidating_CC_ASAN = 7.82 s
+[39/95] TestMethod#test_singleton_method_prepend = 0.02 s
+[40/95] TestMethod#test_super_method_with_prepended_module = 0.09 s
+[41/95] TestMethod#test_unbound_method_proc_coerce = 0.01 s
+[42/95] TestMethod#test_bmethod_bound_parameters = 0.04 s
+[43/95] TestMethod#test_super_method_after_bind = 0.01 s
+[44/95] TestMethod#test_override_optimized_method_on_class_using_prepend = 8.75 s
+[45/95] TestMethod#test_respond_to_missing_argument = 0.03 s
+[46/95] TestMethod#test_zsuper_method_redefined_bind_call = 0.03 s
+[47/95] TestMethod#test_unbind = 0.02 s
+[48/95] TestMethod#test_super_method_unbound = 0.01 s
+[49/95] TestMethod#test_method_in_block_in_define_method_block = 0.01 s
+[50/95] TestMethod#test_eqq = 0.02 s
+[51/95] TestMethod#test_bmethod_unbound_parameters = 0.04 s
+[52/95] TestMethod#test_bind_module_instance_method = 0.01 s
+[53/95] TestMethod#test_define_singleton_method = 0.01 s
+[54/95] TestMethod#test_curry_method = 0.03 s
+[55/95] TestMethod#test_singleton_define_method_in_private_scope = 0.02 s
+[56/95] TestMethod#test_public_methods_with_extended = 0.01 s
+[57/95] TestMethod#test_caller_negative_level = 0.01 s
+[58/95] TestMethod#test_body = 0.01 s
+[59/95] TestMethod#test_define_singleton_method_public = 0.01 s
+[60/95] TestMethod#test_curry_var_args = 0.01 s
+[61/95] TestMethod#test_attrset_ivar = 0.02 s
+[62/95] TestMethod#test_method_in_define_method_block = 0.01 s
+[63/95] TestMethod#test_define_method_with_symbol = 10.61 s
+[64/95] TestMethod#test_method_parameters_inspect = 0.12 s
+[65/95] TestMethod#test_included = 0.01 s
+[66/95] TestMethod#test_super_method_module_alias = 0.01 s
+[67/95] TestMethod#test_super_with_splat = 0.01 s
+[68/95] TestMethod#test_define_method_invalid_arg = 0.02 s
+[69/95] TestMethod#test_bound_parameters = 0.07 s
+[70/95] TestMethod#test_arity = 0.02 s
+[71/95] TestMethod#test_bound_method_entry = 41.61 s
+[72/95] TestMethod#test_zsuper_method_removed = 0.04 s
+[73/95] TestMethod#test_receiver_name_owner = 0.02 s
+[74/95] TestMethod#test_prepended_public_zsuper = 0.02 s
+[75/95] TestMethod#test_owner_missing = 0.01 s
+[76/95] TestMethod#test_curry_from_proc = 0.03 s
+[77/95] TestMethod#test_super_method_bind_unbind_clone = 0.02 s
+[78/95] TestMethod#test_compose_with_proc = 0.01 s
+[79/95] TestMethod#test_gced_bmethod = 22.97 s
+[80/95] TestMethod#test_super_method_removed_public = 0.02 s
+[81/95] TestMethod#test_super_method = 0.02 s
+[82/95] TestMethod#test_unbound_method_parameters_inspect = 0.13 s
+[83/95] TestMethod#test_define_method_in_private_scope = 0.02 s
+[84/95] TestMethod#test_callee_top_level = 2.17 s
+[85/95] TestMethod#test_caller_top_level = 2.16 s
+[86/95] TestMethod#test_super_method_alias = 0.02 s
+[87/95] TestMethod#test_public_method_with_zsuper_method = 0.01 s
+[88/95] TestMethod#test_prepended = 0.02 s
+[89/95] TestMethod#test_arity_special = 0.01 s
+[90/95] TestMethod#test_owner = 0.01 s
+[91/95] TestMethod#test_new = 0.02 s
+[92/95] TestMethod#test_umethod_bind_call = 0.01 s
+[93/95] TestMethod#test_clone = 0.01 s
+[94/95] TestMethod#test_zsuper_method_removed_higher_method = 0.06 s
+Finished tests in 406.983642s, 0.2310 tests/s, 1.7224 assertions/s.
+94 tests, 701 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #
+        from /root/ruby-3.4.1/lib/tmpdir.rb:105:in 'Dir.mktmpdir'
+        from ../bootstraptest/runner.rb:853:in 'Object#in_temporary_working_directory'
+        from ../bootstraptest/runner.rb:310:in 'Object#main'
+        from ../bootstraptest/runner.rb:899:in '<main>'
+
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_pack.rb
+
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[ 1/53] TestPack#test_pack_unpack_vV = 0.04 s
+[ 2/53] TestPack#test_unpack_garbage = 0.02 s
+[ 3/53] TestPack#test_pack_p = 0.02 s
+[ 4/53] TestPack#test_pack_unpack_cC = 0.02 s
+[ 5/53] TestPack#test_pack_n = 0.02 s
+[ 6/53] TestPack#test_unpack1 = 0.01 s
+[ 7/53] TestPack#test_pack_unpack_nN = 0.01 s
+[ 8/53] TestPack#test_unpack_N = 0.01 s
+[ 9/53] TestPack#test_pack_unpack_percent = 0.01 s
+[10/53] TestPack#test_length_too_big = 0.01 s
+[11/53] TestPack#test_pack_unpack_Z = 0.02 s
+[12/53] TestPack#test_pack_unpack_bB = 0.04 s
+[13/53] TestPack#test_pack_unpack_X = 0.01 s
+[14/53] TestPack#test_monkey_pack = 8.55 s
+[15/53] TestPack#test_pack_unpack_aA = 0.03 s
+[16/53] TestPack#test_integer_endian_explicit = 0.64 s
+[17/53] TestPack#test_pack_unpack_m0 = 0.05 s
+[18/53] TestPack#test_pack_P = 0.01 s
+[19/53] TestPack#test_pack_p2 = 0.02 s
+[20/53] TestPack#test_unpack_n = 0.01 s
+[21/53] TestPack#test_integer_endian = 0.11 s
+[22/53] TestPack#test_pack_N = 0.02 s
+[23/53] TestPack#test_monkey_pack_buffer = 8.48 s
+[24/53] TestPack#test_pack_unpack_x = 0.02 s
+[25/53] TestPack#test_pack_unpack_lL = 0.02 s
+[26/53] TestPack#test_comment = 0.01 s
+[27/53] TestPack#test_pack_unpack_w = 0.03 s
+[28/53] TestPack#test_pack_unpack_u = 0.03 s
+[29/53] TestPack#test_pack = 0.03 s
+[30/53] TestPack#test_pack_unpack_sS = 0.02 s
+[31/53] TestPack#test_unpack_offset = 0.04 s
+[32/53] TestPack#test_pack_unpack_jJ = 0.04 s
+[33/53] TestPack#test_unpack1_offset = 0.03 s
+[34/53] TestPack#test_bug_18343 = 8.46 s
+[35/53] TestPack#test_short_with_block = 0.01 s
+[36/53] TestPack#test_unpack_with_block = 0.01 s
+[37/53] TestPack#test_pack_U = 0.02 s
+[38/53] TestPack#test_pack_unpack_P2 = 0.02 s
+[39/53] TestPack#test_pack_unpack_m = 8.50 s
+[40/53] TestPack#test_pack_garbage = 0.01 s
+[41/53] TestPack#test_invalid_warning = 0.02 s
+[42/53] TestPack#test_ascii_incompatible = 0.08 s
+[43/53] TestPack#test_pack_with_buffer = 0.05 s
+[44/53] TestPack#test_pack_unpack_fdeEgG = 0.05 s
+[45/53] TestPack#test_pack_unpack_U = 0.03 s
+[46/53] TestPack#test_pack_unpack_hH = 0.04 s
+[47/53] TestPack#test_short_string = 0.03 s
+[48/53] TestPack#test_illegal_bang = 0.01 s
+[49/53] TestPack#test_pack_resize = 8.81 s
+[50/53] TestPack#test_pack_unpack_iI = 0.02 s
+[51/53] TestPack#test_pack_unpack_atmark = 0.03 s
+[52/53] TestPack#test_format_string_modified = 0.01 s
+[53/53] TestPack#test_pack_unpack_M = 0.04 s
+
+  1) Failure:
+TestPack#test_pack_unpack_jJ [/root/ruby-3.4.1/test/ruby/test_pack.rb:504]:
+we don't know such platform now.
+
+Finished tests in 48.247586s, 1.0985 tests/s, 16.3739 assertions/s.
+53 tests, 790 assertions, 1 failures, 0 errors, 0 skips
+
+ruby -v: ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #
+sections including external libraries, it is very neary impossible to
+recover from such situation.
+]
+
+exclude %r[test_machine_stackoverflow], reason
+exclude(:test_too_many_args_in_eval, 'gets stuck somewhere')
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./trunneronenorevoke.sh ../test/ruby/test_excepti
+on.rb
+Run options:
+  "--ruby=./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems
+"
+  --excludes-dir=../test/.excludes
+  --name=!/memory_leak/
+  -s
+  3216
+  --timeout-scale
+  10
+  --worker-timeout=100
+  -v
+
+# Running tests:
+
+[ 1/95] TestException#test_exception_ensure = 0.02 s
+[ 2/95] TestException#test_rescue_single_argument = 0.01 s
+[ 3/95] TestException#test_catch_throw_in_require = 0.04 s
+[ 4/95] TestException#test_marshal_circular_cause = 0.03 s
+[ 5/95] TestException#test_cause_exception_in_cause_message = 2.19 s
+[ 6/95] TestException#test_redefined_backtrace = 8.47 s
+[ 7/95] TestException#test_rescue_splat_argument = 0.01 s
+[ 8/95] TestException#test_exception_rescued = 0.01 s
+[ 9/95] TestException#test_blocking_backtrace = 26.90 s
+[10/95] TestException#test_multibyte_and_newline = 2.18 s
+[11/95] TestException#test_exception_in_message = 2.66 s
+[12/95] TestException#test_warning_warn_circular_require_backtrace = 0.08 s
+[13/95] TestException#test_raise_with_cause_in_rescue = 0.04 s
+[14/95] TestException#test_systemexit_new = 0.02 s
+[15/95] TestException#test_control_in_message = 0.03 s
+[16/95] TestException#test_exception_in_rescue = 0.01 s
+[17/95] TestException#test_else_nested_rescued = 0.01 s
+[18/95] TestException#test_wrong_backtrace = 8.52 s
+[19/95] TestException#test_cause = 0.02 s
+[20/95] TestException#test_circular_cause_handle = 0.02 s
+[21/95] TestException#test_backtrace_in_eval = 2.18 s
+[22/95] TestException#test_cause_reraised = 0.05 s
+[23/95] TestException#test_detailed_message_under_gc_compact_stress = 38.59 s
+[24/95] TestException#test_full_message_with_encoding = 0.05 s
+[25/95] TestException#test_cause_thread_with_cause = 0.03 s
+[26/95] TestException#test_exception_retry = 0.01 s
+[27/95] TestException#test_kernel_warn_uplevel = 2.21 s
+[28/95] TestException#test_else_no_exception = 0.01 s
+[29/95] TestException#test_stackoverflow = 10.17 s
+[30/95] TestException#test_else_nested_rescued_reraise = 0.01 s
+[31/95] TestException#test_circular_cause = 0.03 s
+[32/95] TestException#test_errinfo_encoding_in_debug = 0.10 s
+[33/95] TestException#test_else_nested_no_exception = 0.01 s
+[34/95] TestException#test_non_exception_cause = 0.02 s
+[35/95] TestException#test_inspect = 0.02 s
+[36/95] TestException#test_warning_warn = 0.03 s
+[37/95] TestException#test_exception_in_ensure_with_return = 0.02 s
+[38/95] TestException#test_break_ensure = 0.01 s
+[39/95] TestException#test_set_backtrace = 0.02 s
+[40/95] TestException#test_catch_throw_in_require_cant_be_rescued = 0.03 s
+[41/95] TestException#test_errinfo_in_debug = 0.04 s
+[42/95] TestException#test_cause_with_no_arguments = 0.14 s
+[43/95] TestException#test_method_missing_reason_clear = 0.02 s
+[44/95] TestException#test_raise_with_wrong_number_of_arguments = 0.01 s
+[45/95] TestException#test_catch_throw_noarg = 0.01 s
+[46/95] TestException#test_exception_in_ensure = 0.01 s
+[47/95] TestException#test_equal = 0.01 s
+[48/95] TestException#test_cause_at_raised = 0.02 s
+[49/95] TestException#test_uncaught_throw = 0.02 s
+[50/95] TestException#test_undefined_backtrace = 8.48 s
+[51/95] TestException#test_warn_deprecated_backwards_compatibility_category = 0.02 s
+[52/95] TestException#test_warning_category = 0.05 s
+[53/95] TestException#test_output_string_encoding = 2.19 s
+[54/95] TestException#test_full_message = 14.83 s
+[55/95] TestException#test_else_nested_unrescued = 0.01 s
+[56/95] TestException#test_errat = 11.12 s
+[57/95] TestException#test_errinfo = 0.01 s
+[58/95] TestException#test_detailed_message = 0.02 s
+[59/95] TestException#test_exception_ensure_2 = 0.01 s
+[60/95] TestException#test_exception_in_ensure_with_next = 0.10 s
+[61/95] TestException#test_cause_at_end = 2.19 s
+[62/95] TestException#test_warning_warn_invalid_argument = 0.04 s
+[63/95] TestException#test_syntax_error_detailed_message = 4.92 s
+[64/95] TestException#test_errno_constants = 0.21 s
+[65/95] TestException#test_message_of_name_error = 0.03 s
+[66/95] TestException#test_throw_false = 0.04 s
+[67/95] TestException#test_to_s = 0.01 s
+[68/95] TestException#test_ensure_after_nomemoryerror = 0.03 s
+[69/95] TestException#test_syntax_error_path = 2.27 s
+[70/95] TestException#test_exit_success_p = 0.02 s
+[71/95] TestException#test_cause_thread_no_cause = 0.03 s
+[72/95] TestException#test_undef_Warning_warn = 8.49 s
+[73/95] TestException#test_type_error_message_encoding = 0.08 s
+[74/95] TestException#test_exception_in_ensure_with_redo = 0.01 s
+[75/95] TestException#test_errno = 0.01 s
+[76/95] TestException#test_raise_with_cause = 0.02 s
+[77/95] TestException#test_anonymous_message = 2.18 s
+[78/95] TestException#test_unknown_option = 0.03 s
+[79/95] TestException#test_full_message_with_custom_detailed_message = 0.05 s
+[80/95] TestException#test_backtrace_by_exception = 0.03 s
+[81/95] TestException#test_thread_signal_location = 2.22 s
+[82/95] TestException#test_catch_throw = 0.01 s
+[83/95] TestException#test_cause_with_frozen_exception = 0.02 s
+[84/95] TestException#test_else_raised = 0.01 s
+[85/95] TestException#test_super_in_method_missing = 8.48 s
+[86/95] TestException#test_warning_warn_super = 2.21 s
+[87/95] TestException#test_exception_in_exception_equal = 9.26 s
+[88/95] TestException#test_exception_in_name_error_to_str = 8.46 s
+[89/95] TestException#test_encoding_in_message = 0.02 s
+[90/95] TestException#test_catch_no_throw = 0.01 s
+[91/95] TestException#test_cause_raised_in_rescue = 0.03 s
+Finished tests in 198.745418s, 0.4579 tests/s, 3.4919 assertions/s.
+91 tests, 694 assertions, 0 failures, 0 errors, 0 skips
+
+ruby -v: ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #
+
+
+[2/9] WebauthnListenerTest#test_wait_for_otp_code_get_request/root/ruby-3.4.1/lib/cgi/core.rb: [BUG]
+ Segmentation fault at 0x000000000000000000000000783e8800
+ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]
+[3/9] WebauthnListenerTest#test_wait_for_otp_code_no_params_response/root/ruby-3.4.1/lib/cgi/core.rb
+: [BUG] Segmentation fault at 0x000000000000000000000000783e8800                                    
+ruby 3.4.1 (2025-06-22 revision 57e798cfc6) +PRISM [riscv64-freebsd]  

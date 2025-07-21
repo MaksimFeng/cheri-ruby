@@ -1,0 +1,11 @@
+{slot_size = 80, total_slots = 818, free_slots = 0, final_slots = 0, pinned_slots = 0, 
+  flags = {before_sweep = 0, has_remembered_objects = 0, 
+    has_uncollectible_wb_unprotected_objects = 0}, heap = 0x41462030 [rwRW,0x41462000-0x41462ab0], 
+  free_next = 0x0, body = 0x410b0000 [rwRW,0x410af000-0x410cf000], 
+  start = 320992984092063787599587349027799892032, freelist = 0x0, page_node = {
+    next = 0x415dc460 [rwRW,0x415dc400-0x415dc7c0], 
+    prev = 0x41462090 [rwRW,0x41462000-0x41462ab0]}, wb_unprotected_bits = {0 <repeats 13 times>}, 
+  mark_bits = {18446744073709551615 <repeats 12 times>, 1125899906842623}, uncollectible_bits = {
+    0 <repeats 13 times>}, marking_bits = {0 <repeats 13 times>}, remembered_bits = {
+    0 <repeats 13 times>}, pinned_bits = {0 <repeats 13 times>}, age_bits = {
+    6148914691236517205 <repeats 25 times>, 22906492245}}

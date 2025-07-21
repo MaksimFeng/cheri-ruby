@@ -1,0 +1,317 @@
+2025-06-13 13:42:03 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_attr.rb  PASS 3
+
+Finished in 9.96 sec
+
+PASS all 3 tests
+2025-06-13 13:42:15 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_autoload.rb  PASS 8
+
+Finished in 20.10 sec
+
+PASS all 8 tests
+2025-06-13 13:42:38 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_block.rb  PASS 58
+
+Finished in 131.16 sec
+
+PASS all 58 tests
+2025-06-13 13:44:52 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_class.rb  PASS 48
+
+Finished in 106.36 sec
+
+PASS all 48 tests
+2025-06-13 13:46:41 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_constant_cache.rb  PASS 10
+
+Finished in 24.49 sec
+
+PASS all 10 tests
+2025-06-13 13:47:08 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_env.rb  PASS 2
+
+Finished in 6.82 sec
+
+PASS all 2 tests
+2025-06-13 13:47:18 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_eval.rb  PASS 49
+
+Finished in 200.79 sec
+
+PASS all 49 tests
+2025-06-13 13:50:41 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_exception.rb  PASS 34
+
+Finished in 75.81 sec
+
+PASS all 34 tests
+2025-06-13 13:52:00 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_fiber.rb  PASS 6
+
+Finished in 55.77 sec
+
+Fiber count: 10000 (skipping)
+PASS all 6 tests
+2025-06-13 13:52:58 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_finalizer.rb  PASS 2
+
+Finished in 6.84 sec
+
+PASS all 2 tests
+2025-06-13 13:53:08 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_flip.rb  PASS 1
+
+Finished in 4.70 sec
+
+PASS all 1 tests
+2025-06-13 13:53:15 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_flow.rb  PASS 62
+
+Finished in 135.77 sec
+
+PASS all 62 tests
+2025-06-13 13:55:33 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_fork.rb  PASS 5
+
+Finished in 25.86 sec
+
+PASS all 5 tests
+2025-06-13 13:56:02 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_gc.rb  PASS 2
+
+Finished in 731.87 sec
+
+PASS all 2 tests
+2025-06-13 14:08:16 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_insns.rb  PASS 393
+
+Finished in 861.67 sec
+
+PASS all 393 tests
+2025-06-13 14:22:42 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_io.rb  PASS 6
+
+Finished in 18.39 sec
+
+PASS all 6 tests
+2025-06-13 14:23:03 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_jump.rb  PASS 29
+
+Finished in 64.92 sec
+
+PASS all 29 tests
+2025-06-13 14:24:10 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_literal.rb  PASS 157
+
+Finished in 355.62 sec
+
+PASS all 157 tests
+2025-06-13 14:30:09 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_literal_suffix.rb  PASS 48
+
+Finished in 105.49 sec
+
+PASS all 48 tests
+2025-06-13 14:31:57 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_load.rb  PASS 2
+
+Finished in 7.01 sec
+
+PASS all 2 tests
+2025-06-13 14:32:07 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_marshal.rb  PASS 1
+
+Finished in 4.71 sec
+
+PASS all 1 tests
+2025-06-13 14:32:14 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_massign.rb  PASS 34
+
+Finished in 82.67 sec
+
+PASS all 34 tests
+2025-06-13 14:33:40 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_method.rb  PASS 247
+
+Finished in 618.26 sec
+
+PASS all 247 tests
+2025-06-13 14:44:02 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_objectspace.rb  PASS 6
+
+Finished in 19.98 sec
+
+PASS all 6 tests
+2025-06-13 14:44:24 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_proc.rb  PASS 37
+
+Finished in 99.49 sec
+
+PASS all 37 tests
+2025-06-13 14:46:06 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_ractor.rb  PASS 119
+
+Finished in 2676.20 sec
+
+PASS all 119 tests
+2025-06-13 15:30:46 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_rjit.rb  PASS 7
+
+Finished in 17.77 sec
+
+PASS all 7 tests
+2025-06-13 15:31:06 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_string.rb  PASS 1
+
+Finished in 4.70 sec
+
+PASS all 1 tests
+2025-06-13 15:31:13 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_struct.rb  PASS 1
+
+Finished in 4.72 sec
+
+PASS all 1 tests
+2025-06-13 15:31:20 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_syntax.rb  PASS 164
+
+Finished in 362.18 sec
+
+PASS all 164 tests
+2025-06-13 15:37:26 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_thread.rb  PASS 50
+
+Finished in 436.93 sec
+
+PASS all 50 tests
+2025-06-13 15:44:46 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_yjit.rb  PASS 355
+
+Finished in 895.30 sec
+
+PASS all 355 tests
+2025-06-13 15:59:45 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_yjit_30k_ifelse.rb  PASS 1
+
+Finished in 182.87 sec
+
+PASS all 1 tests
+2025-06-13 16:02:51 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_yjit_30k_methods.rb  PASS 1
+
+Finished in 460.17 sec
+
+PASS all 1 tests
+2025-06-13 16:10:33 +0000
+Driver is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-06 revision d5918fefba) +PRISM [riscv64-freebsd]
+
+test_yjit_rust_port.rb  PASS 38
+
+Finished in 85.32 sec
+
+PASS all 38 tests
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build #

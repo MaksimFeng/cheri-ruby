@@ -1,0 +1,1 @@
+../hash.c:326:1: warning: non-void function does not return a value [-Wreturn-type]

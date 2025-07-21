@@ -1,0 +1,1504 @@
+file2lastrev.rb: does not seem to be under a vcs: .
+	BASERUBY = /usr/bin/ruby --disable=gems
+	CC = /cheruby-purecap/src/output/sdk/bin/clang
+	LD = /cheruby-purecap/src/output/sdk/bin/ld.lld
+	LDSHARED = /cheruby-purecap/src/output/sdk/bin/clang -shared
+	CFLAGS = -target riscv64-unknown-freebsd --sysroot=/cheruby-purecap/src/output/rootfs-riscv64-purecap -mno-relax -march=rv64gcxcheri -mabi=l64pc128d -Wcheri -I/cheruby-purecap/src/output/rootfs-riscv64-purecap/usr/include -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -fdeclspec  -O0 -fno-omit-frame-pointer -fno-fast-math -ggdb3 -Wall -Wextra -Wextra-tokens -Wdeprecated-declarations -Wdivision-by-zero -Wdiv-by-zero -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wshorten-64-to-32 -Wwrite-strings -Wold-style-definition -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wunused-variable -Wmisleading-indentation -Wundef  
+	XCFLAGS = -fno-strict-overflow -fvisibility=hidden -DRUBY_EXPORT -fPIE -I. -I.ext/include/riscv64-freebsd -I../include -I.. -I../prism -I../enc/unicode/15.0.0 -I/cheruby-purecap/src/output/rootfs-riscv64-purecap/usr/include  -Dmodular_gc_dir=
+	CPPFLAGS =   
+	DLDFLAGS = -target riscv64-unknown-freebsd --sysroot=/cheruby-purecap/src/output/rootfs-riscv64-purecap -fuse-ld=lld -mno-relax -march=rv64gcxcheri -mabi=l64pc128d -lpthread -Wl,--gdb-index -Wl,--compress-debug-sections=zlib -L/cheruby-purecap/src/output/rootfs-riscv64-purecap/usr/lib -Wl,-rpath,/cheruby-purecap/src/output/rootfs-riscv64-purecap/usr/lib -Wl,-soname,showflags -pie  
+	SOLIBS = -lexecinfo -lprocstat -lz -lrt -lrt -ldl -lcrypt -lm -lthr 
+	LANG = C.UTF-8
+	LC_ALL = 
+	LC_CTYPE = C.UTF-8
+	MFLAGS = 
+	RUSTC = no
+	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/yjit/target/release/' ../yjit/src/lib.rs
+clang version 15.0.0 (https://github.com/CTSRD-CHERI/llvm-project.git 578ea4f7ef67d589f0ca7d10ec9e383333567421)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /cheruby-purecap/src/output/sdk/bin
+../revision.h unchanged
+generating riscv64-freebsd-fake.rb
+riscv64-freebsd-fake.rb updated
+making dummy probes.h
+/bin/sh ../tool/ifchange "--timestamp=.rbconfig.time" rbconfig.rb rbconfig.tmp
+rbconfig.rb updated
+generating encdb.h
+encdb.h updated
+generating enc.mk
+making srcs under enc
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+make[1]: Nothing to be done for 'srcs'.
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+generating transdb.h
+transdb.h updated
+compiling ../dln.c
+compiling ../localeinit.c
+creating verconf.h
+verconf.h updated
+compiling ../loadpath.c
+compiling ../array.c
+compiling ../ast.c
+compiling ../bignum.c
+compiling ../class.c
+compiling ../compar.c
+compiling ../compile.c
+../compile.c:3818:40: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            if ((OPERAND_AT(next, 0) = FIXNUM_INC(OPERAND_AT(next, 0), -1)) == INT2FIX(1)) {
+                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                          ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:4141:37: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                iobj->operands[0] = FIXNUM_INC(num, 1);
+                                    ^~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                          ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:4164:37: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                iobj->operands[0] = FIXNUM_INC(num, 2);
+                                    ^~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                          ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:4203:40: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                sendins->operands[0] = FIXNUM_INC(num, 1);
+                                       ^~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                          ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:9486:43: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            ADD_SEND_R(ret, node, idASET, FIXNUM_INC(argc, 1), NULL, INT2FIX(flag), NULL);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                             ^
+../compile.c:285:113: note: expanded from macro 'ADD_SEND_R'
+  ADD_ELEM((seq), (LINK_ELEMENT *) new_insn_send(iseq, nd_line(line_node), nd_node_id(line_node), (id), (VALUE)(argc), (block), (VALUE)(flag), (keywords)))
+                                                                                                                ^~~~
+../compile.c:9527:43: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            ADD_SEND_R(ret, node, idASET, FIXNUM_INC(argc, 1), NULL, INT2FIX(flag), NULL);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                             ^
+../compile.c:285:113: note: expanded from macro 'ADD_SEND_R'
+  ADD_ELEM((seq), (LINK_ELEMENT *) new_insn_send(iseq, nd_line(line_node), nd_node_id(line_node), (id), (VALUE)(argc), (block), (VALUE)(flag), (keywords)))
+                                                                                                                ^~~~
+../compile.c:10226:40: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            ADD_INSN1(ret, node, setn, FIXNUM_INC(argc, 2));
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                             ^
+../compile.c:240:97: note: expanded from macro 'ADD_INSN1'
+           new_insn_body(iseq, nd_line(line_node), nd_node_id(line_node), BIN(insn), 1, (VALUE)(op1)))
+                                                                                                ^~~
+../compile.c:10230:40: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            ADD_INSN1(ret, node, setn, FIXNUM_INC(argc, 1));
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+../compile.c:51:30: note: expanded from macro 'FIXNUM_INC'
+#define FIXNUM_INC(n, i) ((n)+(INT2FIX(i)&~FIXNUM_FLAG))
+                             ^
+../compile.c:240:97: note: expanded from macro 'ADD_INSN1'
+           new_insn_body(iseq, nd_line(line_node), nd_node_id(line_node), BIN(insn), 1, (VALUE)(op1)))
+                                                                                                ^~~
+../compile.c:13585:30: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                             realpath, TYPE(realpath), path);
+                             ^~~~~~~~
+9 warnings generated.
+compiling ../complex.c
+compiling ../cont.c
+compiling ../debug.c
+compiling ../debug_counter.c
+compiling ../dir.c
+compiling ../dln_find.c
+compiling ../encoding.c
+compiling ../enum.c
+compiling ../enumerator.c
+compiling ../error.c
+compiling ../eval.c
+compiling ../file.c
+compiling ../gc.c
+In file included from ../gc.c:618:
+../gc/default/default.c:1960:88: warning: format specifies type 'unsigned long' but the argument has type 'unsigned __intcap __attribute__((cheri_no_provenance))' [-Wformat]
+            rb_bug("same heap page is allocated: %p at %"PRIuVALUE, (void *)page_body, (VALUE)mid);
+                                                       ~~~~~~~~~~~                     ^~~~~~~~~~
+../gc/default/default.c:4085:26: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    bitset = pin_bits[0] & ~mark_bits[0];
+             ~~~~~~~~~~~ ^ ~~~~~~~~~~~~~
+../gc/default/default.c:4093:30: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        bitset = pin_bits[i] & ~mark_bits[i];
+                 ~~~~~~~~~~~ ^ ~~~~~~~~~~~~~
+../gc/default/default.c:5345:36: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        bits_t bits = mark_bits[0] & wbun_bits[0];
+                      ~~~~~~~~~~~~ ^ ~~~~~~~~~~~~
+../gc/default/default.c:5351:40: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            bits_t bits = mark_bits[j] & wbun_bits[j];
+                          ~~~~~~~~~~~~ ^ ~~~~~~~~~~~~
+../gc/default/default.c:5630:28: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    bitset = (mark_bits[0] & ~pin_bits[0]);
+              ~~~~~~~~~~~~ ^ ~~~~~~~~~~~~
+../gc/default/default.c:5639:32: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        bitset = (mark_bits[j] & ~pin_bits[j]);
+                  ~~~~~~~~~~~~ ^ ~~~~~~~~~~~~
+../gc/default/default.c:5972:71: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'bits_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                bits[j] = remembered_bits[j] | (uncollectible_bits[j] & wb_unprotected_bits[j]);
+                                                ~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+../gc/default/default.c:5972:46: warning: binary expression on capability types 'bits_t' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                bits[j] = remembered_bits[j] | (uncollectible_bits[j] & wb_unprotected_bits[j]);
+                          ~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../gc/default/default.c:6085:94: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        if (SPECIAL_CONST_P(a)) rb_bug("rb_gc_writebarrier: a is special const: %"PRIxVALUE, a);
+                                                                                ~~~~~~~~~~~  ^
+../gc/default/default.c:6086:94: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        if (SPECIAL_CONST_P(b)) rb_bug("rb_gc_writebarrier: b is special const: %"PRIxVALUE, b);
+                                                                                ~~~~~~~~~~~  ^
+../gc.c:1448:9: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+        UNEXPECTED_NODE(obj_free);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~
+../gc.c:1067:45: note: expanded from macro 'UNEXPECTED_NODE'
+           BUILTIN_TYPE(obj), (void*)(obj), RBASIC(obj)->flags)
+                                            ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+../gc.c:1472:47: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+               BUILTIN_TYPE(obj), (void*)obj, RBASIC(obj)->flags);
+                                              ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+../gc.c:1498:13: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+            UNEXPECTED_NODE(internal_object_p);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../gc.c:1067:45: note: expanded from macro 'UNEXPECTED_NODE'
+           BUILTIN_TYPE(obj), (void*)(obj), RBASIC(obj)->flags)
+                                            ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+../gc.c:2023:9: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+        UNEXPECTED_NODE(obj_memsize_of);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../gc.c:1067:45: note: expanded from macro 'UNEXPECTED_NODE'
+           BUILTIN_TYPE(obj), (void*)(obj), RBASIC(obj)->flags)
+                                            ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+../gc.c:2693:9: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+        UNEXPECTED_NODE(rb_gc_mark);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../gc.c:1067:45: note: expanded from macro 'UNEXPECTED_NODE'
+           BUILTIN_TYPE(obj), (void*)(obj), RBASIC(obj)->flags)
+                                            ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+../gc.c:4154:13: warning: format specifies type 'unsigned long' but the argument has type 'VALUE __attribute__((cheri_no_provenance))' (aka 'unsigned __intcap') [-Wformat]
+            UNEXPECTED_NODE(rb_raw_obj_info);
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../gc.c:1067:45: note: expanded from macro 'UNEXPECTED_NODE'
+           BUILTIN_TYPE(obj), (void*)(obj), RBASIC(obj)->flags)
+                                            ^~~~~~~~~~~~~~~~~~
+../include/ruby/internal/core/rbasic.h:40:37: note: expanded from macro 'RBASIC'
+#define RBASIC(obj)                 RBIMPL_CAST((struct RBasic *)(obj))
+                                    ^
+../include/ruby/internal/cast.h:31:28: note: expanded from macro 'RBIMPL_CAST'
+# define RBIMPL_CAST(expr) (expr)
+                           ^
+17 warnings generated.
+compiling ../hash.c
+../hash.c:326:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+../hash.c:1484:54: warning: binary expression on capability types 'unsigned __intcap' and 'VALUE' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    NEWOBJ_OF(hash, struct RHash, klass, T_HASH | wb | flags, size, 0);
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+../internal/gc.h:126:24: note: expanded from macro 'NEWOBJ_OF'
+    T *(var) = (T *)(((f) & FL_WB_PROTECTED) ? \
+                       ^
+../hash.c:1484:54: warning: binary expression on capability types 'unsigned __intcap' and 'VALUE' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    NEWOBJ_OF(hash, struct RHash, klass, T_HASH | wb | flags, size, 0);
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+../internal/gc.h:127:67: note: expanded from macro 'NEWOBJ_OF'
+            rb_wb_protected_newobj_of((ec ? ec : GET_EC()), (c), (f) & ~FL_WB_PROTECTED, s) : \
+                                                                  ^
+../hash.c:1484:54: warning: binary expression on capability types 'unsigned __intcap' and 'VALUE' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    NEWOBJ_OF(hash, struct RHash, klass, T_HASH | wb | flags, size, 0);
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+../internal/gc.h:128:47: note: expanded from macro 'NEWOBJ_OF'
+            rb_wb_unprotected_newobj_of((c), (f), s))
+                                              ^
+4 warnings generated.
+compiling ../inits.c
+compiling ../imemo.c
+compiling ../io.c
+../io.c:569:43: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            INT2FIX(SIGPIPE) - INT2FIX(0) +
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+1 warning generated.
+compiling ../io_buffer.c
+compiling ../iseq.c
+../iseq.c:2407:40: warning: format specifies type 'long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        ret = rb_sprintf("%"PRIdVALUE, (VALUE)(pos + len + op));
+                          ~~~~~~~~~~~  ^~~~~~~~~~~~~~~~~~~~~~~
+../iseq.c:2435:40: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        ret = rb_sprintf("%"PRIuVALUE, op);
+                          ~~~~~~~~~~~  ^~
+../iseq.c:2823:30: warning: format specifies type 'long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                             body->param.opt_table[li - argc]);
+                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+compiling ../load.c
+../load.c:1613:23: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    return dln_symbol((void *)NUM2SVALUE(handle), symbol);
+                      ^
+1 warning generated.
+compiling ../marshal.c
+../marshal.c:471:75: warning: format specifies type 'long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+            rb_raise(rb_eTypeError, "can't dump anonymous ID %"PRIdVALUE, sym);
+                                                             ~~~~~~~~~~~  ^~~
+1 warning generated.
+compiling ../math.c
+compiling ../memory_view.c
+compiling ../rjit.c
+compiling ../rjit_c.c
+compiling ../node.c
+../node.c:80:5: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    nd_init_type(RNODE(n), type);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../rubyparser.h:1139:44: note: expanded from macro 'nd_init_type'
+    (n)->flags=(((n)->flags&~NODE_TYPEMASK)|((((unsigned long)(t))<<NODE_TYPESHIFT)&NODE_TYPEMASK))
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../node.c:439:12: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return nd_init_type(n, t);
+           ^~~~~~~~~~~~~~~~~~
+../rubyparser.h:1139:44: note: expanded from macro 'nd_init_type'
+    (n)->flags=(((n)->flags&~NODE_TYPEMASK)|((((unsigned long)(t))<<NODE_TYPESHIFT)&NODE_TYPEMASK))
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+compiling ../node_dump.c
+compiling ../numeric.c
+../numeric.c:4420:53: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            if (z != INT2FIX(0) && (SIGNED_VALUE)(x ^ y) < 0)
+                                                  ~ ^ ~
+1 warning generated.
+compiling ../object.c
+../object.c:155:32: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    RBASIC(obj)->flags = (type & ~ignored_flags) | (RBASIC(obj)->flags & ignored_flags);
+                          ~~~~ ^ ~~~~~~~~~~~~~~
+../object.c:155:50: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    RBASIC(obj)->flags = (type & ~ignored_flags) | (RBASIC(obj)->flags & ignored_flags);
+                         ~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+compiling ../pack.c
+compiling ../parse.c
+parse.y:1973:29: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        hash = ((hash << 5) + hash) + str[i];
+                ~~~~~~~~~~~ ^ ~~~~
+parse.y:13387:32: warning: binary expression on capability types 'stack_type' (aka 'unsigned __intcap') and 'stack_type'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        for (; mask && !(stack & mask); mask >>= 1) continue;
+                         ~~~~~ ^ ~~~~
+parse.y:13388:57: warning: binary expression on capability types 'stack_type' (aka 'unsigned __intcap') and 'stack_type'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        for (; mask; mask >>= 1) rb_str_cat(mesg, stack & mask ? "1" : "0", 1);
+                                                  ~~~~~ ^ ~~~~
+3 warnings generated.
+compiling ../parser_st.c
+In file included from ../parser_st.c:2:
+../parser_bits.h:536:27: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return (v << (n & m)) | (v >> (-n & m));
+           ~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~
+../parser_bits.h:560:28: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return (v << (-n & m)) | (v >> (n & m));
+           ~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~
+In file included from ../parser_st.c:165:
+../st.c:1632:31: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    const struct functor *f = (void *)d;
+                              ^
+../st.c:1774:10: warning: shift count >= width of type [-Wshift-count-overflow]
+    h ^= ROTL(k, r1);
+         ^~~~~~~~~~~
+../st.c:1750:32: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:1776:9: warning: shift count >= width of type [-Wshift-count-overflow]
+    h = ROTL(h, r2);
+        ^~~~~~~~~~~
+../st.c:1750:32: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:1800:12: warning: shift count >= width of type [-Wshift-count-overflow]
+    h ^= h >> 64;
+           ^  ~~
+../st.c:1802:12: warning: shift count >= width of type [-Wshift-count-overflow]
+    h ^= h >> 65;
+           ^  ~~
+../st.c:1831:9: warning: 'UNALIGNED_ADD_ALL' macro redefined [-Wmacro-redefined]
+#define UNALIGNED_ADD_ALL UNALIGNED_ADD_8
+        ^
+../st.c:1829:9: note: previous definition is here
+#define UNALIGNED_ADD_ALL UNALIGNED_ADD_16
+        ^
+../st.c:1951:22: warning: shift count >= width of type [-Wshift-count-overflow]
+        h ^= t; h -= ROTL(t, 7);
+                     ^~~~~~~~~~
+../st.c:1750:32: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                               ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:1974:26: warning: shift count >= width of type [-Wshift-count-overflow]
+    h = murmur_step(h, i >> 8*8);
+                         ^  ~~~
+../st.c:1997:35: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    register const char *string = (const char *)arg;
+                                  ^
+../st.c:2054:22: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    const char *s1 = (char *)lhs;
+                     ^
+../st.c:2055:22: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    const char *s2 = (char *)rhs;
+                     ^
+../st.c:2062:22: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    const char *s1 = (char *)lhs;
+                     ^
+../st.c:2063:22: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    const char *s2 = (char *)rhs;
+                     ^
+../st.c:2071:35: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    register const char *string = (const char *)arg;
+                                  ^
+16 warnings generated.
+compiling ../proc.c
+compiling ../process.c
+compiling ../ractor.c
+../ractor.c:3580:27: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    rv->flags = rv->flags & ~fl_users;
+                ~~~~~~~~~ ^ ~~~~~~~~~
+../ractor.c:3611:30: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    dst->flags = (dst->flags & ~fl_users) | (src->flags & fl_users);
+                  ~~~~~~~~~~ ^ ~~~~~~~~~
+../ractor.c:3611:57: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    dst->flags = (dst->flags & ~fl_users) | (src->flags & fl_users);
+                                             ~~~~~~~~~~ ^ ~~~~~~~~
+../ractor.c:3611:43: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    dst->flags = (dst->flags & ~fl_users) | (src->flags & fl_users);
+                 ~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+compiling ../random.c
+../random.c:1748:45: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return st_hash_start(hash_salt.key.hash + h);
+                         ~~~~~~~~~~~~~~~~~~ ^ ~
+../include/ruby/st.h:186:40: note: expanded from macro 'st_hash_start'
+#define st_hash_start(h) ((st_index_t)(h))
+                                       ^
+1 warning generated.
+compiling ../range.c
+compiling ../rational.c
+compiling ../re.c
+compiling ../regcomp.c
+compiling ../regenc.c
+compiling ../regerror.c
+compiling ../regexec.c
+compiling ../regparse.c
+../regparse.c:412:14: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+  return val + (val >> 5);
+         ~~~ ^ ~~~~~~~~~~
+1 warning generated.
+compiling ../regsyntax.c
+compiling ../ruby.c
+compiling ../ruby_parser.c
+compiling ../scheduler.c
+compiling ../shape.c
+compiling ../signal.c
+compiling ../sprintf.c
+compiling ../st.c
+../st.c:449:23: warning: binary expression on capability types 'st_hash_t' (aka 'unsigned __intcap') and 'st_index_t' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return hash_value & bins_mask(tab);
+           ~~~~~~~~~~ ^ ~~~~~~~~~~~~~~
+../st.c:672:12: warning: binary expression on capability types 'unsigned __intcap' and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+           + get_allocated_entries(tab) * sizeof(st_table_entry));
+           ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:826:22: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    ind = (ind << 2) + ind + *perturb + 1;
+          ~~~~~~~~~~ ^ ~~~
+../st.c:826:28: warning: binary expression on capability types 'unsigned __intcap' and 'st_index_t' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    ind = (ind << 2) + ind + *perturb + 1;
+          ~~~~~~~~~~~~~~~~ ^ ~~~~~~~~
+../st.c:1774:10: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    h ^= ROTL(k, r1);
+         ^~~~~~~~~~~
+../st.c:1750:28: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                   ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:1776:9: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    h = ROTL(h, r2);
+        ^~~~~~~~~~~
+../st.c:1750:28: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                   ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:1831:9: warning: 'UNALIGNED_ADD_ALL' macro redefined [-Wmacro-redefined]
+#define UNALIGNED_ADD_ALL UNALIGNED_ADD_8
+        ^
+../st.c:1829:9: note: previous definition is here
+#define UNALIGNED_ADD_ALL UNALIGNED_ADD_16
+        ^
+../st.c:1872:31: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                t = (t >> sr) | (d << sl);
+                    ~~~~~~~~~ ^ ~~~~~~~~~
+../st.c:1896:27: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            t = (t >> sr) | (d << sl);
+                ~~~~~~~~~ ^ ~~~~~~~~~
+../st.c:1951:22: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        h ^= t; h -= ROTL(t, 7);
+                     ^~~~~~~~~~
+../st.c:1750:28: note: expanded from macro 'ROTL'
+#define ROTL(x,n) ((x)<<(n)|(x)>>(SIZEOF_ST_INDEX_T*CHAR_BIT-(n)))
+                   ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../st.c:2098:31: warning: binary expression on capability types 'st_data_t' (aka 'unsigned __intcap') and 'st_data_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return (st_index_t)((n>>s1|(n<<s2)) ^ (n>>s2));
+                         ~~~~~^~~~~~~~
+../st.c:2098:41: warning: binary expression on capability types 'unsigned __intcap' and 'st_data_t' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return (st_index_t)((n>>s1|(n<<s2)) ^ (n>>s2));
+                        ~~~~~~~~~~~~~~~ ^ ~~~~~~~
+../st.c:2300:28: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    n = tab->entries_bound + size;
+        ~~~~~~~~~~~~~~~~~~ ^ ~~~~
+13 warnings generated.
+compiling ../strftime.c
+compiling ../string.c
+../string.c:2158:16: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    d = (d>>6) | (~d>>7);
+        ~~~~~~ ^ ~~~~~~~
+../string.c:2192:61: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            s = (const uintptr_t*)(~lowbits & ((uintptr_t)p + lowbits));
+                                               ~~~~~~~~~~~~ ^ ~~~~~~~
+../string.c:2192:45: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            s = (const uintptr_t*)(~lowbits & ((uintptr_t)p + lowbits));
+                                   ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+../string.c:2193:45: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            t = (const uintptr_t*)(~lowbits & (uintptr_t)e);
+                                   ~~~~~~~~ ^ ~~~~~~~~~~~~
+../string.c:2968:57: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        s = (const uintptr_t*)(~lowbits & ((uintptr_t)p + lowbits));
+                                           ~~~~~~~~~~~~ ^ ~~~~~~~
+../string.c:2968:41: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'unsigned __intcap'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        s = (const uintptr_t*)(~lowbits & ((uintptr_t)p + lowbits));
+                               ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+../string.c:2969:41: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        t = (const uintptr_t*)(~lowbits & (uintptr_t)e);
+                               ~~~~~~~~ ^ ~~~~~~~~~~~~
+7 warnings generated.
+compiling ../struct.c
+compiling ../symbol.c
+../symbol.c:150:46: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                                      scope, (VALUE)id);
+                                             ^~~~~~~~~
+../symbol.c:169:66: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                      (int)sizeof(id_types[0]), id_types[scope], (VALUE)id);
+                                                                 ^~~~~~~~~
+../symbol.c:530:31: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                 (VALUE)*key, (VALUE)*value);
+                              ^~~~~~~~~~~~~
+../symbol.c:709:48: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                   rb_builtin_class_name(sym), sym, str);
+                                               ^~~
+4 warnings generated.
+compiling ../thread.c
+In file included from ../thread.c:271:
+../thread_pthread.c:2821:16: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+        return (rb_thread_t *)((size_t)w - offsetof(rb_thread_t, sched.waiting_reason));
+               ^
+../thread.c:766:28: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+               (void *)th, th->locking_mutex);
+                           ^~~~~~~~~~~~~~~~~
+2 warnings generated.
+compiling ../time.c
+compiling ../transcode.c
+compiling ../util.c
+compiling ../variable.c
+compiling ../version.c
+compiling ../vm.c
+In file included from ../vm.c:534:
+../vm_insnhelper.c:6826:21: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        return recv | obj;
+               ~~~~ ^ ~~~
+In file included from ../vm.c:536:
+../vm_exec.c:105:5: warning: format specifies type 'long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+    END_INSNS_DISPATCH();
+    ^~~~~~~~~~~~~~~~~~~~
+../vm_exec.h:121:42: note: expanded from macro 'END_INSNS_DISPATCH'
+      rb_bug("unknown insn: %"PRIdVALUE, GET_CURRENT_INSN());   \
+                            ~~~~~~~~~~~  ^~~~~~~~~~~~~~~~~~
+../vm_insnhelper.h:97:28: note: expanded from macro 'GET_CURRENT_INSN'
+#define GET_CURRENT_INSN() (*GET_PC())
+                           ^~~~~~~~~~~
+In file included from ../vm.c:539:
+../vm_eval.c:405:25: warning: binary expression on capability types 'VALUE' (aka 'unsigned __intcap') and 'VALUE'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+    return (klass >> 3) ^ (VALUE)mid;
+           ~~~~~~~~~~~~ ^ ~~~~~~~~~~
+../vm_eval.c:789:45: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                 mname, type, (void *)recv, flags);
+                                            ^~~~~
+../vm_eval.c:795:48: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                 mname, typestr, (void *)recv, flags);
+                                               ^~~~~
+../vm_eval.c:801:48: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                 mname, typestr, (void *)recv, flags);
+                                               ^~~~~
+6 warnings generated.
+compiling ../vm_backtrace.c
+compiling ../vm_dump.c
+../vm_dump.c:262:53: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+            kprintf("%04d: %08"PRIxVALUE" (%p)", i, env->env[i], (void *)&env->env[i]);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../vm_dump.c:50:42: note: expanded from macro 'kprintf'
+#define kprintf(...) if (fprintf(errout, __VA_ARGS__) < 0) goto error
+                                         ^~~~~~~~~~~
+1 warning generated.
+compiling ../vm_sync.c
+compiling ../vm_trace.c
+compiling ../weakmap.c
+compiling ../prism/api_node.c
+compiling ../prism/api_pack.c
+compiling ../prism/diagnostic.c
+compiling ../prism/encoding.c
+compiling ../prism/extension.c
+compiling ../prism/node.c
+compiling ../prism/options.c
+compiling ../prism/pack.c
+compiling ../prism/prettyprint.c
+compiling ../prism/regexp.c
+compiling ../prism/serialize.c
+compiling ../prism/static_literals.c
+compiling ../prism/token_type.c
+compiling ../prism/util/pm_buffer.c
+compiling ../prism/util/pm_char.c
+compiling ../prism/util/pm_constant_pool.c
+compiling ../prism/util/pm_integer.c
+compiling ../prism/util/pm_list.c
+compiling ../prism/util/pm_memchr.c
+compiling ../prism/util/pm_newline_list.c
+compiling ../prism/util/pm_string.c
+compiling ../prism/util/pm_strncasecmp.c
+compiling ../prism/util/pm_strpbrk.c
+compiling ../prism/prism.c
+compiling ../prism_init.c
+compiling ../coroutine/ucontext/Context.c
+compiling ../enc/ascii.c
+compiling ../enc/us_ascii.c
+compiling ../enc/unicode.c
+compiling ../enc/utf_8.c
+compiling ../enc/trans/newline.c
+compiling ../missing/memcmp.c
+compiling ../missing/close.c
+compiling ../addr2line.c
+../addr2line.c:1946:62: warning: binary expression on capability types 'unsigned __intcap' and 'uintptr_t' (aka 'unsigned __intcap'); it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+            uintptr_t offset = addr - reader->obj->base_addr + reader->obj->vmaddr;
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~
+../addr2line.c:1963:40: warning: binary expression on capability types 'uintptr_t' (aka 'unsigned __intcap') and 'uintptr_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+                lines[i].saddr = saddr + reader->obj->base_addr - reader->obj->vmaddr;
+                                 ~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+compiling ../builtin.c
+compiling ../main.c
+compiling ../dmyext.c
+compiling ../dmyenc.c
+linking static-library libruby-static.a
+generating makefiles ext/configure-ext.mk
+ext/configure-ext.mk unchanged
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+configuring -test-/RUBY_ALIGNOF
+configuring -test-/abi
+configuring -test-/arith_seq/beg_len_step
+configuring -test-/arith_seq/extract
+configuring -test-/array/concat
+configuring -test-/array/resize
+configuring -test-/asan
+configuring -test-/bignum
+configuring -test-/bug-14834
+configuring -test-/bug-3571
+configuring -test-/bug-5832
+configuring -test-/bug_reporter
+configuring -test-/class
+configuring -test-/cxxanyargs
+configuring -test-/debug
+configuring -test-/dln/empty
+configuring -test-/econv
+configuring -test-/ensure_and_callcc
+configuring -test-/enumerator_kw
+configuring -test-/eval
+configuring -test-/exception
+configuring -test-/fatal
+configuring -test-/file
+configuring -test-/float
+configuring -test-/funcall
+configuring -test-/gvl/call_without_gvl
+configuring -test-/hash
+configuring -test-/integer
+configuring -test-/iseq_load
+configuring -test-/iter
+configuring -test-/load/dot.dot
+configuring -test-/load/protect
+configuring -test-/load/resolve_symbol_resolver
+configuring -test-/load/resolve_symbol_target
+configuring -test-/load/stringify_symbols
+configuring -test-/load/stringify_target
+configuring -test-/marshal/compat
+configuring -test-/marshal/internal_ivar
+configuring -test-/marshal/usr
+configuring -test-/memory_status
+configuring -test-/memory_view
+configuring -test-/method
+configuring -test-/notimplement
+configuring -test-/num2int
+configuring -test-/path_to_class
+configuring -test-/popen_deadlock
+configuring -test-/postponed_job
+configuring -test-/printf
+configuring -test-/proc
+configuring -test-/public_header_warnings
+configuring -test-/random
+configuring -test-/rational
+configuring -test-/rb_call_super_kw
+configuring -test-/recursion
+configuring -test-/regexp
+configuring -test-/scan_args
+configuring -test-/st/foreach
+configuring -test-/st/numhash
+configuring -test-/st/update
+configuring -test-/string
+configuring -test-/struct
+configuring -test-/symbol
+configuring -test-/thread/id
+configuring -test-/thread/instrumentation
+configuring -test-/thread/lock_native_thread
+configuring -test-/thread_fd
+configuring -test-/time
+configuring -test-/tracepoint
+configuring -test-/typeddata
+configuring -test-/vm
+configuring -test-/wait
+configuring cgi/escape
+configuring continuation
+configuring coverage
+configuring date
+configuring digest
+configuring digest/bubblebabble
+configuring digest/md5
+configuring digest/rmd160
+configuring digest/sha1
+configuring digest/sha2
+configuring erb/escape
+configuring etc
+configuring fcntl
+configuring fiddle
+configuring io/console
+configuring io/nonblock
+configuring io/wait
+configuring json
+configuring json/generator
+configuring json/parser
+configuring monitor
+configuring objspace
+configuring openssl
+configuring pathname
+configuring psych
+yaml.h not found
+configuring pty
+configuring rbconfig/sizeof
+configuring ripper
+configuring rubyvm
+configuring socket
+configuring stringio
+configuring strscan
+configuring zlib
+configuring bigdecimal-3.1.8/ext/bigdecimal
+configuring debug-1.10.0/ext/debug
+configuring nkf-0.2.0/ext/nkf
+configuring racc-1.8.1/ext/racc/cparse
+configuring rbs-3.8.0/ext/rbs_extension
+configuring syslog-0.2.0/ext/syslog
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+generating makefile exts.mk
+exts.mk unchanged
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/RUBY_ALIGNOF'
+compiling ../../../../ext/-test-/RUBY_ALIGNOF/c.c
+compiling ../../../../ext/-test-/RUBY_ALIGNOF/cpp.cpp
+linking shared-object -test-/RUBY_ALIGNOF.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/RUBY_ALIGNOF'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/arith_seq/beg_len_step'
+compiling ../../../../../ext/-test-/arith_seq/beg_len_step/beg_len_step.c
+linking shared-object -test-/arith_seq/beg_len_step.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/arith_seq/beg_len_step'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/arith_seq/extract'
+compiling ../../../../../ext/-test-/arith_seq/extract/extract.c
+linking shared-object -test-/arith_seq/extract.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/arith_seq/extract'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/array/concat'
+compiling ../../../../../ext/-test-/array/concat/to_ary_concat.c
+linking shared-object -test-/array/to_ary_concat.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/array/concat'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/array/resize'
+compiling ../../../../../ext/-test-/array/resize/resize.c
+linking shared-object -test-/array/resize.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/array/resize'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/asan'
+compiling ../../../../ext/-test-/asan/asan.c
+linking shared-object -test-/asan.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/asan'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bignum'
+compiling ../../../../ext/-test-/bignum/big2str.c
+compiling ../../../../ext/-test-/bignum/bigzero.c
+compiling ../../../../ext/-test-/bignum/div.c
+compiling ../../../../ext/-test-/bignum/init.c
+compiling ../../../../ext/-test-/bignum/intpack.c
+compiling ../../../../ext/-test-/bignum/mul.c
+compiling ../../../../ext/-test-/bignum/str2big.c
+linking shared-object -test-/bignum.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bignum'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-14834'
+compiling ../../../../ext/-test-/bug-14834/bug-14834.c
+linking shared-object -test-/bug_14834.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-14834'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-3571'
+compiling ../../../../ext/-test-/bug-3571/bug.c
+linking shared-object -test-/bug_3571.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-3571'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-5832'
+compiling ../../../../ext/-test-/bug-5832/bug.c
+linking shared-object -test-/bug_5832.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug-5832'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug_reporter'
+compiling ../../../../ext/-test-/bug_reporter/bug_reporter.c
+linking shared-object -test-/bug_reporter.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/bug_reporter'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/class'
+compiling ../../../../ext/-test-/class/class2name.c
+compiling ../../../../ext/-test-/class/init.c
+linking shared-object -test-/class.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/class'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/cxxanyargs'
+compiling ../../../../ext/-test-/cxxanyargs/cxxanyargs.cpp
+linking shared-object -test-/cxxanyargs.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/cxxanyargs'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/debug'
+compiling ../../../../ext/-test-/debug/init.c
+compiling ../../../../ext/-test-/debug/inspector.c
+compiling ../../../../ext/-test-/debug/profile_frames.c
+linking shared-object -test-/debug.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/debug'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/dln/empty'
+compiling ../../../../../ext/-test-/dln/empty/empty.c
+linking shared-object -test-/dln/empty.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/dln/empty'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/econv'
+compiling ../../../../ext/-test-/econv/append.c
+compiling ../../../../ext/-test-/econv/init.c
+linking shared-object -test-/econv.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/econv'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/ensure_and_callcc'
+compiling ../../../../ext/-test-/ensure_and_callcc/ensure_and_callcc.c
+linking shared-object -test-/ensure_and_callcc.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/ensure_and_callcc'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/enumerator_kw'
+compiling ../../../../ext/-test-/enumerator_kw/enumerator_kw.c
+linking shared-object -test-/enumerator_kw.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/enumerator_kw'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/eval'
+compiling ../../../../ext/-test-/eval/eval.c
+linking shared-object -test-/eval.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/eval'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/exception'
+compiling ../../../../ext/-test-/exception/dataerror.c
+compiling ../../../../ext/-test-/exception/enc_raise.c
+compiling ../../../../ext/-test-/exception/ensured.c
+compiling ../../../../ext/-test-/exception/init.c
+linking shared-object -test-/exception.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/exception'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/fatal'
+compiling ../../../../ext/-test-/fatal/init.c
+compiling ../../../../ext/-test-/fatal/invalid.c
+../../../../ext/-test-/fatal/invalid.c:14:14: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    return (*(func_type)NUM2PTR(address))(obj);
+             ^
+../../../../ext/-test-/fatal/invalid.c:20:13: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    return *(VALUE *)NUM2PTR(address) == obj ? Qtrue : Qfalse;
+            ^
+2 warnings generated.
+compiling ../../../../ext/-test-/fatal/rb_fatal.c
+linking shared-object -test-/fatal.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/fatal'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/file'
+compiling ../../../../ext/-test-/file/fs.c
+compiling ../../../../ext/-test-/file/init.c
+compiling ../../../../ext/-test-/file/newline_conv.c
+compiling ../../../../ext/-test-/file/stat.c
+linking shared-object -test-/file.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/file'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/float'
+compiling ../../../../ext/-test-/float/init.c
+compiling ../../../../ext/-test-/float/nextafter.c
+linking shared-object -test-/float.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/float'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/funcall'
+compiling ../../../../ext/-test-/funcall/funcall.c
+linking shared-object -test-/funcall.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/funcall'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/gvl/call_without_gvl'
+compiling ../../../../../ext/-test-/gvl/call_without_gvl/call_without_gvl.c
+linking shared-object -test-/gvl/call_without_gvl.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/gvl/call_without_gvl'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/hash'
+compiling ../../../../ext/-test-/hash/delete.c
+compiling ../../../../ext/-test-/hash/init.c
+linking shared-object -test-/hash.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/hash'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/integer'
+compiling ../../../../ext/-test-/integer/core_ext.c
+compiling ../../../../ext/-test-/integer/init.c
+compiling ../../../../ext/-test-/integer/my_integer.c
+linking shared-object -test-/integer.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/integer'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/iseq_load'
+compiling ../../../../ext/-test-/iseq_load/iseq_load.c
+linking shared-object -test-/iseq_load.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/iseq_load'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/iter'
+compiling ../../../../ext/-test-/iter/break.c
+compiling ../../../../ext/-test-/iter/init.c
+compiling ../../../../ext/-test-/iter/yield.c
+linking shared-object -test-/iter.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/iter'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/dot.dot'
+compiling ../../../../../ext/-test-/load/dot.dot/dot.dot.c
+linking shared-object -test-/load/dot.dot.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/dot.dot'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/protect'
+compiling ../../../../../ext/-test-/load/protect/protect.c
+linking shared-object -test-/load/protect.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/protect'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/resolve_symbol_resolver'
+compiling ../../../../../ext/-test-/load/resolve_symbol_resolver/resolve_symbol_resolver.c
+linking shared-object -test-/load/resolve_symbol_resolver.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/resolve_symbol_resolver'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/resolve_symbol_target'
+compiling ../../../../../ext/-test-/load/resolve_symbol_target/resolve_symbol_target.c
+linking shared-object -test-/load/resolve_symbol_target.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/resolve_symbol_target'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/stringify_symbols'
+compiling ../../../../../ext/-test-/load/stringify_symbols/stringify_symbols.c
+linking shared-object -test-/load/stringify_symbols.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/stringify_symbols'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/stringify_target'
+compiling ../../../../../ext/-test-/load/stringify_target/stringify_target.c
+linking shared-object -test-/load/stringify_target.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/load/stringify_target'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/compat'
+compiling ../../../../../ext/-test-/marshal/compat/usrcompat.c
+linking shared-object -test-/marshal/compat.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/compat'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/internal_ivar'
+compiling ../../../../../ext/-test-/marshal/internal_ivar/internal_ivar.c
+linking shared-object -test-/marshal/internal_ivar.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/internal_ivar'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/usr'
+compiling ../../../../../ext/-test-/marshal/usr/usrmarshal.c
+linking shared-object -test-/marshal/usr.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/marshal/usr'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/memory_view'
+compiling ../../../../ext/-test-/memory_view/memory_view.c
+linking shared-object -test-/memory_view.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/memory_view'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/method'
+compiling ../../../../ext/-test-/method/arity.c
+compiling ../../../../ext/-test-/method/init.c
+linking shared-object -test-/method.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/method'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/notimplement'
+compiling ../../../../ext/-test-/notimplement/bug.c
+linking shared-object -test-/notimplement.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/notimplement'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/num2int'
+compiling ../../../../ext/-test-/num2int/num2int.c
+linking shared-object -test-/num2int.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/num2int'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/path_to_class'
+compiling ../../../../ext/-test-/path_to_class/path_to_class.c
+linking shared-object -test-/path_to_class.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/path_to_class'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/postponed_job'
+compiling ../../../../ext/-test-/postponed_job/postponed_job.c
+linking shared-object -test-/postponed_job.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/postponed_job'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/printf'
+compiling ../../../../ext/-test-/printf/printf.c
+linking shared-object -test-/printf.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/printf'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/proc'
+compiling ../../../../ext/-test-/proc/init.c
+compiling ../../../../ext/-test-/proc/receiver.c
+compiling ../../../../ext/-test-/proc/super.c
+linking shared-object -test-/proc.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/proc'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/random'
+compiling ../../../../ext/-test-/random/bad_version.c
+compiling ../../../../ext/-test-/random/init.c
+compiling ../../../../ext/-test-/random/loop.c
+linking shared-object -test-/random.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/random'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/rational'
+compiling ../../../../ext/-test-/rational/rat.c
+linking shared-object -test-/rational.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/rational'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/rb_call_super_kw'
+compiling ../../../../ext/-test-/rb_call_super_kw/rb_call_super_kw.c
+linking shared-object -test-/rb_call_super_kw.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/rb_call_super_kw'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/recursion'
+compiling ../../../../ext/-test-/recursion/recursion.c
+linking shared-object -test-/recursion.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/recursion'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/regexp'
+compiling ../../../../ext/-test-/regexp/init.c
+compiling ../../../../ext/-test-/regexp/parse_depth_limit.c
+linking shared-object -test-/regexp.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/regexp'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/scan_args'
+compiling ../../../../ext/-test-/scan_args/scan_args.c
+linking shared-object -test-/scan_args.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/scan_args'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/foreach'
+compiling ../../../../../ext/-test-/st/foreach/foreach.c
+../../../../../ext/-test-/st/foreach/foreach.c:27:72: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        rb_bug("unexpected key: %"PRIuVALUE" (expected %"PRIuVALUE")", (VALUE)key, (VALUE)c->nr);
+                                ~~~~~~~~~~~                            ^~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:27:84: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        rb_bug("unexpected key: %"PRIuVALUE" (expected %"PRIuVALUE")", (VALUE)key, (VALUE)c->nr);
+                                                       ~~~~~~~~~~~                 ^~~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:30:72: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        rb_bug("unexpected val: %"PRIuVALUE" (expected %"PRIuVALUE")", (VALUE)val, (VALUE)c->nr);
+                                ~~~~~~~~~~~                            ^~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:30:84: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+        rb_bug("unexpected val: %"PRIuVALUE" (expected %"PRIuVALUE")", (VALUE)val, (VALUE)c->nr);
+                                                       ~~~~~~~~~~~                 ^~~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:66:79: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                rb_bug("unexpected value deleted: %"PRIuVALUE" (expected 0)", (VALUE)v);
+                                                  ~~~~~~~~~~~                 ^~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:93:71: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+            rb_bug("mismatched iteration: %"PRIuVALUE" (expected 1)", (VALUE)c.nr);
+                                          ~~~~~~~~~~~                 ^~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:98:17: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                (VALUE)c.nr, (VALUE)expect_size);
+                ^~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:98:30: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                (VALUE)c.nr, (VALUE)expect_size);
+                             ^~~~~~~~~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:126:79: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                rb_bug("unexpected value deleted: %"PRIuVALUE" (expected 0)", (VALUE)v);
+                                                  ~~~~~~~~~~~                 ^~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:154:71: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+            rb_bug("mismatched iteration: %"PRIuVALUE" (expected 1)", (VALUE)c.nr);
+                                          ~~~~~~~~~~~                 ^~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:159:17: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                (VALUE)c.nr, (VALUE)expect_size);
+                ^~~~~~~~~~~
+../../../../../ext/-test-/st/foreach/foreach.c:159:30: warning: format specifies type 'unsigned long' but the argument has type 'VALUE' (aka 'unsigned __intcap') [-Wformat]
+                (VALUE)c.nr, (VALUE)expect_size);
+                             ^~~~~~~~~~~~~~~~~~
+12 warnings generated.
+linking shared-object -test-/st/foreach.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/foreach'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/numhash'
+compiling ../../../../../ext/-test-/st/numhash/numhash.c
+linking shared-object -test-/st/numhash.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/numhash'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/update'
+compiling ../../../../../ext/-test-/st/update/update.c
+linking shared-object -test-/st/update.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/st/update'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/string'
+compiling ../../../../ext/-test-/string/capacity.c
+compiling ../../../../ext/-test-/string/coderange.c
+compiling ../../../../ext/-test-/string/cstr.c
+compiling ../../../../ext/-test-/string/ellipsize.c
+compiling ../../../../ext/-test-/string/enc_associate.c
+compiling ../../../../ext/-test-/string/enc_dummy.c
+compiling ../../../../ext/-test-/string/enc_str_buf_cat.c
+compiling ../../../../ext/-test-/string/fstring.c
+compiling ../../../../ext/-test-/string/init.c
+compiling ../../../../ext/-test-/string/modify.c
+compiling ../../../../ext/-test-/string/new.c
+compiling ../../../../ext/-test-/string/nofree.c
+compiling ../../../../ext/-test-/string/normalize.c
+compiling ../../../../ext/-test-/string/qsort.c
+compiling ../../../../ext/-test-/string/rb_interned_str.c
+compiling ../../../../ext/-test-/string/rb_str_dup.c
+compiling ../../../../ext/-test-/string/set_len.c
+linking shared-object -test-/string.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/string'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/struct'
+compiling ../../../../ext/-test-/struct/data.c
+compiling ../../../../ext/-test-/struct/duplicate.c
+compiling ../../../../ext/-test-/struct/init.c
+compiling ../../../../ext/-test-/struct/len.c
+compiling ../../../../ext/-test-/struct/member.c
+linking shared-object -test-/struct.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/struct'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/symbol'
+compiling ../../../../ext/-test-/symbol/init.c
+compiling ../../../../ext/-test-/symbol/type.c
+linking shared-object -test-/symbol.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/symbol'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread/instrumentation'
+compiling ../../../../../ext/-test-/thread/instrumentation/instrumentation.c
+../../../../../ext/-test-/thread/instrumentation/instrumentation.c:144:9: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+        (void *)RTEST(strict)
+        ^
+1 warning generated.
+linking shared-object -test-/thread/instrumentation.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread/instrumentation'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread/lock_native_thread'
+compiling ../../../../../ext/-test-/thread/lock_native_thread/lock_native_thread.c
+linking shared-object -test-/thread/lock_native_thread.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread/lock_native_thread'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread_fd'
+compiling ../../../../ext/-test-/thread_fd/thread_fd.c
+linking shared-object -test-/thread_fd.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/thread_fd'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/time'
+compiling ../../../../ext/-test-/time/init.c
+compiling ../../../../ext/-test-/time/leap_second.c
+compiling ../../../../ext/-test-/time/new.c
+linking shared-object -test-/time.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/time'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/tracepoint'
+compiling ../../../../ext/-test-/tracepoint/gc_hook.c
+compiling ../../../../ext/-test-/tracepoint/tracepoint.c
+linking shared-object -test-/tracepoint.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/tracepoint'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/typeddata'
+compiling ../../../../ext/-test-/typeddata/typeddata.c
+linking shared-object -test-/typeddata.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/typeddata'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/vm'
+compiling ../../../../ext/-test-/vm/at_exit.c
+linking shared-object -test-/vm/at_exit.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/vm'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/wait'
+compiling ../../../../ext/-test-/wait/wait.c
+linking shared-object -test-/wait.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/-test-/wait'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/cgi/escape'
+compiling ../../../../ext/cgi/escape/escape.c
+linking shared-object cgi/escape.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/cgi/escape'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/continuation'
+compiling ../../../ext/continuation/continuation.c
+linking shared-object continuation.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/continuation'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/coverage'
+compiling ../../../ext/coverage/coverage.c
+linking shared-object coverage.so
+installing default coverage libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/coverage'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/date'
+compiling ../../../ext/date/date_core.c
+compiling ../../../ext/date/date_parse.c
+compiling ../../../ext/date/date_strftime.c
+compiling ../../../ext/date/date_strptime.c
+linking shared-object date_core.so
+installing default date_core libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/date'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest'
+compiling ../../../ext/digest/digest.c
+linking shared-object digest.so
+installing digest libraries
+installing default digest libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/bubblebabble'
+compiling ../../../../ext/digest/bubblebabble/bubblebabble.c
+linking shared-object digest/bubblebabble.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/bubblebabble'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/md5'
+compiling ../../../../ext/digest/md5/md5init.c
+compiling ../../../../ext/digest/md5/md5.c
+linking shared-object digest/md5.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/md5'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/rmd160'
+compiling ../../../../ext/digest/rmd160/rmd160init.c
+compiling ../../../../ext/digest/rmd160/rmd160.c
+linking shared-object digest/rmd160.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/rmd160'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/sha1'
+compiling ../../../../ext/digest/sha1/sha1init.c
+compiling ../../../../ext/digest/sha1/sha1.c
+linking shared-object digest/sha1.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/sha1'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/sha2'
+compiling ../../../../ext/digest/sha2/sha2init.c
+compiling ../../../../ext/digest/sha2/sha2.c
+linking shared-object digest/sha2.so
+installing default sha2 libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/digest/sha2'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/erb/escape'
+compiling ../../../../ext/erb/escape/escape.c
+linking shared-object erb/escape.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/erb/escape'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/etc'
+compiling ../../../ext/etc/etc.c
+linking shared-object etc.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/etc'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/fcntl'
+compiling ../../../ext/fcntl/fcntl.c
+linking shared-object fcntl.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/fcntl'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/console'
+compiling ../../../../ext/io/console/console.c
+linking shared-object io/console.so
+installing default console libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/console'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/nonblock'
+compiling ../../../../ext/io/nonblock/nonblock.c
+linking shared-object io/nonblock.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/nonblock'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/wait'
+compiling ../../../../ext/io/wait/wait.c
+linking shared-object io/wait.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/io/wait'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json'
+installing default libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json/generator'
+compiling ../../../../ext/json/generator/generator.c
+linking shared-object json/ext/generator.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json/generator'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json/parser'
+compiling ../../../../ext/json/parser/parser.c
+linking shared-object json/ext/parser.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/json/parser'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/monitor'
+compiling ../../../ext/monitor/monitor.c
+linking shared-object monitor.so
+installing default monitor libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/monitor'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/objspace'
+compiling ../../../ext/objspace/object_tracing.c
+compiling ../../../ext/objspace/objspace.c
+compiling ../../../ext/objspace/objspace_dump.c
+linking shared-object objspace.so
+installing default objspace libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/objspace'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/openssl'
+compiling ../../../ext/openssl/openssl_missing.c
+compiling ../../../ext/openssl/ossl.c
+compiling ../../../ext/openssl/ossl_asn1.c
+compiling ../../../ext/openssl/ossl_bio.c
+compiling ../../../ext/openssl/ossl_bn.c
+compiling ../../../ext/openssl/ossl_cipher.c
+compiling ../../../ext/openssl/ossl_config.c
+compiling ../../../ext/openssl/ossl_digest.c
+compiling ../../../ext/openssl/ossl_engine.c
+compiling ../../../ext/openssl/ossl_hmac.c
+compiling ../../../ext/openssl/ossl_kdf.c
+compiling ../../../ext/openssl/ossl_ns_spki.c
+compiling ../../../ext/openssl/ossl_ocsp.c
+compiling ../../../ext/openssl/ossl_pkcs12.c
+compiling ../../../ext/openssl/ossl_pkcs7.c
+compiling ../../../ext/openssl/ossl_pkey.c
+compiling ../../../ext/openssl/ossl_pkey_dh.c
+compiling ../../../ext/openssl/ossl_pkey_dsa.c
+compiling ../../../ext/openssl/ossl_pkey_ec.c
+compiling ../../../ext/openssl/ossl_pkey_rsa.c
+compiling ../../../ext/openssl/ossl_provider.c
+compiling ../../../ext/openssl/ossl_rand.c
+compiling ../../../ext/openssl/ossl_ssl.c
+compiling ../../../ext/openssl/ossl_ssl_session.c
+compiling ../../../ext/openssl/ossl_ts.c
+compiling ../../../ext/openssl/ossl_x509.c
+compiling ../../../ext/openssl/ossl_x509attr.c
+compiling ../../../ext/openssl/ossl_x509cert.c
+compiling ../../../ext/openssl/ossl_x509crl.c
+compiling ../../../ext/openssl/ossl_x509ext.c
+compiling ../../../ext/openssl/ossl_x509name.c
+compiling ../../../ext/openssl/ossl_x509req.c
+compiling ../../../ext/openssl/ossl_x509revoked.c
+compiling ../../../ext/openssl/ossl_x509store.c
+linking shared-object openssl.so
+installing default openssl libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/openssl'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/pathname'
+compiling ../../../ext/pathname/pathname.c
+linking shared-object pathname.so
+installing default pathname libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/pathname'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/pty'
+compiling ../../../ext/pty/pty.c
+linking shared-object pty.so
+installing default pty libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/pty'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/rbconfig/sizeof'
+compiling ../../../../ext/rbconfig/sizeof/sizes.c
+compiling ../../../../ext/rbconfig/sizeof/limits.c
+linking shared-object rbconfig/sizeof.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/rbconfig/sizeof'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/ripper'
+compiling ../../../ext/ripper/eventids1.c
+compiling ../../../ext/ripper/eventids2.c
+compiling ../../../ext/ripper/ripper.c
+ripper.y:1973:29: warning: binary expression on capability types 'st_index_t' (aka 'unsigned __intcap') and 'st_index_t'; it is not clear which should be used as the source of provenance; currently provenance is inherited from the left-hand side [-Wcheri-provenance]
+        hash = ((hash << 5) + hash) + str[i];
+                ~~~~~~~~~~~ ^ ~~~~
+1 warning generated.
+compiling ../../../ext/ripper/ripper_init.c
+linking shared-object ripper.so
+installing default ripper libraries
+checking ../../../parse.y and ../../../ext/ripper/eventids2.c
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/ripper'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/rubyvm'
+installing default libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/rubyvm'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/socket'
+compiling ../../../ext/socket/init.c
+compiling ../../../ext/socket/constants.c
+compiling ../../../ext/socket/basicsocket.c
+compiling ../../../ext/socket/socket.c
+compiling ../../../ext/socket/ipsocket.c
+compiling ../../../ext/socket/tcpsocket.c
+compiling ../../../ext/socket/tcpserver.c
+compiling ../../../ext/socket/sockssocket.c
+compiling ../../../ext/socket/udpsocket.c
+compiling ../../../ext/socket/unixsocket.c
+compiling ../../../ext/socket/unixserver.c
+compiling ../../../ext/socket/option.c
+compiling ../../../ext/socket/ancdata.c
+../../../ext/socket/ancdata.c:1359:12: warning: cast from provenance-free integer type to pointer type will give pointer that can not be dereferenced [-Wcheri-capability-misuse]
+    return (void *)rsock_recvmsg(args->fd, args->msg, flags);
+           ^
+1 warning generated.
+compiling ../../../ext/socket/raddrinfo.c
+compiling ../../../ext/socket/ifaddr.c
+linking shared-object socket.so
+installing default socket libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/socket'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/stringio'
+compiling ../../../ext/stringio/stringio.c
+linking shared-object stringio.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/stringio'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/strscan'
+compiling ../../../ext/strscan/strscan.c
+linking shared-object strscan.so
+installing default strscan libraries
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/strscan'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/zlib'
+compiling ../../../ext/zlib/zlib.c
+linking shared-object zlib.so
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/ext/zlib'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/bigdecimal-3.1.8/ext/bigdecimal'
+compiling ../../../../../../.bundle/gems/bigdecimal-3.1.8/ext/bigdecimal/bigdecimal.c
+compiling ../../../../../../.bundle/gems/bigdecimal-3.1.8/ext/bigdecimal/missing.c
+linking shared-object bigdecimal.so
+ln -sfT ../../../../.bundle/gems/bigdecimal-3.1.8/lib ../../../../../.bundle/gems/bigdecimal-3.1.8/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/bigdecimal-3.1.8/ext/bigdecimal'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/debug-1.10.0/ext/debug'
+compiling ../../../../../../.bundle/gems/debug-1.10.0/ext/debug/debug.c
+compiling ../../../../../../.bundle/gems/debug-1.10.0/ext/debug/iseq_collector.c
+linking shared-object debug/debug.so
+ln -sfT ../../../../.bundle/gems/debug-1.10.0/lib ../../../../../.bundle/gems/debug-1.10.0/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/debug-1.10.0/ext/debug'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/nkf-0.2.0/ext/nkf'
+compiling ../../../../../../.bundle/gems/nkf-0.2.0/ext/nkf/nkf.c
+linking shared-object nkf.so
+ln -sfT ../../../../.bundle/gems/nkf-0.2.0/lib ../../../../../.bundle/gems/nkf-0.2.0/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/nkf-0.2.0/ext/nkf'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/racc-1.8.1/ext/racc/cparse'
+compiling ../../../../../../../.bundle/gems/racc-1.8.1/ext/racc/cparse/cparse.c
+linking shared-object racc/cparse.so
+ln -sfT ../../../../.bundle/gems/racc-1.8.1/lib ../../../../../../.bundle/gems/racc-1.8.1/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/racc-1.8.1/ext/racc/cparse'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/rbs-3.8.0/ext/rbs_extension'
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/../../src/constants.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/../../src/ruby_objs.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/lexer.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/lexstate.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/location.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/main.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/parser.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/parserstate.c
+compiling ../../../../../../.bundle/gems/rbs-3.8.0/ext/rbs_extension/unescape.c
+linking shared-object rbs_extension.so
+ln -sfT ../../../../.bundle/gems/rbs-3.8.0/lib ../../../../../.bundle/gems/rbs-3.8.0/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/rbs-3.8.0/ext/rbs_extension'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/syslog-0.2.0/ext/syslog'
+compiling ../../../../../../.bundle/gems/syslog-0.2.0/ext/syslog/syslog.c
+linking shared-object syslog_ext.so
+ln -sfT ../../../../.bundle/gems/syslog-0.2.0/lib ../../../../../.bundle/gems/syslog-0.2.0/lib
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build/.bundle/gems/syslog-0.2.0/ext/syslog'
+make[2]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+file2lastrev.rb: does not seem to be under a vcs: .
+../revision.h unchanged
+generating riscv64-freebsd-fake.rb
+riscv64-freebsd-fake.rb updated
+linking ruby
+make[2]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+*** Following extensions are not compiled:
+fiddle:
+	Could not be configured. It will not be installed.
+	/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/ext/fiddle/extconf.rb:86: missing libffi. Please install libffi or use --with-libffi-source-dir with libffi source location.
+	Check ext/fiddle/mkmf.log for more details.
+psych:
+	Could not be configured. It will not be installed.
+	Check ext/psych/mkmf.log for more details.
+*** Fix the problems, then remove these directories and try again if you want.
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+making enc
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+compiling ../enc/encdb.c
+linking encoding encdb.so
+compiling ../enc/big5.c
+linking encoding big5.so
+compiling ../enc/cesu_8.c
+linking encoding cesu_8.so
+compiling ../enc/cp949.c
+linking encoding cp949.so
+compiling ../enc/emacs_mule.c
+linking encoding emacs_mule.so
+compiling ../enc/euc_jp.c
+linking encoding euc_jp.so
+compiling ../enc/euc_kr.c
+linking encoding euc_kr.so
+compiling ../enc/euc_tw.c
+linking encoding euc_tw.so
+compiling ../enc/gb2312.c
+linking encoding gb2312.so
+compiling ../enc/gb18030.c
+linking encoding gb18030.so
+compiling ../enc/gbk.c
+linking encoding gbk.so
+compiling ../enc/iso_8859_1.c
+linking encoding iso_8859_1.so
+compiling ../enc/iso_8859_2.c
+linking encoding iso_8859_2.so
+compiling ../enc/iso_8859_3.c
+linking encoding iso_8859_3.so
+compiling ../enc/iso_8859_4.c
+linking encoding iso_8859_4.so
+compiling ../enc/iso_8859_5.c
+linking encoding iso_8859_5.so
+compiling ../enc/iso_8859_6.c
+linking encoding iso_8859_6.so
+compiling ../enc/iso_8859_7.c
+linking encoding iso_8859_7.so
+compiling ../enc/iso_8859_8.c
+linking encoding iso_8859_8.so
+compiling ../enc/iso_8859_9.c
+linking encoding iso_8859_9.so
+compiling ../enc/iso_8859_10.c
+linking encoding iso_8859_10.so
+compiling ../enc/iso_8859_11.c
+linking encoding iso_8859_11.so
+compiling ../enc/iso_8859_13.c
+linking encoding iso_8859_13.so
+compiling ../enc/iso_8859_14.c
+linking encoding iso_8859_14.so
+compiling ../enc/iso_8859_15.c
+linking encoding iso_8859_15.so
+compiling ../enc/iso_8859_16.c
+linking encoding iso_8859_16.so
+compiling ../enc/koi8_r.c
+linking encoding koi8_r.so
+compiling ../enc/koi8_u.c
+linking encoding koi8_u.so
+compiling ../enc/shift_jis.c
+linking encoding shift_jis.so
+compiling ../enc/utf_16be.c
+linking encoding utf_16be.so
+compiling ../enc/utf_16le.c
+linking encoding utf_16le.so
+compiling ../enc/utf_32be.c
+linking encoding utf_32be.so
+compiling ../enc/utf_32le.c
+linking encoding utf_32le.so
+compiling ../enc/windows_31j.c
+linking encoding windows_31j.so
+compiling ../enc/windows_1250.c
+linking encoding windows_1250.so
+compiling ../enc/windows_1251.c
+linking encoding windows_1251.so
+compiling ../enc/windows_1252.c
+linking encoding windows_1252.so
+compiling ../enc/windows_1253.c
+linking encoding windows_1253.so
+compiling ../enc/windows_1254.c
+linking encoding windows_1254.so
+compiling ../enc/windows_1257.c
+linking encoding windows_1257.so
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+making trans
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+compiling ../enc/trans/transdb.c
+linking transcoder transdb.so
+compiling ../enc/trans/big5.c
+linking transcoder big5.so
+compiling ../enc/trans/cesu_8.c
+linking transcoder cesu_8.so
+compiling ../enc/trans/chinese.c
+linking transcoder chinese.so
+compiling ../enc/trans/ebcdic.c
+linking transcoder ebcdic.so
+compiling ../enc/trans/emoji.c
+linking transcoder emoji.so
+compiling ../enc/trans/emoji_iso2022_kddi.c
+linking transcoder emoji_iso2022_kddi.so
+compiling ../enc/trans/emoji_sjis_docomo.c
+linking transcoder emoji_sjis_docomo.so
+compiling ../enc/trans/emoji_sjis_kddi.c
+linking transcoder emoji_sjis_kddi.so
+compiling ../enc/trans/emoji_sjis_softbank.c
+linking transcoder emoji_sjis_softbank.so
+compiling ../enc/trans/escape.c
+linking transcoder escape.so
+compiling ../enc/trans/gb18030.c
+linking transcoder gb18030.so
+compiling ../enc/trans/gbk.c
+linking transcoder gbk.so
+compiling ../enc/trans/iso2022.c
+linking transcoder iso2022.so
+compiling ../enc/trans/japanese.c
+linking transcoder japanese.so
+compiling ../enc/trans/japanese_euc.c
+linking transcoder japanese_euc.so
+compiling ../enc/trans/japanese_sjis.c
+linking transcoder japanese_sjis.so
+compiling ../enc/trans/korean.c
+linking transcoder korean.so
+compiling ../enc/trans/single_byte.c
+linking transcoder single_byte.so
+compiling ../enc/trans/utf8_mac.c
+linking transcoder utf8_mac.so
+compiling ../enc/trans/utf_16_32.c
+linking transcoder utf_16_32.so
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+making encs
+make[1]: Entering directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'
+make[1]: Nothing to be done for 'encs'.
+make[1]: Leaving directory '/cheruby-purecap/src/output/rootfs-riscv64-purecap/research/ruby-3.4.1/build'

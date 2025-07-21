@@ -1,0 +1,58 @@
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./norevoke.sh
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./ruby --disable=gems  "../bootstraptest/
+runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable
+-gems"
+2025-06-15 08:14:24 +0000
+Driver is ruby 3.4.1 (2025-06-14 revision 742e381c9f) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.1 (2025-06-14 revision 742e381c9f) +PRISM [riscv64-freebsd]
+
+test_attr.rb              PASS 3
+test_autoload.rb          PASS 8
+test_block.rb             PASS 58
+test_class.rb             PASS 48
+test_constant_cache.rb    PASS 10
+test_env.rb               PASS 2
+#169 test_eval.rb:348:
+     hash = {}
+     ("aaaa".."matz").each_with_index do |s, i|
+       hash[s] = i
+     end
+     begin
+       eval "class C; @@h = #{hash.inspect}; end"
+     end
+  #=> killed by signal 34  [ruby-core:25714]
+test_eval.rb              FAIL 1/49
+test_exception.rb         PASS 34
+test_fiber.rb             PASS 6
+test_finalizer.rb         PASS 2
+test_flip.rb              PASS 1
+test_flow.rb              PASS 62
+test_fork.rb              PASS 5
+test_gc.rb                PASS 2
+test_insns.rb             PASS 393
+test_io.rb                PASS 6
+test_jump.rb              PASS 29
+test_literal.rb           PASS 157
+test_literal_suffix.rb    PASS 48
+test_load.rb              PASS 2
+test_marshal.rb           PASS 1
+test_massign.rb           PASS 34
+test_method.rb            PASS 247
+test_objectspace.rb       PASS 6
+test_proc.rb              PASS 37
+test_ractor.rb            PASS 119
+test_rjit.rb              PASS 7
+test_string.rb            PASS 1
+test_struct.rb            PASS 1
+test_syntax.rb            PASS 164
+test_thread.rb            PASS 50
+test_yjit.rb              PASS 355
+test_yjit_30k_ifelse.rb   PASS 1
+test_yjit_30k_methods.rb  PASS 1
+test_yjit_rust_port.rb    PASS 38
+
+Finished in 9235.99 sec
+
+Fiber count: 10000 (skipping)
+FAIL 1/1987 tests failed
+root@cheribsd-riscv64-purecap:~/ruby-3.4.1/build # ./ruby --disable=gems  "../bootstraptest/
