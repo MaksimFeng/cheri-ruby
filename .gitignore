@@ -63,7 +63,7 @@ lcov*.info
 /*_prelude.c
 /.downloaded-cache
 /.top-enc.mk
-# /build*/
+/build*/
 /COPYING.LIB
 /ChangeLog
 /Doxyfile
