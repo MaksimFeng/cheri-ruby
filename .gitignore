@@ -49,7 +49,7 @@ y.tab.c
 *.gcda
 *.gcno
 *.gcov
-*.vscode
+# *.vscode
 !misc/.vscode
 lcov*.info
 
