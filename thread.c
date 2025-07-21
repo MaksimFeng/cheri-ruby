@@ -5162,6 +5162,8 @@ recursive_check(VALUE list, VALUE obj, VALUE paired_obj_id)
 #elif SIZEOF_LONG_LONG == SIZEOF_VOIDP
   #define OBJ_ID_EQL(obj_id, other) (RB_BIGNUM_TYPE_P((obj_id)) ? \
     rb_big_eql((obj_id), (other)) : ((obj_id) == (other)))
+#else
+  #define OBJ_ID_EQL(obj_id, other) ((obj_id) == (other))
 #endif
 
     VALUE pair_list = rb_hash_lookup2(list, obj, Qundef);

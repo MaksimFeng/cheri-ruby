@@ -1806,6 +1806,8 @@ id2ref(VALUE objid)
 #define NUM2PTR(x) NUM2ULONG(x)
 #elif SIZEOF_LONG_LONG == SIZEOF_VOIDP
 #define NUM2PTR(x) NUM2ULL(x)
+#else
+#define NUM2PTR(x) NUM2ULONG(x)
 #endif
     objid = rb_to_int(objid);
     if (FIXNUM_P(objid) || rb_big_size(objid) <= SIZEOF_VOIDP) {
@@ -1869,7 +1871,7 @@ nonspecial_obj_id(void *_objspace, VALUE obj)
 #elif SIZEOF_LONG_LONG == SIZEOF_VOIDP
     return LL2NUM((SIGNED_VALUE)(obj) / 2);
 #else
-# error not supported
+    return (VALUE)((SIGNED_VALUE)(obj)|FIXNUM_FLAG);
 #endif
 }
 

@@ -102,6 +102,8 @@ numhash_update(VALUE self, VALUE key)
 # define ST2NUM(x) ULONG2NUM(x)
 #elif SIZEOF_LONG_LONG == SIZEOF_VOIDP
 # define ST2NUM(x) ULL2NUM(x)
+#else
+# define ST2NUM(x) ULONG2NUM(x)
 #endif
 
 static VALUE
