@@ -28,3 +28,6 @@ optflags="-O0 -fno-omit-frame-pointer"
 /usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
     i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.1"
+
+# basic test runner 
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../basictest/runner.rb" --run-opt=--disable-gems
