@@ -2158,7 +2158,7 @@ count_objects(int argc, VALUE *argv, VALUE os)
     return hash;
 }
 
-#define SET_STACK_END SET_MACHINE_STACK_END(&ec->machine.stack_end)
+#define SET_STACK_END SET_MACHINE_STACK_END(&ec->machine.stack_end, ec->machine.stack_start)
 
 #define STACK_START (ec->machine.stack_start)
 #define STACK_END (ec->machine.stack_end)
@@ -2178,7 +2178,7 @@ int
 ruby_get_stack_grow_direction(volatile VALUE *addr)
 {
     VALUE *end;
-    SET_MACHINE_STACK_END(&end);
+    // SET_MACHINE_STACK_END(&end);
 
     if (end > addr) return ruby_stack_grow_direction = 1;
     return ruby_stack_grow_direction = -1;
