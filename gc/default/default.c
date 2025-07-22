@@ -370,7 +370,7 @@ struct RMoved {
 
 #define RMOVED(obj) ((struct RMoved *)(obj))
 
-typedef uintptr_t bits_t;
+typedef ULVALUE bits_t;
 enum {
     BITS_SIZE = sizeof(bits_t),
     BITS_BITLENGTH = ( BITS_SIZE * CHAR_BIT )
