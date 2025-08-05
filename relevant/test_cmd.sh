@@ -1,26 +1,21 @@
 # target
-Preparing-test-bundled-gems
-#
-: 
-#
-# target
 btest
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 : 
-exec /usr/bin/ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./x86_64-linux-fake --disable-gems"   
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems"   
 :
 #
 # target
 btest-bruby
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -37,16 +32,16 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
-exec /usr/bin/ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
 :
 #
 # target
 btest-ruby
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -63,7 +58,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
 :
@@ -72,7 +67,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 install-for-test-bundled-gems
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -89,22 +84,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -218,7 +213,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -670,7 +665,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -678,17 +673,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -716,21 +711,6 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-#
-# target
-no-btest
-#
-make: Nothing to be done for 'no-btest'.
-#
-# target
-no-btest-ruby
-#
-make: Nothing to be done for 'no-btest-ruby'.
-#
-# target
-no-install-for-test-bundled-gems
-#
-make: Nothing to be done for 'no-install-for-test-bundled-gems'.
 #
 # target
 no-test-all
@@ -751,36 +731,11 @@ echo > /dev/null
 :
 #
 # target
-no-test-basic
-#
-make: Nothing to be done for 'no-test-basic'.
-#
-# target
-no-test-bundled-gems
-#
-make: Nothing to be done for 'no-test-bundled-gems'.
-#
-# target
-no-test-bundled-gems-fetch
-#
-make: Nothing to be done for 'no-test-bundled-gems-fetch'.
-#
-# target
-no-test-bundled-gems-precheck
-#
-make: Nothing to be done for 'no-test-bundled-gems-precheck'.
-#
-# target
-no-test-bundled-gems-prepare
-#
-make: Nothing to be done for 'no-test-bundled-gems-prepare'.
-#
-# target
 no-test-bundled-gems-run
 #
 : 
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -797,22 +752,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -926,7 +881,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -1378,7 +1333,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -1386,17 +1341,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -1423,92 +1378,27 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
-#
-# target
-no-test-bundled-gems-spec
-#
-make: Nothing to be done for 'no-test-bundled-gems-spec'.
-#
-# target
-no-test-bundler
-#
-make: Nothing to be done for 'no-test-bundler'.
-#
-# target
-no-test-bundler-parallel
-#
-make: Nothing to be done for 'no-test-bundler-parallel'.
-#
-# target
-no-test-bundler-precheck
-#
-make: Nothing to be done for 'no-test-bundler-precheck'.
-#
-# target
-no-test-bundler-prepare
-#
-make: Nothing to be done for 'no-test-bundler-prepare'.
-#
-# target
-no-test-knownbug
-#
-make: Nothing to be done for 'no-test-knownbug'.
-#
-# target
-no-test-ruby
-#
-make: Nothing to be done for 'no-test-ruby'.
-#
-# target
-no-test-spec
-#
-make: Nothing to be done for 'no-test-spec'.
-#
-# target
-no-test-syntax-suggest
-#
-make: Nothing to be done for 'no-test-syntax-suggest'.
-#
-# target
-no-test-syntax-suggest-precheck
-#
-make: Nothing to be done for 'no-test-syntax-suggest-precheck'.
-#
-# target
-no-test-syntax-suggest-prepare
-#
-make: Nothing to be done for 'no-test-syntax-suggest-prepare'.
-#
-# target
-no-test-testframework
-#
-make: Nothing to be done for 'no-test-testframework'.
-#
-# target
-no-test-tool
-#
-make: Nothing to be done for 'no-test-tool'.
 #
 # target
 rtest
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 : 
-exec /usr/bin/ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./x86_64-linux-fake --disable-gems" --sets=ractor -v
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems" --sets=ractor -v
 :
 #
 # target
 test
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -1525,7 +1415,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
 :
@@ -1547,14 +1437,14 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 test-all
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -1572,27 +1462,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -1709,7 +1599,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -2161,7 +2051,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -2178,14 +2068,14 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 test-almost
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -2203,27 +2093,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -2340,7 +2230,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -2792,7 +2682,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -2809,7 +2699,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 test-annocheck
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 [ -n "" ] || [ -n "" ] || exec rm -f ./.libruby-with-ext.time
 echo linking shared-library libruby.so.3.4.5
 gcc -shared -Wl,--compress-debug-sections=zlib -fstack-protector-strong -pie   dln.o localeinit.o loadpath.o array.o ast.o bignum.o class.o compar.o compile.o complex.o cont.o debug.o debug_counter.o dir.o dln_find.o encoding.o enum.o enumerator.o error.o eval.o file.o gc.o hash.o inits.o imemo.o io.o io_buffer.o iseq.o load.o marshal.o math.o memory_view.o rjit.o rjit_c.o node.o node_dump.o numeric.o object.o pack.o parse.o parser_st.o proc.o process.o ractor.o random.o range.o rational.o re.o regcomp.o regenc.o regerror.o regexec.o regparse.o regsyntax.o ruby.o ruby_parser.o scheduler.o shape.o signal.o sprintf.o st.o strftime.o string.o struct.o symbol.o thread.o time.o transcode.o util.o variable.o version.o vm.o vm_backtrace.o vm_dump.o vm_sync.o vm_trace.o weakmap.o prism/api_node.o prism/api_pack.o prism/diagnostic.o prism/encoding.o prism/extension.o prism/node.o prism/options.o prism/pack.o prism/prettyprint.o prism/regexp.o prism/serialize.o prism/static_literals.o prism/token_type.o prism/util/pm_buffer.o prism/util/pm_char.o prism/util/pm_constant_pool.o prism/util/pm_integer.o prism/util/pm_list.o prism/util/pm_memchr.o prism/util/pm_newline_list.o prism/util/pm_string.o prism/util/pm_strncasecmp.o prism/util/pm_strpbrk.o prism/prism.o prism_init.o   coroutine/amd64/Context.o  enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o enc/trans/newline.o setproctitle.o strlcat.o strlcpy.o addr2line.o  builtin.o dmyext.o dmyenc.o -lz -lrt -lrt -lgmp -ldl -lcrypt -lm -lpthread   -o libruby.so.3.4.5
@@ -2825,7 +2715,7 @@ objcopy -w -L 'Init_*' -L 'ruby_static_id_*' \
 test-basic
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -2842,7 +2732,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/leaked-globals \
   SOEXT=so NM="gcc-nm -Pgp" SYMBOL_PREFIX= \
@@ -2859,7 +2749,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 test-bundled-gems
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -2876,22 +2766,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -3005,7 +2895,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -3457,7 +3347,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -3465,17 +3355,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -3504,12 +3394,12 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -C .. .bundle/bin/rspec spec/bundled_gems_spec.rb
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/test-bundled-gems.rb 
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run --env BUNDLED_GEMS= -B ../spec/bundled_gems.mspec \
 	 
 :
@@ -3518,13 +3408,13 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-bundled-gems-fetch
 #
 : 
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 #
 # target
 test-bundled-gems-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -3541,22 +3431,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -3670,7 +3560,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -4122,7 +4012,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -4130,17 +4020,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -4152,7 +4042,7 @@ test-bundled-gems-prepare
 #
 : 
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -4169,22 +4059,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -4298,7 +4188,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -4750,7 +4640,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -4758,17 +4648,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -4795,7 +4685,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 #
 # target
@@ -4803,7 +4693,7 @@ test-bundled-gems-run
 #
 : 
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -4820,22 +4710,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -4949,7 +4839,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -5401,7 +5291,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -5409,17 +5299,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -5446,21 +5336,21 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/test-bundled-gems.rb 
 #
 # target
 test-bundled-gems-spec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -5478,27 +5368,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -5615,7 +5505,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -6067,7 +5957,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -6098,11 +5988,11 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run --env BUNDLED_GEMS= -B ../spec/bundled_gems.mspec \
 	 
 :
@@ -6111,7 +6001,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-bundler
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -6128,22 +6018,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -6257,7 +6147,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -6709,7 +6599,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -6717,17 +6607,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -6741,7 +6631,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	-e 'load "spec/bundler/support/bundle.rb"' -- install --quiet --gemfile=tool/bundler/dev_gems.rb
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems \
-	-r./x86_64-linux-fake \
+	-r./riscv64-freebsd-fake \
 	-e "exec(*ARGV)" -- \
 	./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -C .. -Ispec/bundler -Ispec/lib .bundle/bin/rspec \
 	-r spec_helper -r formatter_overrides spec/bundler/
@@ -6750,7 +6640,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-bundler-parallel
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -6767,22 +6657,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -6896,7 +6786,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -7348,7 +7238,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -7356,17 +7246,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -7380,7 +7270,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	-e 'load "spec/bundler/support/bundle.rb"' -- install --quiet --gemfile=tool/bundler/dev_gems.rb
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems \
-	-r./x86_64-linux-fake \
+	-r./riscv64-freebsd-fake \
 	-I../spec/bundler \
 	-e "ruby = ENV['RUBY']" \
 	-e "ARGV[-1] = File.expand_path(ARGV[-1])" \
@@ -7394,7 +7284,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-bundler-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -7411,22 +7301,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -7540,7 +7430,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -7992,7 +7882,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -8000,17 +7890,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -8020,7 +7910,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-bundler-prepare
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -8037,22 +7927,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -8166,7 +8056,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -8618,7 +8508,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -8626,17 +8516,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -8654,7 +8544,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-knownbug
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -8671,7 +8561,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby --disable-gems"   ../KNOWNBUGS.rb
 :
@@ -8680,7 +8570,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 test-knownbugs
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -8697,7 +8587,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby --disable-gems"   ../KNOWNBUGS.rb
 :
@@ -8706,7 +8596,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 test-leaked-globals
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -8723,7 +8613,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/leaked-globals \
   SOEXT=so NM="gcc-nm -Pgp" SYMBOL_PREFIX= \
@@ -8737,7 +8627,7 @@ gcc --version
 test-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -8754,34 +8644,34 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -8898,7 +8788,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -9350,7 +9240,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -9362,7 +9252,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-ruby
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -9379,34 +9269,34 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -9415,14 +9305,14 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 # target
 test-rubyspec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -9440,27 +9330,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -9577,7 +9467,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -10029,7 +9919,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -10038,7 +9928,7 @@ make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run -B ../spec/default.mspec  
 :
 #
@@ -10046,7 +9936,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-sample
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -10063,7 +9953,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/leaked-globals \
   SOEXT=so NM="gcc-nm -Pgp" SYMBOL_PREFIX= \
@@ -10080,7 +9970,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 test-short
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -10097,7 +9987,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
 :
@@ -10119,14 +10009,14 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 test-spec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -10144,27 +10034,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -10281,7 +10171,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -10733,7 +10623,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -10742,7 +10632,7 @@ make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run -B ../spec/default.mspec  
 :
 #
@@ -10750,7 +10640,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-syntax-suggest
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -10767,22 +10657,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -10896,7 +10786,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -11348,7 +11238,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -11356,17 +11246,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -11386,7 +11276,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-syntax-suggest-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -11403,22 +11293,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -11532,7 +11422,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -11984,7 +11874,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -11992,17 +11882,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -12012,7 +11902,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-syntax-suggest-prepare
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -12029,22 +11919,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -12158,7 +12048,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -12610,7 +12500,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -12618,17 +12508,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -12642,7 +12532,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 test-testframework
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -12659,7 +12549,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../tool/test/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems"  testunit
 :
@@ -12668,7 +12558,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 test-tool
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -12685,7 +12575,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../tool/test/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems" 
 :
@@ -12693,21 +12583,21 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 yes-btest
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 : 
-exec /usr/bin/ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./x86_64-linux-fake --disable-gems"   
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems"   
 :
 #
 # target
 yes-btest-ruby
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -12724,7 +12614,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby -I../lib --disable-gems"   
 :
@@ -12733,7 +12623,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 yes-install-for-test-bundled-gems
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -12750,22 +12640,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -12879,7 +12769,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -13331,7 +13221,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -13339,17 +13229,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -13381,14 +13271,14 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 # target
 yes-test-all
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -13406,27 +13296,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -13543,7 +13433,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -13995,7 +13885,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -14012,14 +13902,14 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 # target
 yes-test-all-precheck
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -14037,27 +13927,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -14174,7 +14064,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -14626,7 +14516,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -14637,14 +14527,14 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 # target
 yes-test-almost
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -14662,27 +14552,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -14799,7 +14689,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -15251,7 +15141,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -15269,7 +15159,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 yes-test-basic
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -15286,7 +15176,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/leaked-globals \
   SOEXT=so NM="gcc-nm -Pgp" SYMBOL_PREFIX= \
@@ -15303,7 +15193,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 yes-test-bundled-gems
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -15320,22 +15210,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -15449,7 +15339,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -15901,7 +15791,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -15909,17 +15799,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -15948,7 +15838,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -C .. .bundle/bin/rspec spec/bundled_gems_spec.rb
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/test-bundled-gems.rb 
 #
@@ -15956,13 +15846,13 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundled-gems-fetch
 #
 : 
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 #
 # target
 yes-test-bundled-gems-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -15979,22 +15869,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -16108,7 +15998,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -16560,7 +16450,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -16568,17 +16458,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -16590,7 +16480,7 @@ yes-test-bundled-gems-prepare
 #
 : 
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -16607,22 +16497,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -16736,7 +16626,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -17188,7 +17078,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -17196,17 +17086,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -17233,7 +17123,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 #
 # target
@@ -17241,7 +17131,7 @@ yes-test-bundled-gems-run
 #
 : 
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -17258,22 +17148,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -17387,7 +17277,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -17839,7 +17729,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -17847,17 +17737,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -17884,21 +17774,21 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/test-bundled-gems.rb 
 #
 # target
 yes-test-bundled-gems-spec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -17916,27 +17806,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -18053,7 +17943,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -18505,7 +18395,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -18536,11 +18426,11 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	install --no-document --conservative \
 	"hoe" "json-schema:5.1.0" "test-unit-rr" "simplecov" "simplecov-html" "simplecov-json" "rspec" "zeitwerk" \
 	"sinatra" "rack" "tilt" "mustermann" "base64" "compact_index" "rack-test"
-/usr/bin/ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
+./ruby --disable=gems -C ../gems ../tool/fetch-bundled_gems.rb BUNDLED_GEMS="" src bundled_gems
 :
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run --env BUNDLED_GEMS= -B ../spec/bundled_gems.mspec \
 	 
 :
@@ -18549,7 +18439,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundler
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -18566,22 +18456,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -18695,7 +18585,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -19147,7 +19037,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -19155,17 +19045,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -19179,7 +19069,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	-e 'load "spec/bundler/support/bundle.rb"' -- install --quiet --gemfile=tool/bundler/dev_gems.rb
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems \
-	-r./x86_64-linux-fake \
+	-r./riscv64-freebsd-fake \
 	-e "exec(*ARGV)" -- \
 	./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -C .. -Ispec/bundler -Ispec/lib .bundle/bin/rspec \
 	-r spec_helper -r formatter_overrides spec/bundler/
@@ -19188,7 +19078,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundler-parallel
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -19205,22 +19095,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -19334,7 +19224,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -19786,7 +19676,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -19794,17 +19684,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -19818,7 +19708,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 	-e 'load "spec/bundler/support/bundle.rb"' -- install --quiet --gemfile=tool/bundler/dev_gems.rb
 :
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems \
-	-r./x86_64-linux-fake \
+	-r./riscv64-freebsd-fake \
 	-I../spec/bundler \
 	-e "ruby = ENV['RUBY']" \
 	-e "ARGV[-1] = File.expand_path(ARGV[-1])" \
@@ -19832,7 +19722,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundler-parallel-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -19849,22 +19739,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -19978,7 +19868,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -20430,7 +20320,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -20438,17 +20328,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -20458,7 +20348,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundler-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -20475,22 +20365,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -20604,7 +20494,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -21056,7 +20946,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -21064,17 +20954,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -21084,7 +20974,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-bundler-prepare
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21101,22 +20991,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -21230,7 +21120,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -21682,7 +21572,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -21690,17 +21580,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -21718,7 +21608,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-knownbug
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21735,7 +21625,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../bootstraptest/runner.rb" --ruby="ruby --disable-gems"   ../KNOWNBUGS.rb
 :
@@ -21744,7 +21634,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 yes-test-leaked-globals
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21761,7 +21651,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems ../tool/leaked-globals \
   SOEXT=so NM="gcc-nm -Pgp" SYMBOL_PREFIX= \
@@ -21775,7 +21665,7 @@ gcc --version
 yes-test-leaked-globals-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21792,13 +21682,13 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 #
 # target
 yes-test-ruby
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21815,34 +21705,34 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -21851,14 +21741,14 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 # target
 yes-test-rubyspec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -21876,27 +21766,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -22013,7 +21903,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -22465,7 +22355,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -22474,21 +22364,21 @@ make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run -B ../spec/default.mspec  
 :
 #
 # target
 yes-test-spec
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -22506,27 +22396,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -22643,7 +22533,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -23095,7 +22985,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -23104,21 +22994,21 @@ make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 : 
 \
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./x86_64-linux-fake -r../tool/lib/_tmpdir \
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r./riscv64-freebsd-fake -r../tool/lib/_tmpdir \
 	../spec/mspec/bin/mspec run -B ../spec/default.mspec  
 :
 #
 # target
 yes-test-spec-precheck
 #
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -23136,27 +23026,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -23273,7 +23163,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -23725,7 +23615,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -23737,7 +23627,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-syntax-suggest
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -23754,22 +23644,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -23883,7 +23773,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -24335,7 +24225,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -24343,17 +24233,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -24373,7 +24263,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-syntax-suggest-precheck
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -24390,22 +24280,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -24519,7 +24409,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -24971,7 +24861,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -24979,17 +24869,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -24999,7 +24889,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-syntax-suggest-prepare
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -25016,22 +24906,22 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n srcs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'srcs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo generating makefiles ext/configure-ext.mk
 /usr/bin/mkdir -p ext
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o ext/configure-ext.mk -c \
@@ -25145,7 +25035,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -n libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -25597,7 +25487,7 @@ make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -n RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
@@ -25605,17 +25495,17 @@ make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[1]: Nothing to be done for 'note'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n enc
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'enc'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n trans
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'trans'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -n encs
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[1]: Nothing to be done for 'encs'.
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -25629,7 +25519,7 @@ make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4
 yes-test-testframework
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -25646,7 +25536,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../tool/test/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems"  testunit
 :
@@ -25655,7 +25545,7 @@ exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  --
 yes-test-tool
 #
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -25672,7 +25562,7 @@ for line in \
 "	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=staticlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/yjit/target/release/' ../yjit/src/lib.rs" \
 ; do echo "$line"; done
 gcc --version
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 : 
 exec ./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../tool/test/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems" 
 :
@@ -25682,26 +25572,26 @@ yjit-smoke-test
 #
 make btest RUN_OPTS='--yjit-call-threshold=1' BTESTS=-j
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 : 
-exec /usr/bin/ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./x86_64-linux-fake --yjit-call-threshold=1"   -j
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --yjit-call-threshold=1"   -j
 :
 make[1]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make test-all TESTS='../test/ruby/test_yjit.rb'
 make[1]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
-echo generating x86_64-linux-fake.rb
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+echo generating riscv64-freebsd-fake.rb
 gcc -E -DRUBY_EXPORT -I. -I.ext/include/x86_64-linux -I.ext/include -I../include -I.. -I../prism -I../enc/unicode/15.0.0     "../version.c" | \
-/usr/bin/ruby --disable=gems  "../tool/generic_erb.rb" -o x86_64-linux-fake.rb "../template/fake.rb.in" \
-    i=- srcdir=".." BASERUBY="/usr/bin/ruby --disable=gems" \
+./ruby --disable=gems  "../tool/generic_erb.rb" -o riscv64-freebsd-fake.rb "../template/fake.rb.in" \
+    i=- srcdir=".." BASERUBY="./ruby --disable=gems" \
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.5"
 for line in \
-"	BASERUBY = /usr/bin/ruby --disable=gems" \
+"	BASERUBY = ./ruby --disable=gems" \
 "	CC = gcc" \
 "	LD = ld" \
 "	LDSHARED = gcc -shared" \
@@ -25719,27 +25609,27 @@ for line in \
 ; do echo "$line"; done
 gcc --version
 echo generating enc.mk
-/usr/bin/ruby --disable=gems  -r./x86_64-linux-fake ../enc/make_encmake.rb \
+./ruby --disable=gems  -r./riscv64-freebsd-fake ../enc/make_encmake.rb \
   --builtin-encs="enc/ascii.o enc/us_ascii.o enc/unicode.o enc/utf_8.o" --builtin-transes="enc/trans/newline.o" --module  enc.mk
 echo making enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw enc
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw enc
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[2]: Nothing to be done for 'enc'.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making srcs under enc
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw srcs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw srcs
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[2]: Nothing to be done for 'srcs'.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo generating transdb.h
-/usr/bin/ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
+./ruby --disable=gems  ../tool/generic_erb.rb -c -o transdb.h ../template/transdb.h.tmpl ../enc/trans enc/trans
 echo making trans
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw trans
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw trans
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[2]: Nothing to be done for 'trans'.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 echo making encs
-make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="/usr/bin/ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw encs
+make -f enc.mk V="0" UNICODE_HDR_DIR="../enc/unicode/15.0.0" RUBY="./ruby --disable=gems " MINIRUBY="/usr/bin/ruby --disable=gems " -nw encs
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[2]: Nothing to be done for 'encs'.
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
@@ -25856,7 +25746,7 @@ echo generating makefile exts.mk
 ./miniruby -I../lib -I. -I.ext/common  ../tool/generic_erb.rb -o exts.mk -c \
     ../template/exts.mk.tmpl --gnumake=yes --configure-exts=ext/configure-ext.mk
 make -f exts.mk -nw libdir="/home/hanhaotian/.rubies/ruby-master/lib" LIBRUBY_EXTS=./.libruby-with-ext.time \
-    EXTENCS="dmyenc.o" BASERUBY="/usr/bin/ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
+    EXTENCS="dmyenc.o" BASERUBY="./ruby --disable=gems" MINIRUBY="./miniruby -I../lib -I. -I.ext/common " \
     
 make[2]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -C ext/-test-/RUBY_ALIGNOF V=0 all
@@ -26308,7 +26198,7 @@ make[3]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.
 make[3]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build/.bundle/gems/syslog-0.2.0/ext/syslog'
 make EXTOBJS="dmyext.o dmyenc.o" EXTLIBS="" EXTLDFLAGS="" EXTINITS="" SHOWFLAGS= ruby
 make[3]: Entering directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
-/usr/bin/ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
+./ruby --disable=gems ../tool/file2lastrev.rb -q --revision.h --srcdir=".." --output=revision.h --timestamp=.revision.time
 make[3]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make[2]: Leaving directory '/cheruby/src/output/rootfs-riscv64/research/ruby-3.4.5/build'
 make -f exts.mk -nw RUBY="./miniruby -I../lib -I. -I.ext/common " top_srcdir=".." note
