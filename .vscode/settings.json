@@ -13,7 +13,8 @@
 		"_inttypes.h": "c",
 		"pm_constant_pool.h": "c",
 		"defines.h": "c",
-		"*.rbinc": "c"
+		"*.rbinc": "c",
+		"stdio.h": "c"
 	},
 	"git.ignoreLimitWarning": true
 }

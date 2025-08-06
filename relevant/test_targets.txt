@@ -1,8 +1,6 @@
-Preparing-test-bundled-gems
 btest
 btest-bruby
 btest-ruby
-install-for-test-bundled-gems
 no-btest
 no-btest-ruby
 no-install-for-test-bundled-gems

@@ -30,4 +30,6 @@ optflags="-O0 -fno-omit-frame-pointer"
     LIBPATHENV="LD_LIBRARY_PATH" PRELOADENV="LD_PRELOAD" LIBRUBY_SO="libruby.so.3.4.1"
 
 # basic test runner 
-./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../basictest/runner.rb" --run-opt=--disable-gems
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems "../basictest/runner.rb" --run-opt=--disable-gems 
+# bootstrap test runner
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems"

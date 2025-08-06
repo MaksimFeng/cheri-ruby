@@ -1,0 +1,408 @@
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_block.rb  PASS 58
+
+Finished in 147.01 sec
+
+PASS all 58 tests
+2025-07-22 09:40:18 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_class.rb  PASS 48
+
+Finished in 119.70 sec
+
+PASS all 48 tests
+2025-07-22 09:42:21 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_constant_cache.rb  PASS 10
+
+Finished in 27.84 sec
+
+PASS all 10 tests
+2025-07-22 09:42:52 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_env.rb  PASS 2
+
+Finished in 8.03 sec
+
+PASS all 2 tests
+2025-07-22 09:43:03 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_eval.rb  PASS 49
+
+Finished in 217.32 sec
+
+PASS all 49 tests
+2025-07-22 09:46:44 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_exception.rb  PASS 34
+
+Finished in 85.95 sec
+
+PASS all 34 tests
+2025-07-22 09:48:13 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_fiber.rb  PASS 6
+
+Finished in 63.09 sec
+
+Fiber count: 10000 (skipping)
+PASS all 6 tests
+2025-07-22 09:49:19 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_finalizer.rb  PASS 2
+
+Finished in 8.09 sec
+
+PASS all 2 tests
+2025-07-22 09:49:31 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_flip.rb  PASS 1
+
+Finished in 5.70 sec
+
+PASS all 1 tests
+2025-07-22 09:49:40 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_flow.rb  PASS 62
+
+Finished in 153.13 sec
+
+PASS all 62 tests
+2025-07-22 09:52:16 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+#2 test_fork.rb:12:
+     begin
+       children = (1..10).map{
+         Thread.start{fork{}}.value
+       }
+       while !children.empty? and pid = Process.wait
+         children.delete(pid)
+       end
+     rescue NotImplementedError
+     end
+  #=> not finished in 10 seconds  [ruby-core:22158]
+test_fork.rb  FAIL 1/5
+
+Finished in 34.79 sec
+
+FAIL 1/5 tests failed
+2025-07-22 09:52:54 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_gc.rb  PASS 2
+
+Finished in 721.01 sec
+
+PASS all 2 tests
+2025-07-22 10:04:58 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_insns.rb  PASS 393
+
+Finished in 972.17 sec
+
+PASS all 393 tests
+2025-07-22 10:21:15 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_io.rb  PASS 6
+
+Finished in 22.14 sec
+
+PASS all 6 tests
+2025-07-22 10:21:40 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_jump.rb  PASS 29
+
+Finished in 72.94 sec
+
+PASS all 29 tests
+2025-07-22 10:22:56 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_literal.rb  PASS 157
+
+Finished in 400.07 sec
+
+PASS all 157 tests
+2025-07-22 10:29:40 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_literal_suffix.rb  PASS 48
+
+Finished in 118.35 sec
+
+PASS all 48 tests
+2025-07-22 10:31:42 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_load.rb  PASS 2
+
+Finished in 8.38 sec
+
+PASS all 2 tests
+2025-07-22 10:31:53 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_marshal.rb  PASS 1
+
+Finished in 5.67 sec
+
+PASS all 1 tests
+2025-07-22 10:32:02 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_massign.rb  PASS 34
+
+Finished in 92.01 sec
+
+PASS all 34 tests
+2025-07-22 10:33:37 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_method.rb  PASS 248
+
+Finished in 686.15 sec
+
+PASS all 248 tests
+2025-07-22 10:45:08 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_objectspace.rb  PASS 6
+
+Finished in 22.46 sec
+
+PASS all 6 tests
+2025-07-22 10:45:34 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_proc.rb  PASS 37
+
+Finished in 109.26 sec
+
+PASS all 37 tests
+2025-07-22 10:47:26 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+#18 test_ractor.rb:180:
+     n = 3
+     n.times.map{
+       Ractor.new{
+         10_000.times{ rand.to_s }
+         :ok
+       }
+     }.map(&:take)
+  #=> "" (expected "[:ok, :ok, :ok]")
+#42 test_ractor.rb:564:
+     Ractor.new Ractor.current do |main|
+       q = Thread::Queue.new
+       Thread.new do
+         q << true
+         loop{}
+       ensure
+         main << :ok
+       end
+
+       Thread.new do
+         q << true
+         while true
+         end
+       ensure
+         main << :ok
+       end
+
+       Thread.new do
+         q << true
+         sleep 1
+       ensure
+   (...snip)
+  #=> "" (expected "{ok: 3}")
+#52 test_ractor.rb:798:
+     r = Ractor.new do
+       obj = Thread.new{}
+       Ractor.yield obj
+     rescue => e
+       e.message
+     end
+     r.take
+  #=> "" (expected "allocator undefined for Thread")
+#57 test_ractor.rb:863:
+     $DEBUG = true
+     $VERBOSE = true
+
+     def ractor_local_globals
+       /a(b)(c)d/ =~ 'abcd' # for $~
+       `echo foo` unless  /solaris/ =~ RUBY_PLATFORM
+
+       {
+        # ractor-local (derived from created ractor): debug
+        '$DEBUG' => $DEBUG,
+        '$-d' => $-d,
+
+        # ractor-local (derived from created ractor): verbose
+        '$VERBOSE' => $VERBOSE,
+        '$-w' => $-w,
+        '$-W' => $-W,
+        '$-v' => $-v,
+
+        # process-local (readonly): other commandline parameters
+        '$-p' => $-p,
+        '$-l' => $-l,
+   (...snip)
+  #=> "" (expected "true")
+#92 test_ractor.rb:1485:
+     trap(:INT) do
+       exit
+     end
+
+     r = Ractor.new do
+       loop do
+         sleep 1
+       end
+     end
+
+     Thread.new do
+       sleep 0.5
+       Process.kill(:INT, Process.pid)
+     end
+     Ractor.select(r)
+  #=> killed by signal 34
+test_ractor.rb  FAIL 5/119
+
+Finished in 800.83 sec
+
+FAIL 5/119 tests failed
+2025-07-22 11:00:51 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_rjit.rb  PASS 7
+
+Finished in 20.49 sec
+
+PASS all 7 tests
+2025-07-22 11:01:14 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_string.rb  PASS 1
+
+Finished in 5.66 sec
+
+PASS all 1 tests
+2025-07-22 11:01:23 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_struct.rb  PASS 1
+
+Finished in 5.66 sec
+
+PASS all 1 tests
+2025-07-22 11:01:32 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+test_syntax.rb  PASS 164
+
+Finished in 411.15 sec
+
+PASS all 164 tests
+2025-07-22 11:08:27 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
+
+#47 test_thread.rb:449:
+     require 'thread'
+
+     lock = Thread::Mutex.new
+     cond = Thread::ConditionVariable.new
+     t = Thread.new do
+       lock.synchronize do
+         cond.wait(lock)
+       end
+     end
+
+     begin
+       pid = fork do
+         # Child
+         STDOUT.write "This is the child process.\n"
+         STDOUT.write "Child process exiting.\n"
+       end
+       Process.waitpid(pid)
+     rescue NotImplementedError
+     end
+  #=> not finished in 3 seconds  [ruby-core:23572]
+test_thread.rb  FAIL 1/50
+
+Finished in 733.19 sec
+
+FAIL 1/50 tests failed
+2025-07-22 11:20:43 +0000
+Driver is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+Target is ruby 3.4.5 (2025-07-22 revision 010646ae1a) +PRISM [riscv64-freebsd]
+last_commit=context
