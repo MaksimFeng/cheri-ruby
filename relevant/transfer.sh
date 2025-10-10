@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 fi
 
 SRC_DIR=$(pwd)
-DEST_DIR="root@localhost:/root/ruby-3.4.5/build/"
+DEST_DIR="root@localhost:/root/ruby341e/build/"
 
 if [ ! -d "$1" ]; then
 	echo "transfer file '$1' from '$SRC_DIR' to '$DEST_DIR'"
