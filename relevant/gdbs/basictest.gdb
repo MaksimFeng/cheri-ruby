@@ -1,5 +1,5 @@
-directory /rootfs/research/ruby-3.4.5/build
-directory /rootfs/research/ruby-3.4.5
+directory /rootfs/research/ruby341e/build
+directory /rootfs/research/ruby341e
 layout src 
 fs cmd
 b rb_main

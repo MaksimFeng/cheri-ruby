@@ -21,3 +21,6 @@ CXXFLAGS="-target riscv64-unknown-freebsd --sysroot=/cheriv92/src/output/rootfs-
 --with-destdir="/cheriv92/src/output/rootfs-riscv64-purecap/.rubies/ruby-master" \
 --enable-debug-env \
 optflags="-O0 -fno-omit-frame-pointer"
+
+
+./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems" 
