@@ -127,8 +127,8 @@ typedef uintptr_t ID;
 # define SIGNED_VALUE long
 # define SIZEOF_VALUE SIZEOF_UINTPTR_T
 # undef PRI_VALUE_PREFIX
-# define RBIMPL_VALUE_NULL ((VALUE)0)
-# define RBIMPL_VALUE_ONE  ((VALUE)1)
+# define RBIMPL_VALUE_NULL 0UL
+# define RBIMPL_VALUE_ONE  1UL
 # define RBIMPL_VALUE_FULL ULONG_MAX
 #endif
 
