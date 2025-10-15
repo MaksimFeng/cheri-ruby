@@ -2188,9 +2188,8 @@ enc_strlen(const char *p, const char *e, rb_encoding *enc, int cr)
         uint64_t len = 0;
         if ((int)sizeof(uint64_t) * 2 < e - p) {
             const uint64_t *s, *t;
-            const uint64_t lowbits = sizeof(uint64_t) - 1;
-            s = (const uint64_t*)(~lowbits & ((uint64_t)p + lowbits));
-            t = (const uint64_t*)(~lowbits & (uint64_t)e);
+            s = (const uint64_t*)__builtin_align_up(p, 8); 
+            t = (const uint64_t*)__builtin_align_down(e, 8);
             while (p < (const char *)s) {
                 if (is_utf8_lead_byte(*p)) len++;
                 p++;
@@ -2964,9 +2963,8 @@ str_utf8_nth(const char *p, const char *e, long *nthp)
     long nth = *nthp;
     if ((int)8 * 2 < e - p && (int)8 * 2 < nth) {
         const uint64_t *s, *t;
-        const uint64_t lowbits = 8 - 1;
-        s = (const uint64_t*)(~lowbits & ((uint64_t)p + lowbits));
-        t = (const uint64_t*)(~lowbits & (uint64_t)e);
+        s = (const uint64_t*)__builtin_align_up(p, 8); 
+        t = (const uint64_t*)__builtin_align_down(e, 8);
         while (p < (const char *)s) {
             if (is_utf8_lead_byte(*p)) nth--;
             p++;
