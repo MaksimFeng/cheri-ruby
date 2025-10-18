@@ -20,7 +20,15 @@ CXXFLAGS="-target riscv64-unknown-freebsd --sysroot=/cheriv92/src/output/rootfs-
 --enable-mkmf-verbose \
 --with-destdir="/cheriv92/src/output/rootfs-riscv64-purecap/.rubies/ruby-master" \
 --enable-debug-env \
-optflags="-O0 -fno-omit-frame-pointer"
+optflags="-O0 -fno-omit-frame-pointer" \
+cppflags="-DRUBY_DEBUG=1 -DUSE_RUBY_DEBUG_LOG=1"
 
 
 ./ruby --disable=gems  "../bootstraptest/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  -r./riscv64-freebsd-fake --disable-gems" 
+
+
+# test-all 
+## debug
+./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems -r../tool/lib/_tmpdir \
+"../test/runner.rb" --ruby="./miniruby -I../lib -I. -I.ext/common  ../tool/runruby.rb --extout=.ext  -- --disable-gems" \
+--excludes-dir=../test/.excludes --name=!/memory_leak/  ../test/-ext-/typeddata/test_typeddata.rb --name=Test_TypedData#test_wrong_argtype  --timeout-scale 10 --worker-timeout=1000
