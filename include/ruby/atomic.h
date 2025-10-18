@@ -41,6 +41,7 @@
 #endif
 
 #include <stdatomic.h>         /* std::atomic */
+#include <machine/atomic.h>
 
 #include "ruby/assert.h"
 #include "ruby/backward/2/limits.h"
@@ -750,9 +751,10 @@ rbimpl_atomic_ptr_exchange(void *volatile *ptr, const void *val)
     return atomic_swap_ptr(ptr, RBIMPL_CAST((void *)val));
 
 	#elif defined(__CHERI_PURE_CAPABILITY__) 
-	_Atomic(void *) *p = (_Atomic(void *) *)ptr;
-	void *v = (void *)val;
-	return atomic_exchange(p, v); // return old value
+	const VALUE sval = RBIMPL_CAST((VALUE)val);
+    volatile VALUE *const sptr = RBIMPL_CAST((volatile VALUE *)ptr);
+    const VALUE sret = atomic_swap_ptr(sptr, sval);
+    return RBIMPL_CAST((void *)sret);
 
 #else
     RBIMPL_STATIC_ASSERT(sizeof_voidp, sizeof *ptr == sizeof(size_t));
@@ -773,7 +775,7 @@ rbimpl_atomic_value_exchange(volatile VALUE *ptr, VALUE val)
 {
     // RBIMPL_STATIC_ASSERT(sizeof_value, sizeof *ptr == sizeof(size_t));
 	// #if defined(__CHERI_PURE_CAPABILITY__) 
-	return atomic_exchange((_Atomic(VALUE) *)ptr, val);
+	return atomic_swap_ptr(ptr, val); 
 
     // const size_t sval = RBIMPL_CAST((size_t)val);
     // volatile size_t *const sptr = RBIMPL_CAST((volatile size_t *)ptr);
@@ -910,15 +912,20 @@ rbimpl_atomic_ptr_cas(void **ptr, const void *oldval, const void *newval)
     return atomic_cas_ptr(ptr, pold, pnew);
 
 	#elif defined(__CHERI_PURE_CAPABILITY__) 
-	void *ret = *ptr; 
-	_Atomic(void*) *p = (_Atomic(void*) *)ptr;
-	void *pold = RBIMPL_CAST((void *)oldval);
-    void *pnew = RBIMPL_CAST((void *)newval);
-	if (atomic_compare_exchange_strong(p, &pold, pnew)) {
-		ret = pold;
-	}
-	return ret;
+	uintptr_t *ptr_cap = RBIMPL_CAST((uintptr_t *)ptr);
+	uintptr_t pold = RBIMPL_CAST((uintptr_t)oldval);
+    uintptr_t pnew = RBIMPL_CAST((uintptr_t)newval);
+    #ifdef STRONG_FCMPSET
+	(void)atomic_fcmpset_ptr(ptr_cap, &pold, pnew);
+#else
+	uintptr_t expected = pold;
 
+	do {
+		if (atomic_fcmpset_ptr(ptr_cap, &pold, pnew))
+			break;
+	} while (pold == expected);
+#endif
+	return (oldval);
 
 #else
     RBIMPL_STATIC_ASSERT(sizeof_voidp, sizeof *ptr == sizeof(size_t));
@@ -955,11 +962,19 @@ static inline VALUE
 rbimpl_atomic_value_cas(volatile VALUE *ptr, VALUE oldval, VALUE newval)
 {
 	#if defined(__CHERI_PURE_CAPABILITY__) 
-	VALUE ret = *ptr;
-	if (atomic_compare_exchange_strong((_Atomic(VALUE) *)ptr, &oldval, newval)) {
-		ret = oldval;
-	}
-	return ret;
+	VALUE oldcap = RBIMPL_CAST((VALUE)oldval);
+	VALUE newcap = RBIMPL_CAST((VALUE)newval);
+	#ifdef STRONG_FCMPSET
+	(void)atomic_fcmpset_ptr(ptr, &oldcap, newcap);
+#else
+	VALUE expected = oldcap;
+
+	do {
+		if (atomic_fcmpset_ptr(ptr, &oldcap, newcap))
+			break;
+	} while (oldcap == expected);
+#endif
+	return (oldval);
 	#else
     RBIMPL_STATIC_ASSERT(sizeof_value, sizeof *ptr == sizeof(size_t));
 

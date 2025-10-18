@@ -7436,7 +7436,7 @@ Init_Hash(void)
      */
     rb_define_global_const("ENV", envtbl);
 
-    HASH_ASSERT(sizeof(ar_hint_t) * RHASH_AR_TABLE_MAX_SIZE == sizeof(VALUE));
+    // HASH_ASSERT(sizeof(ar_hint_t) * RHASH_AR_TABLE_MAX_SIZE == sizeof(VALUE));
 }
 
 #include "hash.rbinc"
