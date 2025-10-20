@@ -7,9 +7,8 @@ if [ "x$mode" = "x" ]; then
 	echo "Running unprocessed tests only"
 	if [ ! -f tdirsfin.txt ]; then
 		touch tdirsfin.txt
-		echo "../test/ruby" >> tdirsfin.txt
 	fi
-	for i in ../test/*; do
+	for i in ../test/ruby/*; do
 		if grep -q "^$i$" tdirsfin.txt; then
 			echo "Skipping ${i} as already processed"
 			continue
@@ -27,7 +26,7 @@ else
 		echo "tdirsunfin.txt not found"
 		exit 1
 	fi
-	for i in ../test/*; do
+	for i in ../test/ruby/*; do
 		if grep -q "^$i$" tdirsunfin.txt; then
 			echo "Current!: ${i}"
 			echo $i >> tdirsfin.txt
