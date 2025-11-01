@@ -15,7 +15,8 @@
 		"defines.h": "c",
 		"*.rbinc": "c",
 		"stdio.h": "c",
-		"ucontext.h": "c"
+		"ucontext.h": "c",
+		"cheri.h": "c"
 	},
 	"git.ignoreLimitWarning": true
 }
